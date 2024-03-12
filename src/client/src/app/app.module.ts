@@ -4,18 +4,17 @@ import { DatosPService } from './services/datos-pservice.service';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { DatosPComponent } from './components/datos-p/datos-p.component';
+
 import { FormsModule } from '@angular/forms';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { LoginComponent } from './components/login/login.component';
+
 import { RegisterComponent } from './components/register/register.component';
+import { PaisComponent } from './components/pais/pais.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DatosPComponent,
-    HomePageComponent,
-    LoginComponent,
-    RegisterComponent
+
+    RegisterComponent,
+    PaisComponent
   ],
   imports: [
     BrowserModule,

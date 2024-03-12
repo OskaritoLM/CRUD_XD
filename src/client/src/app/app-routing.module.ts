@@ -1,9 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DatosPComponent } from './components/datos-p/datos-p.component';
+
+import { PaisComponent } from './components/pais/pais.component';
 
 const routes: Routes = [
-  {path:'/',component:DatosPComponent}
+{
+    path : '',
+    redirectTo : '/home',
+    pathMatch : 'full'
+  },
+  {
+    path : 'home',
+    component : PaisComponent
+  }
 ];
 
 @NgModule({

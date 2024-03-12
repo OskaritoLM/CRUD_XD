@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container">
+    <br>
+    <div class="row">
+      <!-- Parte Izquierda - Formulario -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Agregar País</h5>
+            <form id="country-form">
+              <div class="form-group">
+                <label for="country-name">Nombre del País:</label>
+                <input type="text" class="form-control" id="country-name" name="country-name" required>
+              </div>
+              <button type="button" class="btn btn-primary" onclick="agregarPais()">Agregar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parte Derecha - Tabla -->
+      <div class="col-md-8">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">País</th>
+            </tr>
+          </thead>
+          <tbody id="country-table-body">
+            <tr *ngFor="let pais of datosPaises">
+              <td>{{ pais.nombre }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
