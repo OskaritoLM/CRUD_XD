@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const mongojs = require('mongojs');
-const db = mongojs('RentaAutos', ['Usuario']);
+const db = mongojs('minsaitAngularmongodb://127.0.0.1:27017/', ['Usuario']);
 const { ObjectId } = require('mongojs');
 
 // Obtener todos los usuarios

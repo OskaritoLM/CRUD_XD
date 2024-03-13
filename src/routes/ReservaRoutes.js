@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const mongojs = require('mongojs');
-const db = mongojs('RentaAutos', ['Reserva']);
+const db = mongojs('minsaitAngularmongodb://127.0.0.1:27017/', ['Reserva']);
 const { ObjectId } = require('mongojs');
 
 // // Obtener todas las reservas
- router.get('/Reserva', (req, res, next) => {
+router.get('/Reserva', (req, res, next) => {
      db.Reserva.find((err, reservas) => {
          if (err) return next(err);
          res.json(reservas);
