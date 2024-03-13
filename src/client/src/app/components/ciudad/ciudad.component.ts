@@ -14,8 +14,9 @@ import { DatosPModel } from '../../models/datosPModel';
 export class CiudadComponent implements OnInit {
   ciudades: CuidadModel[] = [];
   paises: DatosPModel[] = [];
-  datosPaises: DatosPModel[] = []; // Agregar esta línea
+  datosPaises: DatosPModel[] = [];
   ciudadForm: FormGroup;
+  editingCiudadId: string | null = null; // Inicializado como null
 
   constructor(
     private ciudadService: CiudadService,
@@ -23,7 +24,7 @@ export class CiudadComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.ciudadForm = this.fb.group({
-      _id: [''],
+      _id: [null], // Cambiado de '""' a 'null'
       nombre: ['', Validators.required],
       pais: ['', Validators.required]
     });
@@ -81,14 +82,22 @@ export class CiudadComponent implements OnInit {
       console.error('Formulario no válido. Por favor, complete todos los campos requeridos.');
     }
   }
-  
 
-  editarCiudad(ciudad: CuidadModel) {
-    // Implement the logic for editing a city
-    // You can pre-fill the form with the selected city's data
-    // For example: this.ciudadForm.setValue(ciudad);
+  seleccionarCiudad() {
+    // Aquí puedes agregar la lógica que deseas al seleccionar una ciudad
+    console.log('Ciudad seleccionada');
   }
-
+  cargarDatosP() {
+    this.paisService.getDatosP().subscribe(
+      data => {
+        this.datosPaises = data;
+        console.log('Datos cargados:', this.datosPaises);
+      },
+      error => {
+        console.error('Error al cargar datos:', error);
+      }
+    );
+  }
   eliminarCiudad(id: string | undefined) {
     if (id) {
       this.ciudadService.deleteDatosP(id).subscribe(
@@ -98,6 +107,24 @@ export class CiudadComponent implements OnInit {
         },
         error => {
           console.error('Error al eliminar ciudad:', error);
+        }
+      );
+    }
+  }
+
+  editarCiudad(ciudad: DatosPModel) {
+    this.ciudadForm.patchValue(ciudad);
+  }
+  
+  actualizarCiudad() {
+    if (this.ciudadForm.valid) {
+      this.ciudadService.updateDatosP(this.ciudadForm.value).subscribe(
+        () => {
+          this.cargarCiudades();
+          this.ciudadForm.reset();
+        },
+        error => {
+          console.error('Error al actualizar país:', error);
         }
       );
     }

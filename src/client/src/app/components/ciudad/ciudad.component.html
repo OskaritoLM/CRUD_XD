@@ -7,7 +7,21 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <!-- Tus elementos de navegación -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">autos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Lugar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pais</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ciudad">Ciudad</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -16,29 +30,32 @@
 <div class="container">
   <br>
   <div class="row">
-    <!-- Parte Izquierda - Formulario -->
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Agregar Ciudad</h5>
-          <form [formGroup]="ciudadForm" (ngSubmit)="crearCiudad($event)">
-            <div class="form-group">
-              <label for="city-name">Nombre de la Ciudad:</label>
-              <input type="text" class="form-control" id="city-name" formControlName="nombre" required>
-            </div>
-            <div class="form-group">
-              <label for="country-select">Selecciona un País:</label>
-              <select class="form-control" id="country-select" formControlName="pais">
-                <option *ngFor="let pais of datosPaises" [value]="pais.nombre">
-                  {{ pais.nombre }}
-                </option>                 
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Agregar</button>
-          </form>
+   <!-- Parte Izquierda - Formulario -->
+<div class="col-md-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Agregar Ciudad</h5>
+      <form [formGroup]="ciudadForm" (ngSubmit)="crearCiudad($event)">
+        <div class="form-group">
+          <label for="city-name">Nombre de la Ciudad:</label>
+          <input type="text" class="form-control" id="city-name" formControlName="nombre" required>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="country-select">Selecciona un País:</label>
+          <select class="form-control" id="country-select" formControlName="pais">
+            <option *ngFor="let pais of datosPaises" [value]="pais.nombre">
+              {{ pais.nombre }}
+            </option>                 
+          </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+        <button type="button" class="btn btn-success ms-2" (click)="actualizarCiudad()">Actualizar</button>
+      </form>
     </div>
+  </div>
+</div>
+
 
     <!-- Parte Derecha - Lista de Ciudades -->
     <div class="col-md-8">
@@ -54,13 +71,14 @@
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="country-table-body">
               <tr *ngFor="let ciudad of ciudades; let i = index">
                 <th scope="row">{{ i + 1 }}</th>
                 <td>{{ ciudad.nombre }}</td>
                 <td>{{ ciudad.pais }}</td>
                 <td>
-                  <button type="button" class="btn btn-warning btn-sm" (click)="editarCiudad(ciudad)">Editar</button>
+                  <button type="button" class="btn btn-sm btn-primary"(click)="editarCiudad(ciudad)">Editar</button>
+
                   <button type="button" class="btn btn-danger btn-sm ms-2" (click)="eliminarCiudad(ciudad._id)">Eliminar</button>
                 </td>
               </tr>
@@ -72,4 +90,8 @@
   </div>
 </div>
 
-<!-- Tus scripts Bootstrap y jQuery -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
