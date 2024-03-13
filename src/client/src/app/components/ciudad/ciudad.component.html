@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Avant</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/promociones">Promociones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/autos">Autos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Adicionales</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tu reserva
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Ver/Modificar/Cancelar</a></li>
+              <li><a class="dropdown-item" href="#">Quickpass</a></li>
+              <li><a class="dropdown-item" href="#">Facturar</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <br>
+    <div class="row">
+      <!-- Parte Izquierda - Formulario -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Agregar Ciudad</h5>
+            <form id="city-form">
+              <div class="form-group">
+                <label for="city-name">Nombre de la Ciudad:</label>
+                <input type="text" class="form-control" id="city-name" name="city-name" required>
+              </div>
+              <div class="form-group">
+                <label for="country-select">Selecciona un País:</label>
+                <select class="form-control" id="country-select">
+                  <option value="">Selecciona un País</option>
+                  <option value="México">México</option>
+                  <option value="España">España</option>
+                  <option value="Francia">Francia</option>
+                  <!-- Agrega más opciones según sea necesario -->
+                </select>
+              </div>
+              <button type="button" class="btn btn-primary" onclick="agregarCiudad()">Agregar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Ciudades Agregadas</h5>
+            <ul id="city-list" class="list-group">
+              
+              <!-- Agrega más elementos li según las ciudades que quieras mostrar -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

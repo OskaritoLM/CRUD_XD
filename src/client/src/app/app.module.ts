@@ -9,12 +9,14 @@ import { FormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './components/register/register.component';
 import { PaisComponent } from './components/pais/pais.component';
+import { CiudadComponent } from './components/ciudad/ciudad.component';
 @NgModule({
   declarations: [
     AppComponent,
 
     RegisterComponent,
-    PaisComponent
+    PaisComponent,
+    CiudadComponent
   ],
   imports: [
     BrowserModule,
