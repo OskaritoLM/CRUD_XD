@@ -4,12 +4,12 @@ const db = mongojs('RentaAutos', ['Reserva']);
 const { ObjectId } = require('mongojs');
 
 // // Obtener todas las reservas
-// router.get('/Reserva', (req, res, next) => {
-//     db.Reserva.find((err, reservas) => {
-//         if (err) return next(err);
-//         res.json(reservas);
-//     });
-// });
+ router.get('/Reserva', (req, res, next) => {
+     db.Reserva.find((err, reservas) => {
+         if (err) return next(err);
+         res.json(reservas);
+     });
+ });
 
 // Obtener una reserva por ID
 router.get('/Reserva/:id', (req, res, next) => {
