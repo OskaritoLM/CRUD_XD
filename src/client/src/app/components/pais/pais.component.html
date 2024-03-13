@@ -54,14 +54,15 @@
     <div class="col-md-8">
       <table class="table">
         <thead>
-          <tr>
-            <th scope="col">País</th>
+
+            <h5 class="card-title">Paises Agregados</h5>
             <th scope="col"></th>
             
-          </tr>
+
         </thead>
         <tbody id="country-table-body">
-          <tr *ngFor="let pais of datosPaises">
+          <tr *ngFor="let pais of datosPaises; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
             <td>{{ pais.nombre }}</td>
             <td>
               <button class="btn btn-sm btn-primary" (click)="editarPais(pais)">Editar</button>
