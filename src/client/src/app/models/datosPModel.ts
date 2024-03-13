@@ -7,3 +7,7 @@ export class CuidadModel {
     nombre: string="";
     pais: string="";
 }
+export class ReservaModel {
+    _id?: string;
+    cliente: string="";
+}
