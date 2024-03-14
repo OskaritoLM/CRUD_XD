@@ -29,8 +29,27 @@ export class HomeAdminComponent implements OnInit {
   }
 
   verReserva(reserva: ReservaModel) {
-    // Aquí puedes agregar la lógica para mostrar los detalles de la reserva
-    // Por ejemplo, podrías abrir un modal con los detalles de la reserva
-    console.log('Detalles de la reserva:', reserva);
+    // Construir el mensaje con los detalles de la reserva
+    const mensaje = `
+      Detalles de la reserva:
+      -----------------------
+      Cliente: ${reserva.cliente}
+      Correo: ${reserva.correo}
+      Teléfono: ${reserva.telefono}
+      Lugar de salida: ${reserva.lugarS}
+      Fecha de salida: ${new Date(reserva.fechasS).toLocaleDateString()}
+      Hora de salida: ${reserva.horasS}
+      Lugar de llegada: ${reserva.lugarE}
+      Fecha de llegada: ${new Date(reserva.fechasE).toLocaleDateString()}
+      Hora de llegada: ${reserva.horasE}
+      Estatus: ${reserva.estatusR}
+      Total: ${reserva.total}
+      Vehículo: ${reserva.vehiculo}
+    `;
+  
+    // Mostrar la alerta con los detalles de la reserva
+    alert(mensaje);
   }
+  
+  
 }
