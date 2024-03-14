@@ -5,22 +5,22 @@ const { ObjectId } = require('mongojs');
 
 // // Obtener todas las reservas
 router.get('/Reserva', (req, res, next) => {
-     db.Reserva.find((err, reservas) => {
+     db.Reserva.find((err, Reserva) => {
          if (err) return next(err);
-         res.json(reservas);
+         res.json(Reserva);
      });
  });
 
 // Obtener una reserva por ID
 router.get('/Reserva/:id', (req, res, next) => {
-    db.Reserva.findOne({ _id: ObjectId(req.params.id) }, (err, reserva) => {
+    db.Reserva.findOne({ _id: mongojs.ObjectId(req.params.id) }, (err, Reserva) => {
         if (err) return next(err);
 
-        if (!reserva) {
+        if (!Reserva) {
             return res.status(404).json({ error: 'Reserva not found' });
         }
 
-        res.json(reserva);
+        res.json(Reserva);
     });
 });
 
@@ -28,9 +28,9 @@ router.get('/Reserva/:id', (req, res, next) => {
 router.post('/Reserva', (req, res, next) => {
     const reservaData = req.body;
 
-    if (!reservaData.lugarS || !reservaData.FechaS || !reservaData.HoraS || !reservaData.LugarE || !reservaData.FechaE || !reservaData.HoraE || !reservaData.Edad || !reservaData.Vehiculo || !reservaData.nombre || !reservaData.apellidos || !reservaData.Pais || !reservaData.telefono || !reservaData.correo) {
+    if (!reservaData.cliente || !reservaData.correo || !reservaData.telefono || !reservaData.lugarS || !reservaData.fechasS || !reservaData.horasS || !reservaData.FechasE || !reservaData.HorasE || !reservaData.lugarE || !reservaData.estatusR || !reservaData.total || !reservaData.vehiculo) {
         return res.status(400).json({
-            error: 'Bad data - lugarS, FechaS, HoraS, lugarE, FechaE, HoraE, Edad, Vehiculo, nombre, apellidos, pais, telefono and correo are required fields'
+            error: 'Bad data - cliente, correo, telefono, lugarS, fechasS, horasS, FechasE, HorasE, lugarE, estatusR, total and vehiculo are required fields'
         });
     } else {
         db.Reserva.save(reservaData, (err, savedReserva) => {
@@ -62,28 +62,27 @@ router.delete('/Reserva/:id', (req, res, next) => {
 
 // Actualizar una reserva por ID
 router.put('/Reserva/:id', (req, res, next) => {
-    const ReservaId = req.params.id;
-    const { lugarS, FechaS, HoraS, LugarE, FechaE, HoraE, Edad,Vehiculo, nombre, apellidos, Pais, telefono,correo} = req.body;
+    const reservaId = req.params.id;
+    const { cliente, correo, telefono, lugarS, fechasS, horasS, FechasE, HorasE, lugarE, estatusR, total, vehiculo} = req.body;
 
-    if (!ObjectId.isValid(ReservaId)) {
+    if (!ObjectId.isValid(reservaId)) {
         return res.status(400).json({ error: 'Invalid Reserva ID' });
     }
 
-    const query = { _id: ObjectId(ReservaId) };
+    const query = { _id: ObjectId(reservaId) };
     const update = {
         $set: {
-            FechaS,
-            HoraS,
-            LugarE,
-            FechaE,
-            HoraE,
-            Edad,
-            Vehiculo,
-            nombre,
-            apellidos,
-            Pais,
-            telefono,
-            correo
+            cliente, 
+            correo, 
+            telefono, 
+            lugarS, fechasS, 
+            horasS, 
+            FechasE, 
+            HorasE, 
+            lugarE, 
+            estatusR, 
+            total,
+            vehiculo
         }
     };
 
