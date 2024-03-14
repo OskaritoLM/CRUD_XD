@@ -39,7 +39,7 @@ export class PaisComponent implements OnInit {
     if (this.paisForm.valid) {
       this.paisService.addDatosP(this.paisForm.value).subscribe(
         () => {
-          this.toastrService.success(`Expediente guardado con exito!`,'Aviso') 
+          this.toastrService.success(`Pais agregado con exito!`,'Aviso') 
           this.cargarDatosP();
           this.paisForm.reset();
         },
