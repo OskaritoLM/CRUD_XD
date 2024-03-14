@@ -5,6 +5,7 @@ import { CiudadService } from '../../services/ciudad.service';
 import { DatosPService } from '../../services/datos-pservice.service';
 import { CuidadModel } from '../../models/datosPModel';
 import { DatosPModel } from '../../models/datosPModel';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ciudad',
@@ -21,7 +22,8 @@ export class CiudadComponent implements OnInit {
   constructor(
     private ciudadService: CiudadService,
     private paisService: DatosPService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastrService:ToastrService
   ) {
     this.ciudadForm = this.fb.group({
       _id: [null], // Cambiado de '""' a 'null'
@@ -73,13 +75,16 @@ export class CiudadComponent implements OnInit {
           console.log('Ciudad creada:', data);
           this.ciudadForm.reset();
           this.cargarCiudades();
+          this.toastrService.success('Ciudad creada correctamente','Aviso');
         },
         error => {
           console.error('Error al crear ciudad:', error);
+          this.toastrService.error('Error al crear la ciudad', 'Error');
         }
       );
     } else {
       console.error('Formulario no válido. Por favor, complete todos los campos requeridos.');
+      this.toastrService.warning('Formulario no válido. Por favor, complete todos los campos requeridos.','Advertencia');
     }
   }
 
@@ -104,9 +109,11 @@ export class CiudadComponent implements OnInit {
         data => {
           console.log('Ciudad eliminada:', data);
           this.cargarCiudades();
+          this.toastrService.success('Ciudad eliminada correctamente','Aviso');
         },
         error => {
           console.error('Error al eliminar ciudad:', error);
+          this.toastrService.error('Error al eliminar la ciudad', 'Error');
         }
       );
     }
@@ -122,9 +129,12 @@ export class CiudadComponent implements OnInit {
         () => {
           this.cargarCiudades();
           this.ciudadForm.reset();
+          this.toastrService.success('Ciudad actualizada correctamente','Aviso');
         },
         error => {
           console.error('Error al actualizar país:', error);
+          this.toastrService.error('Error al actualizar la ciudad', 'Error');
+
         }
       );
     }

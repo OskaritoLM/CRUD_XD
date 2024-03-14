@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CiudadComponent } from './components/ciudad/ciudad.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { PaisComponent } from './components/pais/pais.component';
+import { HomeUserComponent } from './components/home-user/home-user.component';
 
 const routes: Routes = [
 {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path : 'pais',
     component : PaisComponent
+  },
+  {
+    path : 'user',
+    component : HomeUserComponent
   }
 ];
 
