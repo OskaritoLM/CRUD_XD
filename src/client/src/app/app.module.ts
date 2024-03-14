@@ -9,12 +9,16 @@ import { FormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './components/register/register.component';
 import { PaisComponent } from './components/pais/pais.component';
+import { AutosComponent } from './components/autos/autos.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
 @NgModule({
   declarations: [
     AppComponent,
 
     RegisterComponent,
-    PaisComponent
+    PaisComponent,
+    AutosComponent,
+    ReservaComponent
   ],
   imports: [
     BrowserModule,
