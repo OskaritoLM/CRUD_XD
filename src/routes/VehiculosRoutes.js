@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { error } = require('console');
 const mongojs = require('mongojs');
-const db = mongojs('minsaitAngularmongodb://127.0.0.1:27017/', ['Vehiculo']);
+const db = mongojs('RentaAutos', ['Vehiculo']);
 const { ObjectId } = require('mongojs'); 
 
 router.get('/Vehiculo', (req, res, next) => {

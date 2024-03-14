@@ -10,6 +10,7 @@ const Ciudad = require('./routes/CiudadRoutes');
 const Categoria = require('./routes/CategoriaRoutes'); 
 const Lugar = require('./routes/LugarRouter');
 const Usuario = require('./routes/UsuarioRoutes');
+const Reserva = require('./routes/ReservaRoutes');
 // settings
 app.set('port', process.env.PORT || 3000);
 
@@ -29,6 +30,7 @@ app.use('/api', Ciudad);
 app.use('/api', Categoria);
 app.use('/api', Lugar);
 app.use('/api', Usuario);
+app.use('/api', Reserva);
 //Static Files
 app.use(express.static(path.join(__dirname, 'dist')));
 

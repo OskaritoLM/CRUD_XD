@@ -9,5 +9,16 @@ export class CuidadModel {
 }
 export class ReservaModel {
     _id?: string;
-    cliente: string="";
+    cliente: string = "";
+    correo: string = "";
+    telefono: number = 0;
+    lugarS: string = "";
+    fechasS: Date = new Date();
+    horasS: string = "";
+    fechasE: Date = new Date();
+    horasE: string = "";
+    lugarE: string = "";
+    estatusR: string = "";
+    total: string = "";
+    vehiculo: string = "";
 }

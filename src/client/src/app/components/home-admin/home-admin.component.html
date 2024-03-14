@@ -32,6 +32,7 @@
     <table class="table" style="margin-top: 20px; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
         <thead>
             <tr style="background-color: #333; color: #fff;">
+                <th style="padding: 15px; text-align: left;">#</th>
                 <th style="padding: 15px; text-align: left;">Cliente</th>
                 <th style="padding: 15px; text-align: left;">Teléfono</th>
                 <th style="padding: 15px; text-align: left;">Lugar</th>
@@ -40,13 +41,13 @@
         </thead>
         <tbody id="country-table-body">
             <tr *ngFor="let reserva of reservas; let i = index">
-              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ i + 1 }}</td>
               <td>{{ reserva.cliente }}</td>
               <td>{{ reserva.telefono }}</td>
               <td>{{ reserva.lugarS }}</td>
               <td>{{ reserva.estatusR }}</td>
               <td>
-                <button class="btn btn-primary">Ver</button>
+                <button class="btn btn-primary" (click)="verReserva(reserva)">Ver</button>
               </td>
             </tr>
           </tbody>
