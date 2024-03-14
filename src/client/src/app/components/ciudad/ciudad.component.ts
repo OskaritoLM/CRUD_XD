@@ -75,16 +75,16 @@ export class CiudadComponent implements OnInit {
           console.log('Ciudad creada:', data);
           this.ciudadForm.reset();
           this.cargarCiudades();
-          this.toastrService.success(`Cuidad guardada con exito!`,'Aviso') //notificación
+          this.toastrService.success('Ciudad creada correctamente','Aviso');
         },
         error => {
           console.error('Error al crear ciudad:', error);
-          this.toastrService.error(`No se guardo correctamente la Cuidad`,'Error')
+          this.toastrService.error('Error al crear la ciudad', 'Error');
         }
       );
     } else {
       console.error('Formulario no válido. Por favor, complete todos los campos requeridos.');
-      this.toastrService.warning(`Formulario no válido. Por favor, complete todos los campos requeridos`,'Advertencia');
+      this.toastrService.warning('Formulario no válido. Por favor, complete todos los campos requeridos.','Advertencia');
     }
   }
 
@@ -109,11 +109,11 @@ export class CiudadComponent implements OnInit {
         data => {
           console.log('Ciudad eliminada:', data);
           this.cargarCiudades();
-          this.toastrService.success(`¡Cuidad eliminada con exito!`,'Aviso')
+          this.toastrService.success('Ciudad eliminada correctamente','Aviso');
         },
         error => {
           console.error('Error al eliminar ciudad:', error);
-          this.toastrService.error(`¡Atención! No se eliminó correctamente`, 'Error');
+          this.toastrService.error('Error al eliminar la ciudad', 'Error');
         }
       );
     }
@@ -129,11 +129,12 @@ export class CiudadComponent implements OnInit {
         () => {
           this.cargarCiudades();
           this.ciudadForm.reset();
-          this.toastrService.success(`¡Cuidad actualizada con exito!`,'Aviso')
+          this.toastrService.success('Ciudad actualizada correctamente','Aviso');
         },
         error => {
           console.error('Error al actualizar país:', error);
-          this.toastrService.warning(`¡Atención! No se actualizo correctamente`, 'Advertencia');
+          this.toastrService.error('Error al actualizar la ciudad', 'Error');
+
         }
       );
     }

@@ -39,13 +39,14 @@ export class PaisComponent implements OnInit {
     if (this.paisForm.valid) {
       this.paisService.addDatosP(this.paisForm.value).subscribe(
         () => {
+          this.toastrService.success(`Expediente guardado con exito!`,'Aviso') 
           this.cargarDatosP();
           this.paisForm.reset();
-          this.toastrService.success(`País guardado con exito!`,'Aviso') //notificación
         },
         error => {
           console.error('Error al agregar país:', error);
-          this.toastrService.error(`No se guardo correctamente el País`,'Error')
+          this.toastrService.error('Error al agregar país', 'Error');
+
         }
       );
     }
@@ -55,14 +56,13 @@ export class PaisComponent implements OnInit {
     if (this.paisForm.valid) {
       this.paisService.updateDatosP(this.paisForm.value).subscribe(
         () => {
+          this.toastrService.success(`País Actualizado con exito!`,'Aviso') 
           this.cargarDatosP();
           this.paisForm.reset();
-          this.toastrService.success(`¡País Actualizado con exito!`,'Aviso') //notificación
         },
         error => {
           console.error('Error al actualizar país:', error);
-          this.toastrService.warning(`¡Atención! No se actualizo correctamente`, 'Advertencia');
-
+          this.toastrService.error('Error al actualizar país', 'Error');
         }
       );
     }
@@ -72,11 +72,11 @@ export class PaisComponent implements OnInit {
     this.paisService.deleteDatosP(id).subscribe(
       () => {
         this.datosPaises = this.datosPaises.filter(pais => pais._id !== id);
-        this.toastrService.success(`País eliminado con exito!`,'Aviso') //notificación
+        this.toastrService.success(`País eliminado con exito!`,'Aviso')
       },
       error => {
         console.error('Error al eliminar país:', error);
-        this.toastrService.error(`¡Atención! No se eliminó correctamente`, 'Error');
+        this.toastrService.error('Error al eliminar país', 'Error');
       }
     );
   }
