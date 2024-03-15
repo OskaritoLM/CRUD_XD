@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const mongojs = require('mongojs');
-const db = mongojs('RentaAutos', ['Reserva']);
+const db = mongojs('127.0.0.1:27017/RentaAutos', ['Reserva']);
 const { ObjectId } = require('mongojs');
 
 // // Obtener todas las reservas
