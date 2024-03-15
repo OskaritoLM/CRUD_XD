@@ -1,64 +1,84 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-      </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">RentAuto</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">autos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Lugar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pais">Pais</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ciudad">Ciudad</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+
 <div class="container">
-    <br>
-    <div class="row">
-      <!-- Parte Izquierda - Formulario -->
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Agregar País</h5>
-            <form id="country-form">
-              <div class="form-group">
-                <label for="country-name">Nombre del País:</label>
-                <input type="text" class="form-control" id="country-name" name="country-name" required>
-              </div>
-              <button type="button" class="btn btn-primary" onclick="agregarPais()">Agregar</button>
-            </form>
-          </div>
+  <br>
+  <div class="row">
+    <!-- Parte Izquierda - Formulario -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Agregar/Editar País</h5>
+          <form [formGroup]="paisForm">
+            <div class="form-group">
+              <label for="country-name">Nombre del País:</label>
+              <input type="text" class="form-control" id="country-name" name="nombre" formControlName="nombre" required>
+            </div>
+            <div class="btn-group mt-2">
+              <button type="button" class="btn btn-primary" (click)="agregarPais()">Agregar</button>
+              <button type="button" class="btn btn-success ms-2" (click)="actualizarPais()">Actualizar</button>
+            </div>
+          </form>
+          
         </div>
       </div>
+    </div>
 
-      <!-- Parte Derecha - Tabla -->
-      <div class="col-md-8">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">País</th>
-            </tr>
-          </thead>
-          <tbody id="country-table-body">
-            <tr *ngFor="let pais of datosPaises">
-              <td>{{ pais.nombre }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
+    <!-- Parte Derecha - Tabla -->
+    <div class="col-md-8">
+      <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Paises Agregados</h5>
+      <table class="table">
+        
+        <thead>
+            <th scope="col">#</th>
+            <th scope="col"></th>
+            
+        </thead>
+        <tbody id="country-table-body">
+          <tr *ngFor="let pais of datosPaises; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ pais.nombre }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary" (click)="editarPais(pais)">Editar</button>
+              <button class="btn btn-sm btn-danger ms-2" (click)="eliminarPais(pais?._id ?? '')">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
