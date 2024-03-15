@@ -1,0 +1,26 @@
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREhzyE4hpBjh0Ugo8zXnSA4-3ZMgPfPh4Thw&usqp=CAU" alt="Banner de Autos" class="banner-img">
+
+<div class="title">
+  <h1>Catálogo de autos</h1>
+</div>
+
+<div class="autos-list">
+  <div class="auto" *ngFor="let auto of autos">
+    <h3>{{ auto.marca }} {{ auto.modelo }}</h3>
+    <p>Marca: {{ auto.marca }}</p>
+    <img src="{{ auto.imagen }}" alt="{{ auto.modelo }}">
+    <div class="info">
+      <p>Características básicas:</p>
+      <p>
+        <i class="fas fa-car"></i> Tipo de caja: {{ auto.tipoCaja }}
+        <i class="fas fa-suitcase"></i> Maletas: {{ auto.maletas }}
+        <i *ngIf="auto.aireAcondicionado === 'Si'" class="fas fa-snowflake"></i>
+        <i *ngIf="auto.aireAcondicionado !== 'Si'" class="fas fa-lock"></i>      
+        <i class="fas fa-user"></i> {{ auto.capacidad }}
+        <!-- Agrega más propiedades según lo que necesites mostrar -->
+      </p>
+      <p><i class="fas fa-id-card"></i> Placas: {{ auto.placas }}</p>
+      <button class="btn-reservar" routerLink="/reservas">Reservar</button>
+    </div>
+  </div>
+</div>

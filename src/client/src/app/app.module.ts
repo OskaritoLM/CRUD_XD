@@ -10,9 +10,10 @@ import {  ReactiveFormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './components/register/register.component';
 import { PaisComponent } from './components/pais/pais.component';
+import { AutosComponent } from './components/autos/autos.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
 import { CiudadComponent } from './components/ciudad/ciudad.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeUserComponent } from './components/home-user/home-user.component';
@@ -22,6 +23,8 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
     CiudadComponent,
     RegisterComponent,
     PaisComponent,
+    AutosComponent,
+    ReservaComponent
     HomeAdminComponent,
     HomeUserComponent
   ],
