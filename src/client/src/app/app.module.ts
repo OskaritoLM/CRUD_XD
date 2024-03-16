@@ -24,7 +24,7 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
     RegisterComponent,
     PaisComponent,
     AutosComponent,
-    ReservaComponent
+    ReservaComponent,
     HomeAdminComponent,
     HomeUserComponent
   ],
