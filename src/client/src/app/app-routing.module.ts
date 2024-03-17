@@ -7,6 +7,7 @@ import { HomeAdminComponent } from './components/home-admin/home-admin.component
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { PaisComponent } from './components/pais/pais.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
+import { PromocionesComponent } from './components/promociones/promociones.component';
 
 const routes: Routes = [
 {
@@ -42,6 +43,12 @@ const routes: Routes = [
     path: 'home/reserva',
     component: ReservaComponent
   },
+  {
+    path: 'user/promociones',
+    component: PromocionesComponent
+  },
+  
+
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
