@@ -1,11 +1,10 @@
 // ciudad.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { CuidadModel, DatosPModel } from '../../models/datosPModel';
 import { EstadoService } from '../../services/ciudad.service';
 import { DatosPService } from '../../services/datos-pservice.service';
-import { CuidadModel } from '../../models/datosPModel';
-import { DatosPModel } from '../../models/datosPModel';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ciudad',

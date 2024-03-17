@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
+import { EstadoComponent } from './components/estado/estado.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { PromocionesComponent } from './components/promociones/promociones.compo
     ReservaComponent,
     HomeAdminComponent,
     HomeUserComponent,
-    PromocionesComponent
+    PromocionesComponent,
+    EstadoComponent
   ],
   imports: [
     BrowserModule,

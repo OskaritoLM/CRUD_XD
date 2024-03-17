@@ -22,3 +22,9 @@ export class ReservaModel {
     total: string = "";
     vehiculo: string = "";
 }
+export class EstadoModel{
+    _id?: string;
+    nombre: string="";
+    pais: string="";
+    ciudad : string="";
+}
