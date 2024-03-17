@@ -20,7 +20,7 @@ const routes: Routes = [
     component : HomeAdminComponent
   },
   {
-    path : 'home',
+    path : 'user',
     component : HomeUserComponent
   },
   {
@@ -38,8 +38,6 @@ const routes: Routes = [
   },
   {
     path:'user/autos',
-
-
     component: AutosComponent
   },
   {
