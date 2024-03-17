@@ -17,6 +17,7 @@ import { HomeAdminComponent } from './components/home-admin/home-admin.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeUserComponent } from './components/home-user/home-user.component';
+import { PromocionesComponent } from './components/promociones/promociones.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
     AutosComponent,
     ReservaComponent,
     HomeAdminComponent,
-    HomeUserComponent
+    HomeUserComponent,
+    PromocionesComponent
   ],
   imports: [
     BrowserModule,
