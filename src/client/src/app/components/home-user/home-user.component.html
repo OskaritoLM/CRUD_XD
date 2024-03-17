@@ -37,7 +37,9 @@
         </div>
     </nav>
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    
+
+     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -62,51 +64,56 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div> 
     
-    <div class="container">
-        <h1 class="display-4">¡Bienvenido a RentAuto!</h1>
-        <p class="lead">Tu destino para alquilar el auto perfecto.</p>
-        <form action="/hacer-reserva" method="post">
-            <div class="form-group">
+      <div class="container">
+        <div class="card mx-auto mt-5" style="max-width: 800px;">
+          <div class="card-header">
+            <h5 class="card-title">¡Bienvenido a RentAuto!</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Tu destino para alquilar el auto perfecto.</p>
+            <form action="/reserva" method="post">
+              <div class="form-group">
                 <label for="lugarSalida">Lugar de Salida:</label>
                 <input type="text" class="form-control" id="lugarSalida" name="lugarSalida" required>
-            </div>
-            <div class="form-group">
+              </div>
+              <div class="form-group">
                 <label for="fechaSalida">Fecha de Salida:</label>
                 <input type="date" class="form-control" id="fechaSalida" name="fechaSalida" required>
-            </div>
-            <div class="form-group">
+              </div>
+              <div class="form-group">
                 <label for="horaSalida">Hora de Salida:</label>
                 <input type="time" class="form-control" id="horaSalida" name="horaSalida" required>
-            </div>
-            <div class="form-group">
+              </div>
+              <div class="form-group">
                 <label for="fechaEntrega">Fecha de Entrega:</label>
                 <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
-            </div>
-            <div class="form-group">
+              </div>
+              <div class="form-group">
                 <label for="horaEntrega">Hora de Entrega:</label>
                 <input type="time" class="form-control" id="horaEntrega" name="horaEntrega" required>
-            </div>
-            <div class="form-group">
+              </div>
+              <div class="form-group">
                 <label for="edad">Edad:</label>
                 <input type="number" class="form-control" id="edad" name="edad" required>
-            </div>
-            <!-- <div class="form-group">
-                <label for="cupon">Cupón:</label>
-                <select class="form-control" id="cupon" name="cupon">
-                    <option value="sin_cupon">Sin cupón</option>
-                    <option value="cupon1">Cupón 1</option>
-                    <option value="cupon2">Cupón 2</option>
-                    <option value="cupon3">Cupón 3</option>
-                </select>
-            </div> -->
-            <button type="submit" class="btn btn-primary btn-lg">Reservar Auto</button>
-        </form>
-    </div>
-    
-    
-
+              </div>
+              <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <input type="checkbox" id="usarCupon" formControlName="usarCupon">
+                  <label for="usarCupon">Cupón:</label>
+                </div>
+                <div class="form-group" *ngIf="reservaForm.get('usarCupon')?.value">
+                  <label for="cupon">Cupón:</label>
+                  <input type="text" class="form-control" id="cupon" formControlName="cupon">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Reservar Auto</button>
+              </form>
+            </form>
+          </div>
+        </div>
+      </div>
+      
     <footer class="bg-dark text-white text-center py-4">
         <p>&copy; 2024 RentAuto - Todos los derechos reservados</p>
     </footer>

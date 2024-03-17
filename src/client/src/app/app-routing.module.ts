@@ -18,7 +18,7 @@ const routes: Routes = [
     component : HomeAdminComponent
   },
   {
-    path : 'home',
+    path : 'user',
     component : HomeUserComponent
   },
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
     component : PaisComponent
   },
   {
-    path:'home/autos',
+    path:'user/autos',
     component: AutosComponent
   },
   {

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-
+import { ReservasService } from './services/reserva.service';
 import {  ReactiveFormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './components/register/register.component';
@@ -37,7 +37,7 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
     BrowserAnimationsModule, 
     ToastrModule.forRoot() 
   ],
-  providers: [DatosPService],
+  providers: [DatosPService, ReservasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
