@@ -22,7 +22,7 @@ const routes: Routes = [
     component : HomeUserComponent
   },
   {
-    path : 'ciudad',
+    path : 'Estado',
     component : CiudadComponent
   },
   {

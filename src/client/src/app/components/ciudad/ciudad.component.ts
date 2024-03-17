@@ -1,7 +1,7 @@
 // ciudad.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CiudadService } from '../../services/ciudad.service';
+import { EstadoService } from '../../services/ciudad.service';
 import { DatosPService } from '../../services/datos-pservice.service';
 import { CuidadModel } from '../../models/datosPModel';
 import { DatosPModel } from '../../models/datosPModel';
@@ -20,7 +20,7 @@ export class CiudadComponent implements OnInit {
   editingCiudadId: string | null = null; // Inicializado como null
 
   constructor(
-    private ciudadService: CiudadService,
+    private estadoService: EstadoService,
     private paisService: DatosPService,
     private fb: FormBuilder,
     private toastrService:ToastrService
@@ -38,7 +38,7 @@ export class CiudadComponent implements OnInit {
   }
 
   cargarCiudades() {
-    this.ciudadService.getDatosP().subscribe(
+    this.estadoService.getDatosP().subscribe(
       data => {
         this.ciudades = data;
         console.log('Ciudades cargadas:', this.ciudades);
@@ -70,7 +70,7 @@ export class CiudadComponent implements OnInit {
         pais: this.ciudadForm.value.pais,
       };
   
-      this.ciudadService.addDatosP(nuevaCiudad).subscribe(
+      this.estadoService.addDatosP(nuevaCiudad).subscribe(
         data => {
           console.log('Ciudad creada:', data);
           this.ciudadForm.reset();
@@ -105,7 +105,7 @@ export class CiudadComponent implements OnInit {
   }
   eliminarCiudad(id: string | undefined) {
     if (id) {
-      this.ciudadService.deleteDatosP(id).subscribe(
+      this.estadoService.deleteDatosP(id).subscribe(
         data => {
           console.log('Ciudad eliminada:', data);
           this.cargarCiudades();
@@ -125,7 +125,7 @@ export class CiudadComponent implements OnInit {
   
   actualizarCiudad() {
     if (this.ciudadForm.valid) {
-      this.ciudadService.updateDatosP(this.ciudadForm.value).subscribe(
+      this.estadoService.updateDatosP(this.ciudadForm.value).subscribe(
         () => {
           this.cargarCiudades();
           this.ciudadForm.reset();

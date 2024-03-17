@@ -22,10 +22,14 @@
         <li class="nav-item">
           <a class="nav-link" href="/ciudad">Ciudad</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Estado">Estado</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
 
 <div class="container">
   <br>
@@ -34,7 +38,7 @@
 <div class="col-md-4">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Agregar/Editar Ciudad</h5>
+      <h5 class="card-title">Agregar/Editar Estado</h5>
       <form [formGroup]="ciudadForm" (ngSubmit)="crearCiudad($event)">
         <div class="form-group">
           <label for="city-name">Nombre de la Ciudad:</label>
@@ -63,7 +67,7 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Ciudades Agregadas</h5>
+          <h5 class="card-title">Estados Agregados</h5>
           <table class="table">
             <thead>
               <tr>

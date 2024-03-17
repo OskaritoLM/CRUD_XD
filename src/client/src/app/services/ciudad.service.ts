@@ -8,34 +8,34 @@ import { CuidadModel } from '../models/datosPModel';
 @Injectable({
   providedIn: 'root'
 })
-export class CiudadService {
+export class EstadoService {
   private domain: string = "http://localhost:3000";
 
   constructor(private http: HttpClient) { }
 
   getDatosP() {
-    return this.http.get<CuidadModel[]>(`${this.domain}/api/Ciudad`).pipe(
+    return this.http.get<CuidadModel[]>(`${this.domain}/api/Estado`).pipe(
       map(res => res),
       catchError(this.handleError)
     );
   }
 
   addDatosP(newDatosP: CuidadModel) {
-    return this.http.post<CuidadModel>(`${this.domain}/api/Ciudad`, newDatosP).pipe(
+    return this.http.post<CuidadModel>(`${this.domain}/api/Estado`, newDatosP).pipe(
       map(res => res),
       catchError(this.handleError)
     );
   }
 
   deleteDatosP(id: string) {
-    return this.http.delete<CuidadModel>(`${this.domain}/api/Ciudad/${id}`).pipe(
+    return this.http.delete<CuidadModel>(`${this.domain}/api/Estado/${id}`).pipe(
       map(res => res),
       catchError(this.handleError)
     );
   }
 
   updateDatosP(newDatosP: CuidadModel) {
-    return this.http.put(`${this.domain}/api/Ciudad/${newDatosP._id}`, newDatosP).pipe(
+    return this.http.put(`${this.domain}/api/Estado/${newDatosP._id}`, newDatosP).pipe(
       map(res => res),
       catchError(this.handleError)
     );
