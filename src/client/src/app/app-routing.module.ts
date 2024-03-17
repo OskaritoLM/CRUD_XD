@@ -20,11 +20,11 @@ const routes: Routes = [
     component : HomeAdminComponent
   },
   {
-    path : 'user',
+    path : 'home',
     component : HomeUserComponent
   },
   {
-    path : 'ciudad',
+    path : 'estado',
     component : CiudadComponent
   },
   {
@@ -32,11 +32,14 @@ const routes: Routes = [
     component : PaisComponent
   },
   {
-    path : 'estado',
+
+    path : 'ciudad',
     component : EstadoComponent
   },
   {
     path:'user/autos',
+
+
     component: AutosComponent
   },
   {
