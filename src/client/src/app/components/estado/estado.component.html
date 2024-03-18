@@ -45,7 +45,8 @@
           </div>
           <div class="form-group">
             <label for="country-select">Selecciona un País:</label>
-            <select class="form-control" id="country-select" formControlName="pais">
+            <select class="form-control" id="country-select" formControlName="pais" (change)="filtrarEstadosPorPais($event)">
+
               <option value="" disabled selected>Elige un país</option>
               <option *ngFor="let pais of datosPaises" [value]="pais.nombre">{{ pais.nombre }}</option>
             </select>            

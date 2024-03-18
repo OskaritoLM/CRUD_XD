@@ -39,7 +39,6 @@ export class EstadoComponent implements OnInit {
   ngOnInit() {
     this.cargarEstados();
     this.cargarPaises();
-    this.cargarCiudades();
   }
 
   
@@ -54,18 +53,51 @@ export class EstadoComponent implements OnInit {
       }
     );
   }
+  
+  filtrarEstadosPorPais(event: any) {
+    const nombrePais = event.target.value;
+    if (nombrePais) {
+      // Filtrar los estados según el país seleccionado
+      this.ciudades = this.ciudades.filter(ciudades => ciudades.pais === nombrePais);
+      // Cargar las ciudades correspondientes al país seleccionado
+      this.cargarCiudades(nombrePais);
+    } else {
+      // Si no se selecciona ningún país, cargar todos los estados y todas las ciudades
 
-  cargarCiudades() {
-    this.estadoService1.getDatosP().subscribe(
-      data => {
-        this.ciudades = data;
-        console.log('Ciudades cargadas:', this.ciudades);
-      },
-      error => {
-        console.error('Error al cargar ciudades:', error);
-      }
-    );
+      this.cargarCiudades('');
+    }
   }
+  
+  
+  
+  
+  cargarCiudades(paisSeleccionado: string) {
+    if (paisSeleccionado) {
+      // Obtener las ciudades del país seleccionado
+      this.estadoService1.getDatosP().subscribe(
+        data => {
+          // Filtrar las ciudades según el país seleccionado
+          this.ciudades = data.filter(ciudad => ciudad.pais === paisSeleccionado);
+          console.log('Ciudades cargadas para', paisSeleccionado + ':', this.ciudades);
+        },
+        error => {
+          console.error('Error al cargar ciudades:', error);
+        }
+      );
+    } else {
+      // Si no se selecciona ningún país, cargar todas las ciudades
+      this.estadoService1.getDatosP().subscribe(
+        data => {
+          this.ciudades = data;
+          console.log('Todas las ciudades cargadas:', this.ciudades);
+        },
+        error => {
+          console.error('Error al cargar ciudades:', error);
+        }
+      );
+    }
+  }
+  
 
 
 
