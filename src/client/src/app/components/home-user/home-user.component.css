@@ -1,4 +1,3 @@
-
 body {
   padding-top: 56px;
 }
@@ -89,6 +88,49 @@ padding: 10px; /* Espaciado interno */
 .custom-card {
 border-radius: 15px; /* Ajusta el valor según el nivel de redondez deseado */
 }
+.rounded-image {
+border-radius: 15px; /* Ajusta el valor según el nivel de redondez deseado */
+}
+.container-custom {
+border: 1px solid #ccc;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+background-color: #f8f9fa; /* Color de fondo gris claro */
+padding: 20px;
+}
 
+.card-custom {
+border: none;
+box-shadow: none;
+}
 
+.card-body-custom {
+padding: 0;
+}
 
+h2 {
+margin-bottom: 20px;
+}
+
+h3 {
+font-size: 1.2em;
+color: #333;
+margin-bottom: 10px;
+}
+
+.city-list {
+list-style: none;
+padding: 0;
+}
+
+.city-list li {
+padding: 10px;
+border-bottom: 1px solid #ddd;
+}
+
+.city-list li:last-child {
+border-bottom: none;
+}
+
+.rounded-image {
+border-radius: 15px; /* Ajusta el valor según el nivel de redondez deseado */
+}

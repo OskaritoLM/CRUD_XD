@@ -1,17 +1,87 @@
+body {
+  padding-top: 79px; /* Ajusta este valor según el alto de tu navbar */
+}
+
+.navbar {
+  background-color: #A52A2A;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #ffffff;
+  padding: 10px;
+}
+
+.navbar-brand:hover,
+.navbar-nav .nav-link:hover {
+  color: #8d8787;
+}
+
+.navbar-toggler {
+  border-color: #ffffff;
+}
+
+.navbar-toggler-icon {
+  background-color: #ffffff;
+}
+
+.custom-width {
+  width: 50%;
+}
+
 .formulario-container {
-    max-width: 600px; /* Ajusta el ancho máximo del contenedor */
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
-    padding: 20px; /* Agrega espacio alrededor del contenido del contenedor */
-    border: 1px solid #ccc; /* Añade un borde al contenedor */
-    border-radius: 10px; /* Agrega bordes redondeados al contenedor */
-  }
-  
-  .formulario-header {
-    text-align: center; /* Centra el texto del encabezado */
-    margin-bottom: 20px; /* Agrega espacio debajo del encabezado */
-  }
-  
-  .formulario-body {
-    width: 100%; /* Ajusta el ancho del cuerpo del formulario al 100% */
-  }
-  
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.formulario-header {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+ margin-bottom: 20px;
+}
+
+.formulario-header h2 {
+  border-left: 5px solid #007bff;
+  padding-left: 10px;
+  margin-left: -10px;
+}
+
+.seccion-usuario,
+.seccion-vehiculo {
+  border-right: 1px solid #ccc;
+  padding-right: 20px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.card {
+  border: 0;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.card-body {
+  padding: 20px;
+}
+.ticket {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  background-color: #f2f2f2;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.ticket h2, .ticket h3, .ticket h4 {
+  margin: 0 0 0.5rem 0;
+}
+
+.ticket p {
+  margin: 0;
+}

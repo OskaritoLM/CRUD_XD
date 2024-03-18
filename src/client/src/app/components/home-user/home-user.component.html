@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="user">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/user">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/user/historial">Tu Reserva</a>
@@ -30,13 +30,12 @@
                         <a class="nav-link" href="/user/autos">Autos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/empresa">Empresa</a>
+                        <a class="nav-link" href="/user/empresa">Empresa</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
           <div class="carousel-item active">
@@ -56,9 +55,6 @@
   
   <div class="container">
     <div class="card mx-auto mt-5 custom-card" style="max-width: 800px;">
-      <div class="card-header custom-header">
-        <h5 class="card-title fs-4 custom-title">¡Bienvenido a RentAuto!</h5>
-      </div>
       <div class="card-body">
         <p class="card-text fs-6">Tu destino para alquilar el auto perfecto.</p>
         <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()" class="row g-3 align-items-center">
@@ -68,11 +64,17 @@
           </div>
           <div class="col-md-3">
             <label for="fechaSalida" class="form-label fs-6">Salida:</label>
-            <input type="datetime-local" class="form-control" id="fechaSalida" name="fechaSalida" required>
+            <div class="input-group">
+              <input type="date" class="form-control" id="fechaSalida" name="fechaSalida" required>
+              <input type="time" class="form-control" id="horaSalida" name="horaSalida" required>
+            </div>
           </div>
           <div class="col-md-3">
             <label for="fechaEntrega" class="form-label fs-6">Entrega:</label>
-            <input type="datetime-local" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+            <div class="input-group">
+              <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+              <input type="time" class="form-control" id="horaEntrega" name="horaEntrega" required>
+            </div>
           </div>
           <div class="col-md-2">
             <label for="edad" class="form-label fs-6">Edad:</label>
@@ -97,7 +99,101 @@
       </div>
     </div>
   </div>
-      
+  
+  <div class="row mt-5">
+    <div class="col-md-6">
+        <img src="https://media.istockphoto.com/id/528474010/es/foto/recuerdos-de-hacer.jpg?s=612x612&w=0&k=20&c=UMcoCWmqpi2EVYP5nU__6SsJq-cZhHjthEb7IRtXGnA="
+            class="img-fluid rounded-image" alt="Imagen de Recuerdos">
+    </div>
+    <div class="col-md-6">
+        <h2>Descubre todo lo que tenemos para ti en RentAuto</h2>
+        <p>Nuestros servicios de alquiler de autos están diseñados para brindarte la mejor experiencia de viaje posible. Desde coches económicos hasta vehículos de lujo, tenemos una amplia variedad de opciones para adaptarnos a tus necesidades. Con precios competitivos y una atención al cliente excepcional, estamos aquí para hacer que tu próximo viaje sea inolvidable. ¡Reserva con nosotros hoy y comienza tu aventura!</p>
+    </div>
+</div>
+
+<div class="container mt-5">
+  <div class="card">
+      <div class="card-body">
+          <h2 class="text-center">Descubre nuestras sedes en las ciudades más importantes de todo el mundo</h2>
+          
+          <div class="row mt-3">
+              <!-- México -->
+              <div class="col-md-4">
+                  <h3>México</h3>
+                  <ul>
+                      <li>Ciudad de México</li>
+                      <li>Guadalajara</li>
+                      <li>Monterrey</li>
+                      <li>Puebla</li>
+                      <li>Cancún</li>
+                  </ul>
+              </div>
+              
+              <!-- Estados Unidos -->
+              <div class="col-md-4">
+                  <h3>Estados Unidos</h3>
+                  <ul>
+                      <li>Los Ángeles</li>
+                      <li>Nueva York</li>
+                      <li>Chicago</li>
+                      <li>Miami</li>
+                      <li>Las Vegas</li>
+                  </ul>
+              </div>
+              
+              <!-- España -->
+              <div class="col-md-4">
+                  <h3>España</h3>
+                  <ul>
+                      <li>Madrid</li>
+                      <li>Barcelona</li>
+                      <li>Valencia</li>
+                      <li>Sevilla</li>
+                      <li>Bilbao</li>
+                  </ul>
+              </div>
+              
+              <!-- Francia -->
+              <div class="col-md-4">
+                  <h3>Francia</h3>
+                  <ul>
+                      <li>París</li>
+                      <li>Marsella</li>
+                      <li>Lyon</li>
+                      <li>Niza</li>
+                      <li>Toulouse</li>
+                  </ul>
+              </div>
+              
+              <!-- Japón -->
+              <div class="col-md-4">
+                  <h3>Japón</h3>
+                  <ul>
+                      <li>Tokio</li>
+                      <li>Kioto</li>
+                      <li>Osaka</li>
+                      <li>Hiroshima</li>
+                      <li>Nagoya</li>
+                  </ul>
+              </div>
+              
+              <!-- Inglaterra -->
+              <div class="col-md-4">
+                  <h3>Inglaterra</h3>
+                  <ul>
+                      <li>Londres</li>
+                      <li>Manchester</li>
+                      <li>Birmingham</li>
+                      <li>Liverpool</li>
+                      <li>Edimburgo</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
     <footer class="bg-dark text-white text-center py-4">
         <p>&copy; 2024 RentAuto - Todos los derechos reservados</p>
     </footer>

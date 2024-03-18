@@ -21,6 +21,7 @@ import { PromocionesComponent } from './components/promociones/promociones.compo
 import { EstadoComponent } from './components/estado/estado.component';
 import { HistorialComponent } from './components/historial/historial.component';
 import { AutosService } from './services/autos.service';
+import { EmpresaComponent } from './components/empresa/empresa.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { AutosService } from './services/autos.service';
     HomeUserComponent,
     PromocionesComponent,
     EstadoComponent,
-    HistorialComponent
+    HistorialComponent,
+    EmpresaComponent
   ],
   imports: [
     BrowserModule,

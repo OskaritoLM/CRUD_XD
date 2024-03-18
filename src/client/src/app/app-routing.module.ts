@@ -9,6 +9,7 @@ import { PaisComponent } from './components/pais/pais.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
 import { HistorialComponent } from './components/historial/historial.component';
+import { EmpresaComponent } from './components/empresa/empresa.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,7 @@ const routes: Routes = [
     component: AutosComponent
   },
   {
-    path: 'home/reserva',
+    path: 'user/reserva',
     component: ReservaComponent
   },
   {
@@ -55,7 +56,10 @@ const routes: Routes = [
     path: 'user/historial',
     component: HistorialComponent
   },
-
+  {
+    path: 'user/empresa',
+    component: EmpresaComponent
+  },
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

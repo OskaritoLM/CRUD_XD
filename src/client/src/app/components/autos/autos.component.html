@@ -20,7 +20,7 @@
                   <a class="nav-link" href="/user/autos">Autos</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/empresa">Empresa</a>
+                  <a class="nav-link" href="/user/empresa">Empresa</a>
               </li>
           </ul>
       </div>
@@ -40,13 +40,13 @@
         <div class="dropdown">
           <button class="dropbtn">Seleccionar Categoría</button>
           <div class="dropdown-content">
-            <button (click)="filtrarPorCategoria('Económico')">Económico</button>
-            <button (click)="filtrarPorCategoria('Estándar')">Estándar</button>
-            <button (click)="filtrarPorCategoria('SUV')">SUV/Todo Terreno</button>
-            <button (click)="filtrarPorCategoria('Pick-up')">Camionetas</button>
-            <button (click)="filtrarPorCategoria('Deportivo')">Deportivo</button>
-            <button (click)="filtrarPorCategoria('Lujoso')">Lujoso</button>
-            <button (click)="filtrarPorCategoria('Convertible')">Convertible</button>
+            <button class="category-btn" (click)="filtrarPorCategoria('Económico')">Económico</button>
+            <button class="category-btn" (click)="filtrarPorCategoria('Estándar')">Estándar</button>
+            <button class="category-btn" (click)="filtrarPorCategoria('SUV')">SUV/Todo Terreno</button>
+            <button class="category-btn" (click)="filtrarPorCategoria('Pick-up')">Camionetas</button>
+            <button class="category-btn" (click)="filtrarPorCategoria('Deportivo')">Deportivo</button>
+            <button class="category-btn" (click)="filtrarPorCategoria('Lujoso')">Lujoso</button>
+            <button class="category-btn" (click)="filtrarPorCategoria('Convertible')">Convertible</button>
           </div>
         </div>
       </div>
@@ -54,7 +54,6 @@
     
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <div class="col" *ngFor="let auto of autosFiltrados">
-        <!-- Contenido de la tarjeta -->
       </div>
     </div>
     
