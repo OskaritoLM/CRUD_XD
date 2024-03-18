@@ -19,6 +19,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
 import { EstadoComponent } from './components/estado/estado.component';
+import { HistorialComponent } from './components/historial/historial.component';
+import { AutosService } from './services/autos.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { EstadoComponent } from './components/estado/estado.component';
     HomeAdminComponent,
     HomeUserComponent,
     PromocionesComponent,
-    EstadoComponent
+    EstadoComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { EstadoComponent } from './components/estado/estado.component';
     BrowserAnimationsModule, 
     ToastrModule.forRoot() 
   ],
-  providers: [DatosPService, ReservasService],
+  providers: [DatosPService, ReservasService, AutosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

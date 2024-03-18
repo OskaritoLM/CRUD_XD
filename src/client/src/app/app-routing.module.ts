@@ -8,6 +8,8 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
 import { PaisComponent } from './components/pais/pais.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
+import { HistorialComponent } from './components/historial/historial.component';
+
 
 const routes: Routes = [
 {
@@ -49,7 +51,10 @@ const routes: Routes = [
     path: 'user/promociones',
     component: PromocionesComponent
   },
-  
+  {
+    path: 'user/historial',
+    component: HistorialComponent
+  },
 
 ]
 @NgModule({

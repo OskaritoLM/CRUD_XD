@@ -1,0 +1,120 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MLBAR</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/historial">Tu Reserva</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/promociones">Promociones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/autos">Autos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/empresa">Empresa</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+  <div class="container mt-5 mb-5"> <!-- Contenedor principal -->
+    <div class="row">
+      <div class="col text-center">
+        <h2>Ver, modificar o cancelar</h2>
+        <p>Aquí podrás ver, modificar o cancelar las reservas que hayas hecho. Solo necesitas completar la siguiente información.</p>
+      </div>
+    </div>
+    <div class="search-box mt-4 mb-4"> <!-- Añadido mb-4 para margen inferior -->
+      <!-- Contenedor de búsqueda -->
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Correo">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="No. Reserva">
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <button class="btn btn-danger"><i class="fas fa-search"></i> Buscar</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 mt-4"> <!-- Ajuste del margen superior y ancho -->
+        <div class="card shadow-sm">
+          <img src="https://media.istockphoto.com/id/997960674/es/foto/ilustraci%C3%B3n-3d-del-gen%C3%A9rico-rojo-deportivo-sed%C3%A1n-sobre-fondo-blanco.jpg?s=612x612&w=0&k=20&c=e7-m5nI_sBvMw73OOauY2QtMwZAjaW_L7d7WRG7JG9A=" class="card-img-top" alt="Imagen del vehículo">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Vehículo: Nombre del vehículo reservado</li>
+                  <li class="list-group-item">Cliente: Nombre del cliente</li>
+                  <li class="list-group-item">Correo: Correo electrónico del cliente</li>
+                  <li class="list-group-item">Teléfono: Número de teléfono del cliente</li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Lugar de Reserva: Nombre del lugar de la reserva</li>
+                  <li class="list-group-item">Fecha de Reserva: Fecha de la reserva</li>
+                  <li class="list-group-item">Hora de Reserva: Hora de la reserva</li>
+                  <li class="list-group-item">Placas: Número de placas del vehículo</li> <!-- Nuevo dato de placas -->
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Fecha de Entrega: Fecha de la Entrega</li>
+                  <li class="list-group-item">Hora de Entrega: Hora de la Entrega</li>
+                  <li class="list-group-item">Lugar de Entrega: Nombre del lugar de la Entrega</li>
+                  <li class="list-group-item">Costo: $1500 MXN</li> <!-- Ejemplo de costo -->
+                </ul>
+              </div>
+            </div>
+                      <!-- Botones Modificar, Guardar y Cancelar -->
+          <div class="card-footer">
+            <div class="row justify-content-center">
+              <div class="col-auto">
+                <button class="btn btn-success"><i class="fas fa-edit"></i> Modificar</button>
+              </div>
+              <div class="col-auto">
+                <button class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+              </div>
+              <div class="col-auto">
+                <button class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+        <!-- Contenedor de Formas de Pago -->
+  <div class="row mt-5">
+    <div class="col text-center">
+      <div class="payment-box">
+        <h3>Formas de pago</h3>
+        <div class="payment-logos">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq5rA6ftkv6xADPI72eDBAvYjbq2_W3EAqqg&usqp=CAU" alt="Visa">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9KdBB1rQhNSnvXr9klEATB9M4zGkShHRzoQ&usqp=CAU" alt="Mastercard">
+          <img src="https://st4.depositphotos.com/5225467/22068/v/450/depositphotos_220680152-stock-illustration-paypal-logo-printed-white-paper.jpg" alt="PayPal">
+        </div>
+      </div>
+    </div>
+  </div>

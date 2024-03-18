@@ -11,7 +11,7 @@
                   <a class="nav-link active" aria-current="page" href="/user">Home</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/reservaMod">Tu Reserva</a>
+                  <a class="nav-link" href="/user/historial">Tu Reserva</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="/user/promociones">Promociones</a>
@@ -40,279 +40,50 @@
         <div class="dropdown">
           <button class="dropbtn">Seleccionar Categoría</button>
           <div class="dropdown-content">
-            <a href="#">Lujoso</a>
-            <a href="#">Familiar</a>
-            <a href="#">Económico</a>
-            <a href="#">Deportivo</a>
-            <a href="#">Camionetas</a>
+            <button (click)="filtrarPorCategoria('Económico')">Económico</button>
+            <button (click)="filtrarPorCategoria('Estándar')">Estándar</button>
+            <button (click)="filtrarPorCategoria('SUV')">SUV/Todo Terreno</button>
+            <button (click)="filtrarPorCategoria('Pick-up')">Camionetas</button>
+            <button (click)="filtrarPorCategoria('Deportivo')">Deportivo</button>
+            <button (click)="filtrarPorCategoria('Lujoso')">Lujoso</button>
+            <button (click)="filtrarPorCategoria('Convertible')">Convertible</button>
           </div>
         </div>
       </div>
     </div>
     
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-<div class="col">
-  <div class="card shadow-sm">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#55595c"/>
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-    </svg>
-    <div class="card-body">
-      <h3 class="card-title">Ford Mustang</h3>
-      <h6 class="card-subtitle mb-2 text-muted">Modelo: 2024</h6>
-      <div class="car-info">
-        <div class="row">
-          <div class="col-sm-6">
-            <p><i class="fas fa-user"></i> <strong>Asientos:</strong> 5</p>
-            <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> Pequeñas</p>
-            <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> Estándar</p>
-          </div>
-          <div class="col-sm-6">
-            <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> Sí</p>
-            <p><i class="fas fa-car"></i> <strong>Placas:</strong> [Número de placas]</p>
+      <div class="col" *ngFor="let auto of autosFiltrados">
+        <!-- Contenido de la tarjeta -->
+      </div>
+    </div>
+    
+    
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col" *ngFor="let auto of autosFiltrados">
+        <div class="card shadow-sm">
+          <img [src]="auto.imagen" class="card-img-top" alt="Imagen de auto">
+          <div class="card-body">
+            <h3 class="card-title">{{ auto.marca }} {{ auto.modelo }}</h3>
+            <h6 class="card-subtitle mb-2 text-muted">Modelo: {{ auto.anio }}</h6>
+            <div class="car-info">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p><i class="fas fa-user"></i> <strong>Asientos:</strong> {{ auto.asientos }}</p>
+                  <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> {{ auto.maletas }}</p>
+                  <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> {{ auto.tipoCaja }}</p>
+                </div>
+                <div class="col-sm-6">
+                  <!-- <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> {{ auto.aireAcondicionado }}</p> -->
+                  <p><i class="fas fa-car"></i> <strong>Placas:</strong> {{ auto.placas }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-3">
+              <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="text-center mt-3">
-        <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
-      </div>
     </div>
-  </div>
-</div>
-<div class="col">
-  <div class="card shadow-sm">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#55595c"/>
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-    </svg>
-    <div class="card-body">
-      <h3 class="card-title">Ford Mustang</h3>
-      <h6 class="card-subtitle mb-2 text-muted">Modelo: 2024</h6>
-      <div class="car-info">
-        <div class="row">
-          <div class="col-sm-6">
-            <p><i class="fas fa-user"></i> <strong>Asientos:</strong> 5</p>
-            <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> Pequeñas</p>
-            <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> Estándar</p>
-          </div>
-          <div class="col-sm-6">
-            <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> Sí</p>
-            <p><i class="fas fa-car"></i> <strong>Placas:</strong> [Número de placas]</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-3">
-        <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="col">
-  <div class="card shadow-sm">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#55595c"/>
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-    </svg>
-    <div class="card-body">
-      <h3 class="card-title">Ford Mustang</h3>
-      <h6 class="card-subtitle mb-2 text-muted">Modelo: 2024</h6>
-      <div class="car-info">
-        <div class="row">
-          <div class="col-sm-6">
-            <p><i class="fas fa-user"></i> <strong>Asientos:</strong> 5</p>
-            <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> Pequeñas</p>
-            <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> Estándar</p>
-          </div>
-          <div class="col-sm-6">
-            <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> Sí</p>
-            <p><i class="fas fa-car"></i> <strong>Placas:</strong> [Número de placas]</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-3">
-        <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="col">
-  <div class="card shadow-sm">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#55595c"/>
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-    </svg>
-    <div class="card-body">
-      <h3 class="card-title">Ford Mustang</h3>
-      <h6 class="card-subtitle mb-2 text-muted">Modelo: 2024</h6>
-      <div class="car-info">
-        <div class="row">
-          <div class="col-sm-6">
-            <p><i class="fas fa-user"></i> <strong>Asientos:</strong> 5</p>
-            <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> Pequeñas</p>
-            <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> Estándar</p>
-          </div>
-          <div class="col-sm-6">
-            <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> Sí</p>
-            <p><i class="fas fa-car"></i> <strong>Placas:</strong> [Número de placas]</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-3">
-        <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="col">
-  <div class="card shadow-sm">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#55595c"/>
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-    </svg>
-    <div class="card-body">
-      <h3 class="card-title">Ford Mustang</h3>
-      <h6 class="card-subtitle mb-2 text-muted">Modelo: 2024</h6>
-      <div class="car-info">
-        <div class="row">
-          <div class="col-sm-6">
-            <p><i class="fas fa-user"></i> <strong>Asientos:</strong> 5</p>
-            <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> Pequeñas</p>
-            <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> Estándar</p>
-          </div>
-          <div class="col-sm-6">
-            <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> Sí</p>
-            <p><i class="fas fa-car"></i> <strong>Placas:</strong> [Número de placas]</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-3">
-        <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="col">
-  <div class="card shadow-sm">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#55595c"/>
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-    </svg>
-    <div class="card-body">
-      <h3 class="card-title">Ford Mustang</h3>
-      <h6 class="card-subtitle mb-2 text-muted">Modelo: 2024</h6>
-      <div class="car-info">
-        <div class="row">
-          <div class="col-sm-6">
-            <p><i class="fas fa-user"></i> <strong>Asientos:</strong> 5</p>
-            <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> Pequeñas</p>
-            <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> Estándar</p>
-          </div>
-          <div class="col-sm-6">
-            <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> Sí</p>
-            <p><i class="fas fa-car"></i> <strong>Placas:</strong> [Número de placas]</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-3">
-        <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="col">
-  <div class="card shadow-sm">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#55595c"/>
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-    </svg>
-    <div class="card-body">
-      <h3 class="card-title">Ford Mustang</h3>
-      <h6 class="card-subtitle mb-2 text-muted">Modelo: 2024</h6>
-      <div class="car-info">
-        <div class="row">
-          <div class="col-sm-6">
-            <p><i class="fas fa-user"></i> <strong>Asientos:</strong> 5</p>
-            <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> Pequeñas</p>
-            <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> Estándar</p>
-          </div>
-          <div class="col-sm-6">
-            <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> Sí</p>
-            <p><i class="fas fa-car"></i> <strong>Placas:</strong> [Número de placas]</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-3">
-        <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="col">
-  <div class="card shadow-sm">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#55595c"/>
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-    </svg>
-    <div class="card-body">
-      <h3 class="card-title">Ford Mustang</h3>
-      <h6 class="card-subtitle mb-2 text-muted">Modelo: 2024</h6>
-      <div class="car-info">
-        <div class="row">
-          <div class="col-sm-6">
-            <p><i class="fas fa-user"></i> <strong>Asientos:</strong> 5</p>
-            <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> Pequeñas</p>
-            <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> Estándar</p>
-          </div>
-          <div class="col-sm-6">
-            <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> Sí</p>
-            <p><i class="fas fa-car"></i> <strong>Placas:</strong> [Número de placas]</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-3">
-        <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="col">
-  <div class="card shadow-sm">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#55595c"/>
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-    </svg>
-    <div class="card-body">
-      <h3 class="card-title">Ford Mustang</h3>
-      <h6 class="card-subtitle mb-2 text-muted">Modelo: 2024</h6>
-      <div class="car-info">
-        <div class="row">
-          <div class="col-sm-6">
-            <p><i class="fas fa-user"></i> <strong>Asientos:</strong> 5</p>
-            <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> Pequeñas</p>
-            <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> Estándar</p>
-          </div>
-          <div class="col-sm-6">
-            <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> Sí</p>
-            <p><i class="fas fa-car"></i> <strong>Placas:</strong> [Número de placas]</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-3">
-        <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    

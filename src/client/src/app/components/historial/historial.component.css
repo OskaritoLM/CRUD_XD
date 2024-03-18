@@ -1,0 +1,104 @@
+body {
+    padding-top: 72px; /* Ajusta este valor según el alto de tu navbar */
+  }
+  
+  .navbar {
+    background-color: #A52A2A;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #ffffff;
+    padding: 10px;
+  }
+  
+  .navbar-brand:hover,
+  .navbar-nav .nav-link:hover {
+    color: #8d8787;
+  }
+  
+  .navbar-toggler {
+    border-color: #ffffff;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #ffffff;
+  }
+
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .mt-5 {
+    margin-top: 3rem;
+  }
+  
+  .search-box {
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px; /* Añadido margen inferior */
+  }
+  
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+  
+  .card {
+    width: 200%; /* Define el ancho del card */
+    max-width: 1400px; /* Ampliado el ancho máximo del card */
+    margin: -10% auto; /* Centra el card horizontalmente */
+    margin-left: -200px; /* Ajusta el margen izquierdo */
+  }
+  .card-img-top {
+    max-height: 200px; /* Ajusta este valor según sea necesario */
+    object-fit: cover; /* Esto ayuda a mantener la proporción de la imagen */
+    object-fit: contain; /* Ajusta la imagen manteniendo su relación de aspecto */  
+  }
+    
+
+  .text-center h2 {
+    margin-top: 2rem; /* Ajusta este valor según el espacio que desees */
+  }
+  
+  .payment-box {
+    margin-top: 2rem; /* Ajusta este valor según el espacio que desees */
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .payment-box h3 {
+    margin-bottom: 20px;
+  }
+  
+  .payment-logos {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .payment-logos img {
+    width: 100px; /* Ajusta el tamaño de las imágenes según sea necesario */
+    margin: 0 10px;
+  }
+  
+  
