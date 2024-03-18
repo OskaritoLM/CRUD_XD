@@ -120,6 +120,7 @@ export class CiudadComponent implements OnInit {
 
   editarCiudad(ciudad: DatosPModel) {
     this.ciudadForm.patchValue(ciudad);
+    console.log(ciudad)
   }
   
   actualizarCiudad() {

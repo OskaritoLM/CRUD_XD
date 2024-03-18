@@ -1,11 +1,11 @@
 // estado.component.ts
 import { Component, OnInit } from '@angular/core';
-import { DatosPModel, EstadoModel } from '../../models/datosPModel';
+import { CuidadModel, DatosPModel, EstadoModel } from '../../models/datosPModel';
 import { CiudadService } from '../../services/estado.service';
-
+import { DatosPService } from '../../services/datos-pservice.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
+import { EstadoService } from '../../services/ciudad.service';
 @Component({
   selector: 'app-estado',
   templateUrl: './estado.component.html',
@@ -15,7 +15,7 @@ export class EstadoComponent implements OnInit {
   estados: EstadoModel[] = []; // Cambia el tipo de datos aquí
   paises: DatosPModel[] = [];
   datosPaises: DatosPModel[] = [];
-  ciudades: EstadoModel[] = [];
+  ciudades: CuidadModel[] = [];
   datosCiudad: DatosPModel[] = [];
   estadoForm: FormGroup;
   editingEstadoId: string | null = null; // Inicializado como null
@@ -23,17 +23,51 @@ export class EstadoComponent implements OnInit {
   constructor(
     private estadoService: CiudadService,
     private fb: FormBuilder,
+    private estadoService1: EstadoService,
+    private paisService: DatosPService,
     private toastrService: ToastrService
   ) {
     this.estadoForm = this.fb.group({
       _id: [null],
-      nombre: ['', Validators.required]
+      nombre: ['', Validators.required],
+      pais: ['', Validators.required], // Add form control for 'pais'
+      estado: ['', Validators.required] // Add form control for 'ciudad'
     });
   }
+  
 
   ngOnInit() {
     this.cargarEstados();
+    this.cargarPaises();
+    this.cargarCiudades();
   }
+
+  
+  cargarPaises() {
+    this.paisService.getDatosP().subscribe(
+      data => {
+        this.datosPaises = data; // Actualizar la propiedad datosPaises
+        console.log('Datos de países cargados:', this.datosPaises);
+      },
+      error => {
+        console.error('Error al cargar datos de países:', error);
+      }
+    );
+  }
+
+  cargarCiudades() {
+    this.estadoService1.getDatosP().subscribe(
+      data => {
+        this.ciudades = data;
+        console.log('Ciudades cargadas:', this.ciudades);
+      },
+      error => {
+        console.error('Error al cargar ciudades:', error);
+      }
+    );
+  }
+
+
 
   cargarEstados() {
     this.estadoService.getEstados().subscribe(
@@ -54,7 +88,7 @@ export class EstadoComponent implements OnInit {
       const nuevoEstado: EstadoModel = {
         nombre: this.estadoForm.value.nombre,
         pais: this.estadoForm.value.pais,
-        estado: this.estadoForm.value.pais,
+        estado: this.estadoForm.value.estado,
       };
 
       this.estadoService.addEstado(nuevoEstado).subscribe(
@@ -91,8 +125,9 @@ export class EstadoComponent implements OnInit {
     }
   }
 
-  editarEstado(estado: EstadoModel) {
+  editarEstado( estado: EstadoModel) {
     this.estadoForm.patchValue(estado);
+    console.log(estado)
   }
 
   actualizarEstado() {

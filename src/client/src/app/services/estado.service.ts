@@ -34,8 +34,9 @@ export class CiudadService {
     );
   }
 
-  updateEstado(newEstado: EstadoModel) {
-    return this.http.put(`${this.domain}/api/Ciudad/${newEstado._id}`, newEstado).pipe(
+
+  updateEstado(newDatosP: EstadoModel) {
+    return this.http.put(`${this.domain}/api/Ciudad/${newDatosP._id}`, newDatosP).pipe(
       map(res => res),
       catchError(this.handleError)
     );
