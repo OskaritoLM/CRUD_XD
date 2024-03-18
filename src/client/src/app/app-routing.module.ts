@@ -9,11 +9,10 @@ import { PaisComponent } from './components/pais/pais.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
 import { HistorialComponent } from './components/historial/historial.component';
-<<<<<<< Updated upstream
+
 import { EmpresaComponent } from './components/empresa/empresa.component';
-=======
 import { AutosAdminComponent } from './components/autos-admin/autos-admin.component';
->>>>>>> Stashed changes
+
 
 
 const routes: Routes = [
@@ -60,19 +59,18 @@ const routes: Routes = [
     path: 'user/historial',
     component: HistorialComponent
   },
-<<<<<<< Updated upstream
+
   {
     path: 'user/empresa',
     component: EmpresaComponent
   },
-=======
   
   {
     path: 'autos-admin',
     component: AutosAdminComponent
   }
 
->>>>>>> Stashed changes
+
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
