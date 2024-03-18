@@ -1,137 +1,69 @@
+
 body {
-    padding-top: 56px;
-  }
-  
-  .navbar {
-    background-color: #A52A2A; 
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); 
-  }
-  
-  .navbar-brand,
-  .navbar-nav .nav-link {
-    color: #ffffff; 
-    padding: 10px;
-  }
-  
-  .navbar-brand:hover,
-  .navbar-nav .nav-link:hover {
-    color: #8d8787; 
-  }
-  
-  .navbar-toggler {
-    border-color: #ffffff; 
-  }
-  
-  .navbar-toggler-icon {
-    background-color: #ffffff; 
-  }
-  .bg-dark-transparent {
-    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo oscuro transparente */
-    border: none; /* Sin borde */
+  padding-top: 56px;
 }
 
-.carousel-caption .card {
-    max-width: 600px; /* Ancho máximo del card */
-    margin: 0 auto; /* Centrar el card horizontalmente */
-    padding: 20px; /* Espaciado interno */
-    text-align: center; /* Alineación del texto al centro */
-    border-radius: 20px; /* Radio de las esquinas */
+.navbar {
+  background-color: #A52A2A; 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); 
 }
 
-.carousel-caption h1 {
-    font-size: 3.5rem; /* Tamaño de fuente del título */
-    font-weight: bold; /* Negrita */
-    margin-bottom: 20px; /* Espacio inferior */
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #ffffff; 
+  padding: 10px;
 }
 
-.carousel-caption p {
-    font-size: 1.5rem; /* Tamaño de fuente del eslogan */
-    margin-bottom: 0; /* Eliminar margen inferior */
+.navbar-brand:hover,
+.navbar-nav .nav-link:hover {
+  color: #8d8787; 
 }
 
-/* Estilos para el formulario */
+.navbar-toggler {
+  border-color: #ffffff; 
+}
+
+.navbar-toggler-icon {
+  background-color: #ffffff; 
+}
+
 .container {
-  margin-top: 20px;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
 }
 
-.card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.title {
+text-align: center;
+font-size: 32px;
+margin-bottom: 30px;
+margin-top: 8%; /* Agregar margen superior */
 }
 
-.card-header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
+
+.section-title {
+  font-size: 24px;
+  color: #A52A2A; /* Color marrón */
+  margin-bottom: 15px;
 }
 
-.card-body {
-  padding: 20px;
+.values-list {
+  list-style-type: none;
+  padding-left: 0;
 }
 
-.form-label {
-  font-weight: bold;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-.custom-title {
-  background-color: #A52A2A; /* Color de fondo del nav bar */
-  color: #ffffff; /* Color del texto */
-  padding: 10px; /* Espaciado interno */
-}
-.custom-card {
-  border-radius: 15px; /* Ajusta el valor según el nivel de redondez deseado */
-}
-.rounded-image {
-  border-radius: 15px; /* Ajusta el valor según el nivel de redondez deseado */
-}
-.container-custom {
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #f8f9fa; /* Color de fondo gris claro */
-  padding: 20px;
-}
-
-.card-custom {
-  border: none;
-  box-shadow: none;
-}
-
-.card-body-custom {
-  padding: 0;
-}
-
-h2 {
+.values-list li {
   margin-bottom: 20px;
 }
 
-h3 {
-  font-size: 1.2em;
-  color: #333;
+.values-list h3 {
+  font-size: 20px;
+  color: #A52A2A; /* Color marrón */
   margin-bottom: 10px;
 }
 
-.city-list {
-  list-style: none;
-  padding: 0;
+.values-list p {
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-.city-list li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.city-list li:last-child {
-  border-bottom: none;
-}
-
-.rounded-image {
-  border-radius: 15px; /* Ajusta el valor según el nivel de redondez deseado */
-}
 
