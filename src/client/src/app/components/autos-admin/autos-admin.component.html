@@ -1,0 +1,152 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">RentAuto</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/autos-admin">autos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Lugar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pais">Pais</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ciudad">Ciudad</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/estado">Estado</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <br>
+  <select class="form-select" (change)="filtrarPorCategoria($event)">
+    <option value="todo" selected>Todo</option>
+    <option value="Económico">Económico</option>
+    <option value="Estándar">Estándar</option>
+    <option value="SUV">SUV/Todo Terreno</option>
+    <option value="Pick-up">Camionetas</option>
+    <option value="Deportivo">Deportivo</option>
+    <option value="Lujoso">Lujoso</option>
+    <option value="Convertible">Convertible</option>
+</select>
+<br>
+  <div class="row">
+      <!-- Parte Izquierda - Formulario -->
+      <div class="col-md-4">
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title">Agregar/Editar Vehículo</h5>
+                  <form [formGroup]="autoForm" (submit)="agregarAuto()">
+                    <div class="form-group">
+                        <label for="vehicle-image">Imagen:</label>
+                        <input type="text" class="form-control" id="vehicle-image" formControlName="imagen" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle-brand">Marca:</label>
+                        <input type="text" class="form-control" id="vehicle-brand" formControlName="marca" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle-model">Modelo:</label>
+                        <input type="text" class="form-control" id="vehicle-model" formControlName="modelo" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="vehicle-plates">Placas:</label>
+                      <input type="text" class="form-control" id="vehicle-plates" formControlName="placas" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="vehicle-seats">Número de Asientos:</label>
+                    <input type="number" class="form-control" id="vehicle-seats" formControlName="asientos" required>
+                </div>
+                    <div class="form-group">
+                        <label for="vehicle-luggage">Número de Maletas:</label>
+                        <input type="number" class="form-control" id="vehicle-luggage" formControlName="maletas" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle-transmission">Tipo de Caja:</label>
+                        <input type="text" class="form-control" id="vehicle-transmission" formControlName="tipoCaja" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle-type">Tipo de Vehículo:</label>
+                        <input type="text" class="form-control" id="vehicle-type" formControlName="tipoVehiculo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle-quantity">Cantidad de Vehículos:</label>
+                        <input type="number" class="form-control" id="vehicle-quantity" formControlName="cantVehiculos" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle-category">Categoría:</label>
+                        <select class="form-control" id="vehicle-category" formControlName="categoria" required>
+                            <option value="" disabled selected>Elige la categoría</option>
+                            <option value="Económico">Económico</option>
+                            <option value="Estándar">Estándar</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Pick-up">Pick-up</option>
+                            <option value="Deportivo">Deportivo</option>
+                            <option value="Lujoso">Lujoso</option>
+                            <option value="Convertible">Convertible</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle-price">Precio por Día:</label>
+                        <input type="number" class="form-control" id="vehicle-price" formControlName="precioDia" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="vehicle-year">Año:</label>
+                      <input type="number" class="form-control" id="vehicle-year" formControlName="anio" required>
+                  </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                    <button type="button" class="btn btn-success ms-2" (click)="actualizarAuto()">Actualizar</button>
+                </form>
+                
+              </div>
+          </div>
+      </div>
+
+     
+
+      <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-6" *ngFor="let vehiculo of autosFiltrados">
+                <div class="card h-100 shadow mb-4" style="width: 100%;">
+                    <img class="card-img-top" [src]="vehiculo.imagen" alt="Imagen del vehículo">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-primary">{{ vehiculo.marca }} {{ vehiculo.modelo }}</h5>
+                        <ul class="list-unstyled">
+                          <li><i class="fas fa-id-card"></i> Placas: {{ vehiculo.placas }}</li>
+                          <li><i class="fas fa-chair"></i> Asientos: {{ vehiculo.asientos }}</li>
+                          <li><i class="fas fa-suitcase"></i> Maletas: {{ vehiculo.maletas }}</li>
+                          <li><i class="fas fa-gear"></i> Tipo de Caja: {{ vehiculo.tipoCaja }}</li>
+                          <li><i class="fas fa-car"></i> Tipo de Vehículo: {{ vehiculo.tipoVehiculo }}</li>
+                          <li><i class="fas fa-car-side"></i> Cantidad de Vehículos: {{ vehiculo.cantVehiculos }}</li>
+                          <li><i class="fas fa-calendar-alt"></i> Año: {{ vehiculo.anio }}</li>
+                          <li><i class="fas fa-tag"></i> Categoría: {{ vehiculo.categoria }}</li>
+                          <li><i class="fas fa-money-bill-wave"></i> Precio por Día: {{ vehiculo.precioDia }}</li>
+                      </ul>
+                      
+                        <div class="mt-auto">
+                          <button type="button" class="btn btn-sm btn-primary"(click)="editarCiudad(vehiculo)">Editar</button>
+                          <button type="button" class="btn btn-danger btn-sm ms-2" (click)="eliminarAuto(vehiculo._id)">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+  </div>
+</div>
