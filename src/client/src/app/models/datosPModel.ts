@@ -28,3 +28,20 @@ export class EstadoModel{
     pais: string="";
     ciudad : string="";
 }
+
+export interface AutoModel {
+    _id: string;
+    imagen: String;
+    marca: string;
+    modelo: string;
+    anio: number;
+    placas: string;
+    asientos: number;
+    maletas: number;
+    tipoCaja: string;
+    tipoVehiculo: string;
+    cantVehiculos: number;
+    categoria:string;
+    precioDia: number;
+  }
+  

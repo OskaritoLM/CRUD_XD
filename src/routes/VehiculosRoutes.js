@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { error } = require('console');
 const mongojs = require('mongojs');
-const db = mongojs('RentaAutos', ['Vehiculo']);
+const db = mongojs('127.0.0.1:27017/RentaAutos', ['Vehiculo']);
 const { ObjectId } = require('mongojs'); 
 
 router.get('/Vehiculo', (req, res, next) => {
@@ -87,7 +87,8 @@ router.put('/Vehiculo/:id', (req, res, next) => {
             tipoCaja,
             tipoVehiculo,
             cantVehiculos,
-            categoria
+            categoria,
+            precioDia,
         }
     };
 

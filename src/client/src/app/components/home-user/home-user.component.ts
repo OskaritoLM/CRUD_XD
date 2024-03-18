@@ -23,6 +23,7 @@ export class HomeUserComponent {
       cupon: ['']
     });
   }
+  
   onSubmit() {
     if (this.reservaForm.valid) {
       console.log('Formulario enviado');
