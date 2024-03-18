@@ -1,7 +1,7 @@
 // estado.component.ts
 import { Component, OnInit } from '@angular/core';
-import { CuidadModel, DatosPModel, EstadoModel } from '../../models/datosPModel';
-import { EstadoService } from '../../services/estado.service';
+import { DatosPModel, EstadoModel } from '../../models/datosPModel';
+import { CiudadService } from '../../services/estado.service';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -12,16 +12,16 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./estado.component.css']
 })
 export class EstadoComponent implements OnInit {
-  estados: EstadoModel[] = [];
+  estados: EstadoModel[] = []; // Cambia el tipo de datos aquí
   paises: DatosPModel[] = [];
   datosPaises: DatosPModel[] = [];
-  ciudades: CuidadModel[] = [];
+  ciudades: EstadoModel[] = [];
   datosCiudad: DatosPModel[] = [];
   estadoForm: FormGroup;
   editingEstadoId: string | null = null; // Inicializado como null
 
   constructor(
-    private estadoService: EstadoService,
+    private estadoService: CiudadService,
     private fb: FormBuilder,
     private toastrService: ToastrService
   ) {
@@ -54,7 +54,7 @@ export class EstadoComponent implements OnInit {
       const nuevoEstado: EstadoModel = {
         nombre: this.estadoForm.value.nombre,
         pais: this.estadoForm.value.pais,
-        ciudad: this.estadoForm.value.pais,
+        estado: this.estadoForm.value.pais,
       };
 
       this.estadoService.addEstado(nuevoEstado).subscribe(

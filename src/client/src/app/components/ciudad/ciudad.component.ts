@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { CuidadModel, DatosPModel } from '../../models/datosPModel';
+import { CuidadModel, DatosPModel, EstadoModel } from '../../models/datosPModel';
 import { EstadoService } from '../../services/ciudad.service';
 import { DatosPService } from '../../services/datos-pservice.service';
 

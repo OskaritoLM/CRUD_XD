@@ -2,10 +2,19 @@ export class DatosPModel {
     _id?: string;
     nombre: string="";
 }
+export class EstadoModel {
+  _id?: string;
+  nombre: string = "";
+  pais: string = "";
+  estado: string = ""; // Asegúrate de incluir esta propiedad
+}
+
+
 export class CuidadModel {
     _id?: string;
     nombre: string="";
     pais: string="";
+
 }
 export class ReservaModel {
     _id?: string;
@@ -22,12 +31,7 @@ export class ReservaModel {
     total: string = "";
     vehiculo: string = "";
 }
-export class EstadoModel{
-    _id?: string;
-    nombre: string="";
-    pais: string="";
-    ciudad : string="";
-}
+
 
 export interface AutoModel {
     _id: string;
