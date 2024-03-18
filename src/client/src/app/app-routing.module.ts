@@ -38,6 +38,7 @@ const routes: Routes = [
   },
   {
     path:'user/autos',
+
     component: AutosComponent
   },
   {
