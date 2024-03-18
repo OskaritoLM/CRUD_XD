@@ -25,6 +25,7 @@ import { AutosService } from './services/autos.service';
 import { EmpresaComponent } from './components/empresa/empresa.component';
 
 import { AutosAdminComponent } from './components/autos-admin/autos-admin.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AutosAdminComponent } from './components/autos-admin/autos-admin.compon
 
     EmpresaComponent,
 
-    AutosAdminComponent
+    AutosAdminComponent,
+      LoginComponent
 
   ],
   imports: [
