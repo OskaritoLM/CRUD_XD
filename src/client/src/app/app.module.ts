@@ -21,7 +21,11 @@ import { PromocionesComponent } from './components/promociones/promociones.compo
 import { EstadoComponent } from './components/estado/estado.component';
 import { HistorialComponent } from './components/historial/historial.component';
 import { AutosService } from './services/autos.service';
+<<<<<<< Updated upstream
 import { EmpresaComponent } from './components/empresa/empresa.component';
+=======
+import { AutosAdminComponent } from './components/autos-admin/autos-admin.component';
+>>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +39,11 @@ import { EmpresaComponent } from './components/empresa/empresa.component';
     PromocionesComponent,
     EstadoComponent,
     HistorialComponent,
+<<<<<<< Updated upstream
     EmpresaComponent
+=======
+    AutosAdminComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

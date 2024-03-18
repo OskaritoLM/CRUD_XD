@@ -68,7 +68,7 @@ router.delete('/Vehiculo/:id', (req, res, next) => {
 
 router.put('/Vehiculo/:id', (req, res, next) => {
     const vehiculoId = req.params.id;
-    const { Imagen,marca, modelo, placas, asientos, maletas, tipoCaja, tipoVehiculo, cantVehiculos, categoria } = req.body;
+    const { imagen, marca, modelo, placas, asientos, maletas, tipoCaja, tipoVehiculo, cantVehiculos, categoria, precioDia, anio } = req.body;
 
     // Check if vehiculoId is a valid ObjectId
     if (!ObjectId.isValid(vehiculoId)) {
@@ -78,7 +78,7 @@ router.put('/Vehiculo/:id', (req, res, next) => {
     const query = { _id: ObjectId(vehiculoId) };
     const update = {
         $set: {
-            Imagen,
+            imagen,
             marca,
             modelo,
             placas,
@@ -89,6 +89,7 @@ router.put('/Vehiculo/:id', (req, res, next) => {
             cantVehiculos,
             categoria,
             precioDia,
+            anio
         }
     };
 
@@ -106,6 +107,7 @@ router.put('/Vehiculo/:id', (req, res, next) => {
         res.json({ message: 'Vehiculo updated successfully' });
     });
 });
+
 
 
 
