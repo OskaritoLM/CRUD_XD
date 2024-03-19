@@ -18,10 +18,8 @@ export class HistorialComponent  implements OnInit{
   }
 
   obtenReserva(noReserva: string) {
-    // Llamar al servicio para obtener la reserva por su número
     this.reservasService.getReservaById(noReserva).subscribe(
       (reserva: ReservaModel) => {
-        // Almacenar la reserva encontrada en la variable del componente
         this.reservaEncontrada = reserva;
       },
       (error) => {
