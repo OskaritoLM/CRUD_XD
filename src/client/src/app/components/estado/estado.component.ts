@@ -160,6 +160,7 @@ export class EstadoComponent implements OnInit {
   editarEstado( estado: EstadoModel) {
     this.estadoForm.patchValue(estado);
     console.log(estado)
+    
   }
 
   actualizarEstado() {

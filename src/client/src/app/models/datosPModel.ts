@@ -10,6 +10,15 @@ export class EstadoModel {
 }
 
 
+export class LugarModel {
+    _id?: string;
+    nombre: string = "";
+    direccion: string = "";
+    pais: string = "";
+    ciudad: string = "";
+    Estado: string = ""; 
+  }
+
 export class CuidadModel {
     _id?: string;
     nombre: string="";

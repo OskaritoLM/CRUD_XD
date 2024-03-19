@@ -1,0 +1,135 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">RentAuto</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/autos-admin">autos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lugar-admin">Lugar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pais">Pais</a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="/estado">Estado</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/ciudad">Ciudad</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <br>
+    <div class="row">
+        <!-- Parte Izquierda - Formulario -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Agregar/Editar Lugar</h5>
+                    <form [formGroup]="lugarForm" (ngSubmit)="crearLugar($event)">
+                        <div class="form-group">
+                            <label for="city-name">Nombre de la Sucursal:</label>
+                            <input type="text" class="form-control" id="city-name" formControlName="nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Dirección:</label>
+                            <input type="text" class="form-control" id="address" formControlName="direccion" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country-select">Selecciona un País:</label>
+                            <select class="form-control" id="country-select" formControlName="pais"
+                                (change)="filtrarEstadosPorPais($event)">
+                                <option value="" disabled selected>Elige un país</option>
+                                <option *ngFor="let pais of datosPaises" [value]="pais.nombre">{{ pais.nombre }}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="city-select">Selecciona una Ciudad:</label>
+                          <select class="form-control" id="city-select" formControlName="ciudad" (change)="filtrarEstadosPorCiudad($event)">
+                            <option value="" disabled selected>Elige una ciudad</option>
+                            <option *ngFor="let ciudad of ciudades" [value]="ciudad.nombre">{{ ciudad.nombre }}</option>
+                          </select>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="state-select">Selecciona un Estado:</label>
+                          <select class="form-control" id="state-select" formControlName="Estado" (change)="filtrarEstadosPorEstado($event)">
+                            <option value="" disabled selected>Elige un estado</option>
+                            <option *ngFor="let estado of estados" [value]="estado.nombre">{{ estado.nombre }}</option>
+                          </select>
+                        </div>
+                        
+                      
+                        
+
+
+                        <br>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                        <button type="button" class="btn btn-success ms-2" (click)="actualizarLugar()">Actualizar</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Lugares Agregados</h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Sucursal</th>
+                                <th scope="col">Dirrecion</th>
+                                <th scope="col">País</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="country-table-body">
+                            <tr *ngFor="let lugar of lugares; let i = index">
+                                <th scope="row">{{ i + 1 }}</th>
+                                <td>{{ lugar.nombre }}</td>
+                                <td>{{ lugar.direccion }}</td>
+                                <td>{{ lugar.pais }}</td>
+                                <td>{{ lugar.ciudad }}</td>
+                                <td>{{ lugar.Estado }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-primary"
+                                        (click)="editarLugar(lugar)">Editar</button>
+
+                                    <button type="button" class="btn btn-danger btn-sm ms-2"
+                                        (click)="eliminarLugar(lugar._id)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

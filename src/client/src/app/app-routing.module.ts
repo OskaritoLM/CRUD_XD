@@ -12,6 +12,8 @@ import { HistorialComponent } from './components/historial/historial.component';
 
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { AutosAdminComponent } from './components/autos-admin/autos-admin.component';
+import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
+
 
 
 
@@ -68,6 +70,11 @@ const routes: Routes = [
   {
     path: 'autos-admin',
     component: AutosAdminComponent
+  },
+  
+  {
+    path: 'lugar-admin',
+    component: LugarComponent
   }
 
 

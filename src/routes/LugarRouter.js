@@ -62,7 +62,7 @@ router.delete('/Lugar/:id', (req, res, next) => {
 // Actualizar un lugar por ID
 router.put('/Lugar/:id', (req, res, next) => {
     const LugarId = req.params.id;
-    const { nombre, direccion, pais, ciudad } = req.body;
+    const { nombre, direccion, pais, ciudad,Estado } = req.body;
 
     if (!ObjectId.isValid(LugarId)) {
         return res.status(400).json({ error: 'Invalid Lugar ID' });
@@ -74,7 +74,8 @@ router.put('/Lugar/:id', (req, res, next) => {
             nombre,
             direccion,
             pais,
-            ciudad
+            ciudad,
+            Estado
         }
     };
 
