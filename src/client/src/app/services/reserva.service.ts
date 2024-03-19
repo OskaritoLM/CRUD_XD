@@ -20,13 +20,6 @@ export class ReservasService {
     );
   }
 
-  getReservaById(id: string) {
-    return this.http.get<ReservaModel>(`${this.domain}/api/Reserva/${id}`).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-
   addReserva(newReserva: ReservaModel) {
     return this.http.post<ReservaModel>(`${this.domain}/api/Reserva`, newReserva).pipe(
       map(res => res),

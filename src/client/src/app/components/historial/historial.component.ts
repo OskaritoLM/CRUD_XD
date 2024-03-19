@@ -1,17 +1,12 @@
-import { Component, OnInit, Input, ViewChild,ElementRef} from '@angular/core';
-import { ReservasService } from 'src/app/services/reserva.service';
-import { ReservaModel } from 'src/app/models/datosPModel';
-import { ToastrService } from 'ngx-toastr';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-historial',
   templateUrl: './historial.component.html',
   styleUrls: ['./historial.component.css']
 })
-export class HistorialComponent  implements OnInit{
-  @ViewChild('noReservaInput')
-  noReservaInput!: ElementRef<HTMLInputElement>;
-  reservaEncontrada: ReservaModel = new ReservaModel();
+export class HistorialComponent {
+
 
   constructor(private reservasService: ReservasService,private toastrService:ToastrService) { }
   ngOnInit(): void {
