@@ -12,6 +12,7 @@
   "dependencies": {
     "@angular/animations": "^16.2.0",
     "@angular/common": "^16.2.0",
+    "@angular/compiler": "^16.2.0",
     "@angular/core": "^16.2.0",
     "@angular/forms": "^16.2.0",
     "@angular/platform-browser": "^16.2.0",
@@ -25,9 +26,14 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.4",
+<<<<<<< HEAD
     "@angular/cli": "^13xº.2.4",
     "@angular/compiler": "^13.2.4",
     "@angular/compiler-cli": "^13.2.4",
+=======
+    "@angular/cli": "^16.2.4",
+    "@angular/compiler-cli": "^16.2.0",
+>>>>>>> parent of 936f7708 (filtro reserva)
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",

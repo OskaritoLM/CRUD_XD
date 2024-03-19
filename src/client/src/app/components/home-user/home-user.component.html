@@ -52,63 +52,61 @@
           <!-- Agrega más elementos del carrusel según sea necesario -->
       </div>
   </div>
+  
   <div class="container">
     <div class="card mx-auto mt-5 custom-card" style="max-width: 800px;">
-        <div class="card-body">
-            <p class="card-text fs-6">Tu destino para alquilar el auto perfecto.</p>
-            <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()" class="row g-3">
-                <div class="col-md-6">
-                    <label for="lugarSalida" class="form-label fs-6">Lugar de Salida:</label>
-                    <input type="text" class="form-control" id="lugarSalida" name="lugarSalida" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="fechaSalida" class="form-label fs-6">Salida:</label>
-                    <input type="date" class="form-control" id="fechaSalida" name="fechaSalida" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="horaSalida" class="form-label fs-6">Hora:</label>
-                    <input type="time" class="form-control" id="horaSalida" name="horaSalida" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="fechaEntrega" class="form-label fs-6">Entrega:</label>
-                    <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="horaEntrega" class="form-label fs-6">Hora:</label>
-                    <input type="time" class="form-control" id="horaEntrega" name="horaEntrega" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="edad" class="form-label fs-6">Edad:</label>
-                    <input type="number" class="form-control" id="edad" name="edad" required min="21">
-                </div>
-                <div class="col-auto">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="usarCupon" formControlName="usarCupon">
-                        <label class="form-check-label fs-6" for="usarCupon">Cupón:</label>
-                    </div>
-                </div>
-                <div class="col-md-6" *ngIf="reservaForm.get('usarCupon')?.value">
-                    <label for="cuponCodigo" class="form-label fs-6">Código del Cupón:</label>
-                    <input type="text" class="form-control" id="cuponCodigo" name="cuponCodigo">
-                </div>
-                <div class="col-md-12">
-                    <button type="submit" class="btn btn-danger btn-lg">
-                        Reservar 
-                    </button>
-                </div>
-            </form>
-        </div>
+      <div class="card-body">
+        <p class="card-text fs-6">Tu destino para alquilar el auto perfecto.</p>
+        <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()" class="row g-3 align-items-center">
+          <div class="col-md-4">
+            <label for="lugarSalida" class="form-label fs-6">Lugar de Salida:</label>
+            <input type="text" class="form-control" id="lugarSalida" name="lugarSalida" required>
+          </div>
+          <div class="col-md-3">
+            <label for="fechaSalida" class="form-label fs-6">Salida:</label>
+            <div class="input-group">
+              <input type="date" class="form-control" id="fechaSalida" name="fechaSalida" required>
+              <input type="time" class="form-control" id="horaSalida" name="horaSalida" required>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="fechaEntrega" class="form-label fs-6">Entrega:</label>
+            <div class="input-group">
+              <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+              <input type="time" class="form-control" id="horaEntrega" name="horaEntrega" required>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <label for="edad" class="form-label fs-6">Edad:</label>
+            <input type="number" class="form-control" id="edad" name="edad" required min="21">
+          </div>
+          <div class="col-auto">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="usarCupon" formControlName="usarCupon">
+              <label class="form-check-label fs-6" for="usarCupon">Cupón:</label>
+            </div>
+          </div>
+          <div class="col" *ngIf="reservaForm.get('usarCupon')?.value">
+            <label for="cuponCodigo" class="form-label fs-6">Código del Cupón:</label>
+            <input type="text" class="form-control" id="cuponCodigo" name="cuponCodigo">
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary btn-lg">
+              Reservar Auto <i class="fas fa-car"></i>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
-
+  </div>
   
-  <div class="row mt-4">
+  <div class="row mt-5">
     <div class="col-md-6">
         <img src="https://media.istockphoto.com/id/528474010/es/foto/recuerdos-de-hacer.jpg?s=612x612&w=0&k=20&c=UMcoCWmqpi2EVYP5nU__6SsJq-cZhHjthEb7IRtXGnA="
             class="img-fluid rounded-image" alt="Imagen de Recuerdos">
     </div>
     <div class="col-md-6">
-        <h2 class="text">Descubre todo lo que tenemos para ti en RentAuto</h2>
+        <h2>Descubre todo lo que tenemos para ti en RentAuto</h2>
         <p>Nuestros servicios de alquiler de autos están diseñados para brindarte la mejor experiencia de viaje posible. Desde coches económicos hasta vehículos de lujo, tenemos una amplia variedad de opciones para adaptarnos a tus necesidades. Con precios competitivos y una atención al cliente excepcional, estamos aquí para hacer que tu próximo viaje sea inolvidable. ¡Reserva con nosotros hoy y comienza tu aventura!</p>
     </div>
 </div>
