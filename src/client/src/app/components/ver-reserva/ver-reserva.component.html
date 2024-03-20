@@ -1,0 +1,62 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">RentAuto</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/autos-admin">autos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lugar-admin">Lugar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pais">Pais</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/estado">Estado</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/ciudad">Ciudad</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Detalles de la Reserva -->
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center">Detalles de la Reserva</h2>
+            <div *ngIf="reserva">
+              <p><strong>ID:</strong> {{ reserva._id }}</p>
+              <p><strong>Cliente:</strong> {{ reserva.cliente }}</p>
+              <p><strong>Correo:</strong> {{ reserva.correo }}</p>
+              <p><strong>Teléfono:</strong> {{ reserva.telefono }}</p>
+              <p><strong>Lugar de salida:</strong> {{ reserva.lugarS }}</p>
+              <p><strong>Fecha de salida:</strong> {{ reserva.fechasS | date }}</p>
+              <p><strong>Hora de salida:</strong> {{ reserva.horasS }}</p>
+              <p><strong>Lugar de llegada:</strong> {{ reserva.lugarE }}</p>
+              <p><strong>Fecha de llegada:</strong> {{ reserva.fechasE | date }}</p>
+              <p><strong>Hora de llegada:</strong> {{ reserva.horasE }}</p>
+              <p><strong>Estatus:</strong> {{ reserva.estatusR }}</p>
+              <p><strong>Total:</strong> {{ reserva.total }}</p>
+              <p><strong>Vehículo:</strong> {{ reserva.vehiculo }}</p>
+            </div>
+            <button class="btn btn-primary d-block mx-auto" (click)="volver()">Volver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

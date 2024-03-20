@@ -27,6 +27,7 @@ import { EmpresaComponent } from './components/empresa/empresa.component';
 import { AutosAdminComponent } from './components/autos-admin/autos-admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
+import { VerReservaComponent } from './components/ver-reserva/ver-reserva.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
 
     AutosAdminComponent,
       LoginComponent,
+      VerReservaComponent,
 
   ],
   imports: [

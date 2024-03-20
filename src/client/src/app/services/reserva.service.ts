@@ -34,12 +34,12 @@ export class ReservasService {
     );
   }
 
-  getReservaById(id: string){
+  getReservaById(id: string) {
     return this.http.get<ReservaModel>(`${this.domain}/api/Reserva/${id}`).pipe(
-      map(res => res),
       catchError(this.handleError)
     );
   }
+  
 
   updateReserva(newReserva: ReservaModel) {
     return this.http.put(`${this.domain}/api/Reserva/${newReserva._id}`, newReserva).pipe(
