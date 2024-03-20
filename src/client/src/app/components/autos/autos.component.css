@@ -61,34 +61,9 @@ body {
   margin-bottom: 20px;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-  
-}
 
-.dropbtn {
-  background-color: #A52A2A;
-  color: white;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
 .dropbtn:hover, .dropbtn:focus {
   background-color: #8B0000;
-}
-
-.dropdown-content {
-  display: flex; 
-  flex-wrap: wrap; 
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  z-index: 1;
-  border-radius: 5px;
 }
 
 .dropdown-content button {
@@ -186,6 +161,9 @@ body {
   margin-bottom: 20px;
 }
 
+.search-container  p{
+  margin-right: 10px;
+}
 
 .dropdown {
   position: relative;
