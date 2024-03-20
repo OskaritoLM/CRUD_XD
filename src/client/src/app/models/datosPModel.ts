@@ -39,6 +39,7 @@ export class ReservaModel {
     estatusR: string = "";
     total: string = "";
     vehiculo: string = "";
+    licencia: string = "";
 }
 
 

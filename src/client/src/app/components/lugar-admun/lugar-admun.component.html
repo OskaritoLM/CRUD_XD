@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="city-select">Selecciona una Ciudad:</label>
+                          <label for="city-select">Selecciona una Estado:</label>
                           <select class="form-control" id="city-select" formControlName="ciudad" (change)="filtrarEstadosPorCiudad($event)">
                             <option value="" disabled selected>Elige una ciudad</option>
                             <option *ngFor="let ciudad of ciudades" [value]="ciudad.nombre">{{ ciudad.nombre }}</option>
@@ -68,7 +68,7 @@
                         </div>
                         
                         <div class="form-group">
-                          <label for="state-select">Selecciona un Estado:</label>
+                          <label for="state-select">Selecciona un Cuidad:</label>
                           <select class="form-control" id="state-select" formControlName="Estado" (change)="filtrarEstadosPorEstado($event)">
                             <option value="" disabled selected>Elige un estado</option>
                             <option *ngFor="let estado of estados" [value]="estado.nombre">{{ estado.nombre }}</option>
