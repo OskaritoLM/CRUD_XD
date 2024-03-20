@@ -28,9 +28,9 @@ router.get('/Reserva/:id', (req, res, next) => {
 router.post('/Reserva', (req, res, next) => {
     const reservaData = req.body;
 
-    if (!reservaData.cliente || !reservaData.correo || !reservaData.telefono || !reservaData.lugarS || !reservaData.fechasS || !reservaData.horasS || !reservaData.FechasE || !reservaData.HorasE || !reservaData.lugarE || !reservaData.estatusR || !reservaData.total || !reservaData.vehiculo) {
+    if (!reservaData.cliente || !reservaData.correo || !reservaData.telefono || !reservaData.lugarS || !reservaData.fechasS || !reservaData.horasS || !reservaData.fechasE || !reservaData.horasE || !reservaData.lugarE || !reservaData.estatusR || !reservaData.total || !reservaData.vehiculo) {
         return res.status(400).json({
-            error: 'Bad data - cliente, correo, telefono, lugarS, fechasS, horasS, FechasE, HorasE, lugarE, estatusR, total and vehiculo are required fields'
+            error: 'Bad data - cliente, correo, telefono, lugarS, fechasS, horasS, fechasE, horasE, lugarE, estatusR, total and vehiculo are required fields'
         });
     } else {
         db.Reserva.save(reservaData, (err, savedReserva) => {
@@ -63,7 +63,7 @@ router.delete('/Reserva/:id', (req, res, next) => {
 // Actualizar una reserva por ID
 router.put('/Reserva/:id', (req, res, next) => {
     const reservaId = req.params.id;
-    const { cliente, correo, telefono, lugarS, fechasS, horasS, FechasE, HorasE, lugarE, estatusR, total, vehiculo} = req.body;
+    const { cliente, correo, telefono, lugarS, fechasS, horasS, fechasE, horasE, lugarE, estatusR, total, vehiculo} = req.body;
 
     if (!ObjectId.isValid(reservaId)) {
         return res.status(400).json({ error: 'Invalid Reserva ID' });
@@ -77,8 +77,8 @@ router.put('/Reserva/:id', (req, res, next) => {
             telefono, 
             lugarS, fechasS, 
             horasS, 
-            FechasE, 
-            HorasE, 
+            fechasE, 
+            horasE, 
             lugarE, 
             estatusR, 
             total,
