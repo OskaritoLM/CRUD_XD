@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReservaModel } from '../../models/datosPModel';
 import { ReservasService } from '../../services/reserva.service';
 
@@ -10,7 +11,7 @@ import { ReservasService } from '../../services/reserva.service';
 export class HomeAdminComponent implements OnInit {
   reservas: ReservaModel[] = [];
 
-  constructor(private reservasService: ReservasService) { }
+  constructor(private reservasService: ReservasService, private router: Router) { }
 
   ngOnInit(): void {
     this.cargarReservas();
@@ -29,27 +30,6 @@ export class HomeAdminComponent implements OnInit {
   }
 
   verReserva(reserva: ReservaModel) {
-    // Construir el mensaje con los detalles de la reserva
-    const mensaje = `
-      Detalles de la reserva:
-      -----------------------
-      Cliente: ${reserva.cliente}
-      Correo: ${reserva.correo}
-      Teléfono: ${reserva.telefono}
-      Lugar de salida: ${reserva.lugarS}
-      Fecha de salida: ${new Date(reserva.fechasS).toLocaleDateString()}
-      Hora de salida: ${reserva.horasS}
-      Lugar de llegada: ${reserva.lugarE}
-      Fecha de llegada: ${new Date(reserva.fechasE).toLocaleDateString()}
-      Hora de llegada: ${reserva.horasE}
-      Estatus: ${reserva.estatusR}
-      Total: ${reserva.total}
-      Vehículo: ${reserva.vehiculo}
-    `;
-  
-    // Mostrar la alerta con los detalles de la reserva
-    alert(mensaje);
+    this.router.navigate(['/ver-reserva', reserva._id]);
   }
-  
-  
 }

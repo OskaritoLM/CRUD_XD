@@ -3,15 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { AutosComponent } from './components/autos/autos.component';
 import { CiudadComponent } from './components/ciudad/ciudad.component';
 import { EstadoComponent } from './components/estado/estado.component';
+import { HistorialComponent } from './components/historial/historial.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { PaisComponent } from './components/pais/pais.component';
-import { ReservaComponent } from './components/reserva/reserva.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
-import { HistorialComponent } from './components/historial/historial.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
+import { VerReservaComponent } from './components/ver-reserva/ver-reserva.component';
 
-import { EmpresaComponent } from './components/empresa/empresa.component';
 import { AutosAdminComponent } from './components/autos-admin/autos-admin.component';
+import { EmpresaComponent } from './components/empresa/empresa.component';
 import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
 
 
@@ -27,6 +28,8 @@ const routes: Routes = [
     path : 'home',
     component : HomeAdminComponent
   },
+  { path: 'ver-reserva/:id', 
+  component: VerReservaComponent },
   {
     path : 'user',
     component : HomeUserComponent
