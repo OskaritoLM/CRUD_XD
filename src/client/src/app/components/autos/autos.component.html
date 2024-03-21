@@ -1,89 +1,160 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container-fluid">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLBAR</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5eYuM2Uwo34Kwjw3X6fR2JdhRcz6AObFQvEw4xPhnyuz9MqQJws+3" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
       <a class="navbar-brand" href="#">MLBAR</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/user">Home</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/user/historial">Tu Reserva</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/user/promociones">Promociones</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/user/autos">Autos</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/user/empresa">Empresa</a>
-              </li>
-          </ul>
-      </div>
-  </div>
-</nav>
-
-<div class="album py-5 bg-body-tertiary">
-  <div class="container">
-
-    <div class="title">
-      <h3>Catalogo de Autos</h3>
-    </div>
-
-    <div class="search-box">
-      <div class="search-container">
-        <p>Buscar autos por: </p>
-        <div class="dropdown">
-          <button class="dropbtn">Seleccionar Categoría</button>
-          <div class="dropdown-content">
-            <button class="category-btn" (click)="obtenerDatosAutos()">Todo</button>
-            <button class="category-btn" (click)="filtrarPorCategoria('Económico')">Económico</button>
-            <button class="category-btn" (click)="filtrarPorCategoria('Estándar')">Estándar</button>
-            <button class="category-btn" (click)="filtrarPorCategoria('SUV')">SUV/Todo Terreno</button>
-            <button class="category-btn" (click)="filtrarPorCategoria('Pick-up')">Camionetas</button>
-            <button class="category-btn" (click)="filtrarPorCategoria('Deportivo')">Deportivo</button>
-            <button class="category-btn" (click)="filtrarPorCategoria('Lujoso')">Lujoso</button>
-            <button class="category-btn" (click)="filtrarPorCategoria('Convertible')">Convertible</button>
-          </div>
-        </div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/user">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/historial">Tu Reserva</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/promociones">Promociones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/autos">Autos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/empresa">Empresa</a>
+          </li>
+        </ul>
       </div>
     </div>
-    
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <div class="col" *ngFor="let auto of autosFiltrados">
-      </div>
-    </div>
-    
-    
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <div class="col" *ngFor="let auto of autosFiltrados">
-        <div class="card shadow-sm">
-          <img [src]="auto.imagen" class="card-img-top" alt="Imagen de auto">
-          <div class="card-body">
-            <h3 class="card-title">{{ auto.marca }} {{ auto.modelo }}</h3>
-            <h6 class="card-subtitle mb-2 text-muted">Modelo: {{ auto.anio }}</h6>
-            <div class="car-info">
-              <div class="row">
-                <div class="col-sm-6">
-                  <p><i class="fas fa-user"></i> <strong>Asientos:</strong> {{ auto.asientos }}</p>
-                  <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> {{ auto.maletas }}</p>
-                  <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> {{ auto.tipoCaja }}</p>
-                </div>
-                <div class="col-sm-6">
-                  <p><i class="fas fa-car"></i> <strong>Placas:</strong> {{ auto.placas }}</p>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="album py-5 bg-body-tertiary">
+          <div class="container">
+            <div class="title">
+              <h3>Catalogo de Autos</h3>
+            </div>
+            <div class="search-box">
+              <div class="search-container">
+                <p>Buscar autos por: </p>
+                <div class="dropdown">
+                  <button class="dropbtn">Seleccionar Categoría</button>
+                  <div class="dropdown-content">
+                    <button class="category-btn" (click)="obtenerDatosAutos()">Todo</button>
+                    <button class="category-btn" (click)="filtrarPorCategoria('Económico')">Económico</button>
+                    <button class="category-btn" (click)="filtrarPorCategoria('Estándar')">Estándar</button>
+                    <button class="category-btn" (click)="filtrarPorCategoria('SUV')">SUV/Todo Terreno</button>
+                    <button class="category-btn" (click)="filtrarPorCategoria('Pick-up')">Camionetas</button>
+                    <button class="category-btn" (click)="filtrarPorCategoria('Deportivo')">Deportivo</button>
+                    <button class="category-btn" (click)="filtrarPorCategoria('Lujoso')">Lujoso</button>
+                    <button class="category-btn" (click)="filtrarPorCategoria('Convertible')">Convertible</button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="text-center mt-3">
-              <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> Reservar Auto</a>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              <div class="col" *ngFor="let auto of autosFiltrados">
+                <div class="card shadow-sm">
+                  <img [src]="auto.imagen" class="card-img-top" alt="Imagen de auto">
+                  <div class="card-body">
+                    <h3 class="card-title">{{ auto.marca }} {{ auto.modelo }}</h3>
+                    <h6 class="card-subtitle mb-2 text-muted">Modelo: {{ auto.anio }}</h6>
+                    <div class="car-info">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <p><i class="fas fa-user"></i> <strong>Asientos:</strong> {{ auto.asientos }}</p>
+                          <p><i class="fas fa-suitcase"></i> <strong>Maletas:</strong> {{ auto.maletas }}</p>
+                          <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> {{ auto.tipoCaja }}</p>
+                        </div>
+                        <div class="col-sm-6">
+                          <p><i class="fas fa-car"></i> <strong>Placas:</strong> {{ auto.placas }}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center mt-3">
+                      <a href="/user" class="btn btn-danger btn-lg"><i class="fas fa-book"></i> ReservarAuto</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-md-4" style="padding: 30px;">
+        <div class="card mx-auto mt-5 custom-card" style="max-width: 800px;">
+          <div class="card-body">
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label for="lugarSalida" class="form-label fs-6">Lugar de Salida:</label>
+                <select class="form-control" id="lugarSalida" name="lugarSalida" required formControlName="lugarSalida">
+                  <option value="">Selecciona un lugar</option>
+                  <option *ngFor="let lugar of lugares" [value]="lugar.nombre">{{ lugar.nombre }}</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="fechaSalida" class="form-label fs-6">Salida:</label>
+                <input type="date" class="form-control" id="fechaSalida" name="fechaSalida" required>
+              </div>
+              <div class="col-md-3">
+                <label for="horaSalida" class="form-label fs-6">Hora:</label>
+                <input type="time" class="form-control" id="horaSalida" name="horaSalida" required>
+              </div>
+              <div class="col-md-6">
+                <label for="lugarEntrega" class="form-label fs-6">Lugar de Entrega:</label>
+                <select class="form-control" id="lugarEntrega" name="lugarEntrega" required formControlName="lugarEntrega">
+                  <option value="">Selecciona un lugar</option>
+                  <option *ngFor="let lugar of lugares" [value]="lugar.nombre">{{ lugar.nombre }}</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="fechaEntrega" class="form-label fs-6">Entrega:</label>
+                <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+              </div>
+              <div class="col-md-3">
+                <label for="horaEntrega" class="form-label fs-6">Hora:</label>
+                <input type="time" class="form-control" id="horaEntrega" name="horaEntrega" required>
+              </div>
+              <div class="col-md-3">
+                <label for="edad" class="form-label fs-6">Edad:</label>
+                <input type="number" class="form-control" id="edad" name="edad" required min="21">
+              </div>
+              <div class="col-auto">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="usarCupon" formControlName="usarCupon">
+                  <label class="form-check-label fs-6" for="usarCupon">Cupón:</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="cuponCodigo" class="form-label fs-6">Código del Cupón:</label>
+                <input type="text" class="form-control" id="cuponCodigo" name="cuponCodigo">
+              </div>
+              <div class="col-md-9">
+                <button style="width: 400px; border: 10px;" type="submit" class="btn btn-danger btn-lg" (click)="agregarReserva()">
+                  Hacer Reserva
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
     </div>
 
-    
+
