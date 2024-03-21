@@ -35,11 +35,13 @@
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
+        <br>
+        <h2 class="card-title text-center">Detalles de la Reserva</h2>
+        <br>
         <div class="card">
           <div class="card-body">
-            <h2 class="card-title text-center">Detalles de la Reserva</h2>
             <div *ngIf="reserva">
-              <p><strong>ID:</strong> {{ reserva._id }}</p>
+              <p><strong>Numero Reserva:</strong> {{ reserva._id }}</p>
               <p><strong>Cliente:</strong> {{ reserva.cliente }}</p>
               <p><strong>Correo:</strong> {{ reserva.correo }}</p>
               <p><strong>Teléfono:</strong> {{ reserva.telefono }}</p>
