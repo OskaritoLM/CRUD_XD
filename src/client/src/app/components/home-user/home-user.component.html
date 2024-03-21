@@ -50,56 +50,65 @@
               </div>
           </div>
       </div>
-  </div>
-  <div class="container">
+  </div><div class="container">
     <div class="card mx-auto mt-5 custom-card" style="max-width: 800px;">
-        <div class="card-body">
-            <p class="card-text fs-6">Tu destino para alquilar el auto perfecto.</p>
-            <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()" class="row g-3">
-                <div class="col-md-6">
-                    <label for="lugarSalida" class="form-label fs-6">Lugar de Salida:</label>
-                    <input type="text" class="form-control" id="lugarSalida" name="lugarSalida" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="fechaSalida" class="form-label fs-6">Salida:</label>
-                    <input type="date" class="form-control" id="fechaSalida" name="fechaSalida" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="horaSalida" class="form-label fs-6">Hora:</label>
-                    <input type="time" class="form-control" id="horaSalida" name="horaSalida" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="fechaEntrega" class="form-label fs-6">Entrega:</label>
-                    <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="horaEntrega" class="form-label fs-6">Hora:</label>
-                    <input type="time" class="form-control" id="horaEntrega" name="horaEntrega" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="edad" class="form-label fs-6">Edad:</label>
-                    <input type="number" class="form-control" id="edad" name="edad" required min="21">
-                </div>
-                <div class="col-auto">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="usarCupon" formControlName="usarCupon">
-                        <label class="form-check-label fs-6" for="usarCupon">Cupón:</label>
-                    </div>
-                </div>
-                <div class="col-md-9" *ngIf="reservaForm.get('usarCupon')?.value" style="padding: 10px;">
-                    <label for="cuponCodigo" class="form-label fs-6">Código del Cupón:</label>
-                    <input type="text" class="form-control" id="cuponCodigo" name="cuponCodigo">
-                </div>
-            </form>
-            <div class="col-md-9">
-                <button style="width: 735px; border: 10px;" type="submit" class="btn btn-danger btn-lg">
-                    Reservar Auto
-                </button>
+      <div class="card-body">
+        <p class="card-text fs-6">Tu destino para alquilar el auto perfecto.</p>
+        <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()" class="row g-3">
+          <div class="col-md-6">
+            <label for="lugarSalida" class="form-label fs-6">Lugar de Salida:</label>
+            <select class="form-control" id="lugarSalida" name="lugarSalida" required formControlName="lugarSalida">
+              <option value="">Selecciona un lugar</option>
+              <option *ngFor="let lugar of lugares" [value]="lugar.nombre">{{ lugar.nombre }}</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="fechaSalida" class="form-label fs-6">Salida:</label>
+            <input type="date" class="form-control" id="fechaSalida" name="fechaSalida" required>
+          </div>
+          <div class="col-md-3">
+            <label for="horaSalida" class="form-label fs-6">Hora:</label>
+            <input type="time" class="form-control" id="horaSalida" name="horaSalida" required>
+          </div>
+          <div class="col-md-6">
+            <label for="lugarEntrega" class="form-label fs-6">Lugar de Entrega:</label>
+            <select class="form-control" id="lugarEntrega" name="lugarEntrega" required formControlName="lugarEntrega">
+              <option value="">Selecciona un lugar</option>
+              <option *ngFor="let lugar of lugares" [value]="lugar.nombre">{{ lugar.nombre }}</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="fechaEntrega" class="form-label fs-6">Entrega:</label>
+            <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+          </div>
+          <div class="col-md-3">
+            <label for="horaEntrega" class="form-label fs-6">Hora:</label>
+            <input type="time" class="form-control" id="horaEntrega" name="horaEntrega" required>
+          </div>
+          <div class="col-md-3">
+            <label for="edad" class="form-label fs-6">Edad:</label>
+            <input type="number" class="form-control" id="edad" name="edad" required min="21">
+          </div>
+          <div class="col-auto">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="usarCupon" formControlName="usarCupon">
+              <label class="form-check-label fs-6" for="usarCupon">Cupón:</label>
             </div>
+          </div>
+          <div class="col-md-6" *ngIf="reservaForm.get('usarCupon')?.value" style="padding: 10px;">
+            <label for="cuponCodigo" class="form-label fs-6">Código del Cupón:</label>
+            <input type="text" class="form-control" id="cuponCodigo" name="cuponCodigo">
+          </div>
+        </form>
+        <div class="col-md-9">
+          <button style="width: 735px; border: 10px;" type="submit" class="btn btn-danger btn-lg" (click)="onSubmit()">
+            Reservar Auto
+          </button>
         </div>
+      </div>
     </div>
-</div>
-
+  </div>
+  
   
   <div class="row mt-5">
     <div class="col-md-6">

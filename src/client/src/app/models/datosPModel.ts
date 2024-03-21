@@ -39,9 +39,27 @@ export class ReservaModel {
     estatusR: string = "";
     total: string = "";
     vehiculo: string = "";
-    licencia: string = "";
+    //licencia: string = "";
 }
 
+
+// export class ReservaLugarModel {
+//   lugarS: string = "";
+//   fechasS: Date = new Date();
+//   horasS: string = "";
+//   fechasE: Date = new Date();
+//   horasE: string = "";
+//   lugarE: string = "";
+// }
+
+// export class ReservaLugarModel {
+//   lugarS: string = "";
+//   fechasS: Date = new Date();
+//   horasS: string = "";
+//   fechasE: Date = new Date();
+//   horasE: string = "";
+//   lugarE: string = "";
+// }
 
 export interface AutoModel {
     _id: string;

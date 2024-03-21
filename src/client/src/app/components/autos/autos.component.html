@@ -40,6 +40,7 @@
         <div class="dropdown">
           <button class="dropbtn">Seleccionar Categoría</button>
           <div class="dropdown-content">
+            <button class="category-btn" (click)="obtenerDatosAutos()">Todo</button>
             <button class="category-btn" (click)="filtrarPorCategoria('Económico')">Económico</button>
             <button class="category-btn" (click)="filtrarPorCategoria('Estándar')">Estándar</button>
             <button class="category-btn" (click)="filtrarPorCategoria('SUV')">SUV/Todo Terreno</button>
@@ -73,7 +74,6 @@
                   <p><i class="fas fa-cogs"></i> <strong>Tipo de Caja:</strong> {{ auto.tipoCaja }}</p>
                 </div>
                 <div class="col-sm-6">
-                  <!-- <p><i class="fas fa-snowflake"></i> <strong>Aire Acondicionado:</strong> {{ auto.aireAcondicionado }}</p> -->
                   <p><i class="fas fa-car"></i> <strong>Placas:</strong> {{ auto.placas }}</p>
                 </div>
               </div>
@@ -85,4 +85,5 @@
         </div>
       </div>
     </div>
+
     
