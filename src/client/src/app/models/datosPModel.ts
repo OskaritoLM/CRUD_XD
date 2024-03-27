@@ -36,9 +36,10 @@ export class ReservaModel {
     fechasE: Date = new Date();
     horasE: string = "";
     lugarE: string = "";
-    estatusR: string = "";
+    estatusR: string = "proceso";
     total: string = "";
     vehiculo: string = "";
+    cupon:string = "";
     //licencia: string = "";
 }
 
