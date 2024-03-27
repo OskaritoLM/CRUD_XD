@@ -43,6 +43,16 @@ export class ReservaModel {
     //licencia: string = "";
 }
 
+export class UsuarioModel {
+  _id?: string;
+  nombre: string = "";
+  apellidos: string = "";
+  correo: string = "";
+  contrasena: string = "";
+  telefono: number = 0;
+  lugarS: string = "";
+  rol: string = "";
+}
 
 export class ReservaLugarModel {
    lugarS: string = "";

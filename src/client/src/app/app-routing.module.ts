@@ -14,6 +14,7 @@ import { VerReservaComponent } from './components/ver-reserva/ver-reserva.compon
 import { AutosAdminComponent } from './components/autos-admin/autos-admin.component';
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -25,7 +26,7 @@ const routes: Routes = [
     pathMatch : 'full'
   },
   {
-    path : 'home',
+    path : 'home-admin',
     component : HomeAdminComponent
   },
   { path: 'ver-reserva/:id', 
@@ -78,6 +79,11 @@ const routes: Routes = [
   {
     path: 'lugar-admin',
     component: LugarComponent
+  },
+  
+  {
+    path: 'home',
+    component: LoginComponent
   }
 
 
