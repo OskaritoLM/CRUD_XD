@@ -28,6 +28,7 @@ import { AutosAdminComponent } from './components/autos-admin/autos-admin.compon
 import { LoginComponent } from './components/login/login.component';
 import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
 import { VerReservaComponent } from './components/ver-reserva/ver-reserva.component';
+import { EnviaDatosService } from './services/enviadatos.service';
 
 
 @NgModule({
@@ -60,7 +61,7 @@ import { VerReservaComponent } from './components/ver-reserva/ver-reserva.compon
     BrowserAnimationsModule, 
     ToastrModule.forRoot() 
   ],
-  providers: [DatosPService, ReservasService, AutosService],
+  providers: [DatosPService, ReservasService, AutosService, EnviaDatosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

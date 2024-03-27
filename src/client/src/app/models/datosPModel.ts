@@ -36,7 +36,7 @@ export class ReservaModel {
     fechasE: Date = new Date();
     horasE: string = "";
     lugarE: string = "";
-    estatusR: string = "proceso";
+    estatusR: string = "";
     total: string = "";
     vehiculo: string = "";
     cupon:string = "";
@@ -44,23 +44,15 @@ export class ReservaModel {
 }
 
 
-// export class ReservaLugarModel {
-//   lugarS: string = "";
-//   fechasS: Date = new Date();
-//   horasS: string = "";
-//   fechasE: Date = new Date();
-//   horasE: string = "";
-//   lugarE: string = "";
-// }
+export class ReservaLugarModel {
+   lugarS: string = "";
+   fechasS: Date = new Date();
+   horasS: string = "";
+   fechasE: Date = new Date();
+   horasE: string = "";
+   lugarE: string = "";
+ }
 
-// export class ReservaLugarModel {
-//   lugarS: string = "";
-//   fechasS: Date = new Date();
-//   horasS: string = "";
-//   fechasE: Date = new Date();
-//   horasE: string = "";
-//   lugarE: string = "";
-// }
 
 export interface AutoModel {
     _id: string;

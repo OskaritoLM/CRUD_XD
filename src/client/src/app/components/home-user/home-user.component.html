@@ -56,40 +56,36 @@
         <p class="card-text fs-6">Tu destino para alquilar el auto perfecto.</p>
         <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()" class="row g-3">
           <div class="col-md-6">
-            <label for="lugarSalida" class="form-label fs-6">Lugar de Salida:</label>
-            <select class="form-control" id="lugarSalida" name="lugarSalida" required formControlName="lugarSalida">
+            <label for="lugarS" class="form-label fs-6">Lugar de Salida:</label>
+            <select class="form-control" id="lugarS" name="lugarS" required formControlName="lugarS">
               <option value="">Selecciona un lugar</option>
               <option *ngFor="let lugar of lugares" [value]="lugar.nombre">{{ lugar.nombre }}</option>
             </select>
           </div>
           <div class="col-md-3">
-            <label for="fechaSalida" class="form-label fs-6">Salida:</label>
-            <input type="date" class="form-control" id="fechaSalida" name="fechaSalida" required>
+            <label for="fechasS" class="form-label fs-6">Salida:</label>
+            <input type="date" class="form-control" id="fechasS" name="fechasS" required formControlName="fechasS">
           </div>
           <div class="col-md-3">
-            <label for="horaSalida" class="form-label fs-6">Hora:</label>
-            <input type="time" class="form-control" id="horaSalida" name="horaSalida" required>
+            <label for="horasS" class="form-label fs-6">Hora:</label>
+            <input type="time" class="form-control" id="horasS" name="horasS" required formControlName="horasS">
           </div>
           <div class="col-md-6">
-            <label for="lugarEntrega" class="form-label fs-6">Lugar de Entrega:</label>
-            <select class="form-control" id="lugarEntrega" name="lugarEntrega" required formControlName="lugarEntrega">
+            <label for="lugarE" class="form-label fs-6">Lugar de Entrega:</label>
+            <select class="form-control" id="lugarE" name="lugarE" required formControlName="lugarE">
               <option value="">Selecciona un lugar</option>
               <option *ngFor="let lugar of lugares" [value]="lugar.nombre">{{ lugar.nombre }}</option>
             </select>
           </div>
           <div class="col-md-3">
-            <label for="fechaEntrega" class="form-label fs-6">Entrega:</label>
-            <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+            <label for="fechasE" class="form-label fs-6">Entrega:</label>
+            <input type="date" class="form-control" id="fechasE" name="fechasE" required formControlName="fechasE">
           </div>
           <div class="col-md-3">
-            <label for="horaEntrega" class="form-label fs-6">Hora:</label>
-            <input type="time" class="form-control" id="horaEntrega" name="horaEntrega" required>
+            <label for="horasE" class="form-label fs-6">Hora:</label>
+            <input type="time" class="form-control" id="horasE" name="horasE" required formControlName="horasE">
           </div>
-          <div class="col-md-3">
-            <label for="edad" class="form-label fs-6">Edad:</label>
-            <input type="number" class="form-control" id="edad" name="edad" required min="21">
-          </div>
-          <div class="col-auto">
+          <!-- <div class="col-auto">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="usarCupon" formControlName="usarCupon">
               <label class="form-check-label fs-6" for="usarCupon">Cupón:</label>
@@ -98,12 +94,10 @@
           <div class="col-md-6" *ngIf="reservaForm.get('usarCupon')?.value" style="padding: 10px;">
             <label for="cuponCodigo" class="form-label fs-6">Código del Cupón:</label>
             <input type="text" class="form-control" id="cuponCodigo" name="cuponCodigo">
-          </div>
+          </div>  -->
         </form>
         <div class="col-md-9">
-          <button style="width: 735px; border: 10px;" type="submit" class="btn btn-danger btn-lg" (click)="onSubmit()">
-            Reservar Auto
-          </button>
+          <button style="width: 735px; border: 10px;" type="submit" class="btn btn-danger btn-lg"(click)="onSubmit()" routerLink="/user/autos">Reservar Auto</button>
         </div>
       </div>
     </div>
