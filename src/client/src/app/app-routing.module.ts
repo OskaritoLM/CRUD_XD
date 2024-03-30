@@ -84,7 +84,7 @@ const routes: Routes = [
   
   {
     path: 'home',
-    component: LoginComponent
+    component: HomeUserComponent
   },
   {
     path: 'user/mensaje',

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ReservasService } from './services/reserva.service';
 import {  ReactiveFormsModule } from '@angular/forms';
-
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer'; 
 import { RegisterComponent } from './components/register/register.component';
 import { PaisComponent } from './components/pais/pais.component';
 import { AutosComponent } from './components/autos/autos.component';
@@ -30,8 +30,8 @@ import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
 import { VerReservaComponent } from './components/ver-reserva/ver-reserva.component';
 import { EnviaDatosService } from './services/enviadatos.service';
 import { MensajeComponent } from './components/mensaje/mensaje.component';
-
-
+import { FilterPipe } from './pipes/filter.pipe';
+import { AuthModule } from '@auth0/auth0-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,16 +52,22 @@ import { MensajeComponent } from './components/mensaje/mensaje.component';
       LoginComponent,
       VerReservaComponent,
       MensajeComponent,
+      FilterPipe,
 
   ],
   imports: [
+    NgxExtendedPdfViewerModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule, 
-    ToastrModule.forRoot() 
+    ToastrModule.forRoot(),
+    AuthModule.forRoot({
+      domain: 'mlbar.us.auth0.com',
+      clientId: 'B3GOwce3bfdgPrQE1WByhPTblbpol1iq'
+    })
   ],
   providers: [DatosPService, ReservasService, AutosService, EnviaDatosService],
   bootstrap: [AppComponent]

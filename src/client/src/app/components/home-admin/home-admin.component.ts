@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReservaModel } from '../../models/datosPModel';
 import { ReservasService } from '../../services/reserva.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-home-admin',
@@ -10,13 +11,16 @@ import { ReservasService } from '../../services/reserva.service';
 })
 export class HomeAdminComponent implements OnInit {
   reservas: ReservaModel[] = [];
+  filterpost: string = '';
 
-  constructor(private reservasService: ReservasService, private router: Router) { }
+  constructor(private reservasService: ReservasService,    public auth: AuthService,private router: Router) { }
 
   ngOnInit(): void {
     this.cargarReservas();
   }
-
+  login(){
+    this.auth.logout()
+  }
   cargarReservas() {
     this.reservasService.getReservas().subscribe(
       (data: ReservaModel[]) => {

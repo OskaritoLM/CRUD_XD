@@ -13,7 +13,7 @@ export class AutosAdminComponent implements OnInit {
   autoForm: FormGroup; // Definir FormGroup
   auto: AutoModel[] = [];
   autosFiltrados: AutoModel[] = [];
-
+  filterpost: string = '';
   constructor(
     private autosService: AutosService,
     private fb: FormBuilder,

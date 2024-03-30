@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservaModel } from '../../models/datosPModel';
 import { ReservasService } from '../../services/reserva.service';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @Component({
   selector: 'app-ver-reserva',
   templateUrl: './ver-reserva.component.html',
   styleUrls: ['./ver-reserva.component.css']
 })
+
 export class VerReservaComponent implements OnInit {
   reserva: ReservaModel = new ReservaModel();
 
@@ -33,6 +35,6 @@ export class VerReservaComponent implements OnInit {
   }
 
   volver() {
-    this.router.navigate(['/']); // Navegar de nuevo a la página de inicio
+    this.router.navigate(['/home-admin']); // Navegar de nuevo a la página de inicio
   }
 }

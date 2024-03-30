@@ -5,6 +5,8 @@ import { LugarService } from 'src/app/services/lugar.service';
 import { ReservasService } from 'src/app/services/reserva.service';
 import { EnviaDatosService } from 'src/app/services/enviadatos.service';
 import { ReservaLugarModel } from 'src/app/models/datosPModel';
+import { AuthService } from '@auth0/auth0-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-user',
@@ -21,7 +23,9 @@ export class HomeUserComponent implements OnInit  {
     private fb: FormBuilder,
     private lugarService: LugarService,
     private toastrService: ToastrService,
-    private enviaDatosService: EnviaDatosService
+    private enviaDatosService: EnviaDatosService,
+    public auth: AuthService,
+    private router:Router
   ) {
 
 
@@ -37,7 +41,9 @@ export class HomeUserComponent implements OnInit  {
       // cupon: ['']
     });
   }
-
+  login(){
+    this.auth.loginWithRedirect()
+  }
   onSubmit() {
     if (this.reservaForm?.valid) {
       const edad = this.reservaForm.get('edad')?.value;
@@ -74,7 +80,9 @@ export class HomeUserComponent implements OnInit  {
     this.cargarLugares();
     this.enviaDatosService.reserva$.subscribe((reserva: ReservaLugarModel) => {
       console.log('Reserva seleccionado en el componente de reserva:', reserva);
-    });  }
+    });
+  
+    }
 
   aplicarDescuento(cuponIngresado: string): void {
     let descuentoAplicado: number = 0;
