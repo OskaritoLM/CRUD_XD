@@ -152,7 +152,7 @@
       <input type="file" id="identification" name="identification" class="form-control-file" (change)="onIdentificationFileSelected($event)" formControlName="identification">
     </div>  
     <div class="col-md-12">
-      <button type="submit" class="btn btn-primary" (click)="agregarReserva()">Reservar</button>
+      <button type="submit" class="btn btn-primary" (click)="agregarReserva()" routerLink="/user/mensaje">Reservar</button>
   </div>
   </fieldset>
 </form>

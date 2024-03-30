@@ -1,0 +1,86 @@
+body {
+    padding-top: 56px;
+  }
+  
+  .navbar {
+    background-color: #A52A2A;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #ffffff;
+    padding: 10px;
+  }
+  
+  .navbar-brand:hover,
+  .navbar-nav .nav-link:hover {
+    color: #8d8787;
+  }
+  
+  .navbar-toggler {
+    border-color: #ffffff;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #ffffff;
+  }
+ .background-color {
+    background-color: #f0f0f0; /* Color de fondo del componente */
+    height: 100vh;
+}
+
+.background-color {
+    background-image: url('https://media.istockphoto.com/id/533227308/es/foto/coche-deportivo-rojo-de-velocidad-en-carretera-asfaltada-al-anochecer.jpg?s=612x612&w=0&k=20&c=ynmm5IrR3Yue26s-BFEixqCNu_MKQMoT9qQj5q4P5Z8=');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 80px auto 0;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    color: #333; /* Cambia el color del título */
+}
+
+.content {
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+span {
+    font-weight: bold;
+}
+
+.btn-regresar {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

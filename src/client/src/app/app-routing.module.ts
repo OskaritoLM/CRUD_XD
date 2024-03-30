@@ -15,6 +15,7 @@ import { AutosAdminComponent } from './components/autos-admin/autos-admin.compon
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
 import { LoginComponent } from './components/login/login.component';
+import { MensajeComponent } from './components/mensaje/mensaje.component';
 
 
 
@@ -84,7 +85,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: LoginComponent
-  }
+  },
+  {
+    path: 'user/mensaje',
+    component: MensajeComponent
+  },
 
 
 ]

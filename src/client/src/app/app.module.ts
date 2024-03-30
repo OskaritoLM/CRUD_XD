@@ -29,6 +29,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
 import { VerReservaComponent } from './components/ver-reserva/ver-reserva.component';
 import { EnviaDatosService } from './services/enviadatos.service';
+import { MensajeComponent } from './components/mensaje/mensaje.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { EnviaDatosService } from './services/enviadatos.service';
     AutosAdminComponent,
       LoginComponent,
       VerReservaComponent,
+      MensajeComponent,
 
   ],
   imports: [

@@ -16,6 +16,14 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// Obtener todas las reserva
+router.get('/Reserva', (req, res, next) => {
+    db.Reserva.find((err, Reserva) => {
+        if (err) return next(err);
+        res.json(Reserva);
+    });
+});
+
 // Obtener una reserva por ID
 router.get('/Reserva/:id', (req, res, next) => {
     db.Reserva.findOne({ _id: mongojs.ObjectId(req.params.id) }, (err, Reserva) => {
@@ -32,7 +40,6 @@ router.get('/Reserva/:id', (req, res, next) => {
 
 // Crear una nueva reserva
 router.post('/Reserva', upload.fields([{ name: 'license', maxCount: 1 }, { name: 'identification', maxCount: 1 }]), (req, res, next) => {
-    console.log("Datos req.body ", req.body); 
     const reservaData = req.body;
     const licenseFile = req.files['license'][0]; 
     const identificationFile = req.files['identification'][0]; 
