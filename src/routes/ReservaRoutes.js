@@ -1,15 +1,20 @@
 const router = require('express').Router();
 const mongojs = require('mongojs');
+const multer = require('multer');
 const db = mongojs('RentaAutos', ['Reserva']);
 const { ObjectId } = require('mongojs');
 
-// // Obtener todas las reservas
-router.get('/Reserva', (req, res, next) => {
-     db.Reserva.find((err, Reserva) => {
-         if (err) return next(err);
-         res.json(Reserva);
-     });
- });
+// Configuración de Multer
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/') 
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+});
+
+const upload = multer({ storage: storage });
 
 // Obtener una reserva por ID
 router.get('/Reserva/:id', (req, res, next) => {
@@ -24,22 +29,29 @@ router.get('/Reserva/:id', (req, res, next) => {
     });
 });
 
-// Crear una nueva reserva
-router.post('/Reserva', (req, res, next) => {
-    const reservaData = req.body;
 
-    if (!reservaData.cliente || !reservaData.correo || !reservaData.telefono || !reservaData.lugarS || !reservaData.fechasS || !reservaData.horasS || !reservaData.fechasE || !reservaData.horasE || !reservaData.lugarE || !reservaData.estatusR || !reservaData.total || !reservaData.vehiculo) {
+// Crear una nueva reserva
+router.post('/Reserva', upload.fields([{ name: 'license', maxCount: 1 }, { name: 'identification', maxCount: 1 }]), (req, res, next) => {
+    console.log("Datos req.body ", req.body); 
+    const reservaData = req.body;
+    const licenseFile = req.files['license'][0]; 
+    const identificationFile = req.files['identification'][0]; 
+
+    if (!reservaData.cliente || !reservaData.correo || !reservaData.telefono || !reservaData.lugarS || !reservaData.fechasS || !reservaData.horasS || !reservaData.fechasE || !reservaData.horasE || !reservaData.lugarE || !reservaData.total || !reservaData.vehiculo) {
         return res.status(400).json({
             error: 'Bad data - cliente, correo, telefono, lugarS, fechasS, horasS, fechasE, horasE, lugarE, estatusR, total and vehiculo are required fields'
         });
+    } else if (!licenseFile || !identificationFile) { // Verificar si los archivos están presentes
+        return res.status(400).json({
+            error: 'License and identification files are required'
+        });
     } else {
-        db.Reserva.save(reservaData, (err, savedReserva) => {
+        db.Reserva.save({ ...reservaData, license: licenseFile.path, identification: identificationFile.path }, (err, savedReserva) => {
             if (err) return next(err);
             res.json(savedReserva);
         });
     }
 });
-
 
 // Eliminar una reserva por ID
 router.delete('/Reserva/:id', (req, res, next) => {
@@ -63,7 +75,7 @@ router.delete('/Reserva/:id', (req, res, next) => {
 // Actualizar una reserva por ID
 router.put('/Reserva/:id', (req, res, next) => {
     const reservaId = req.params.id;
-    const { cliente, correo, telefono, lugarS, fechasS, horasS, fechasE, horasE, lugarE, estatusR, total, vehiculo} = req.body;
+    const { cliente, correo, telefono, lugarS, fechasS, horasS, fechasE, horasE, lugarE, estatusR, total, vehiculo, descuento} = req.body;
 
     if (!ObjectId.isValid(reservaId)) {
         return res.status(400).json({ error: 'Invalid Reserva ID' });
@@ -82,7 +94,8 @@ router.put('/Reserva/:id', (req, res, next) => {
             lugarE, 
             estatusR, 
             total,
-            vehiculo
+            vehiculo,
+            descuento
         }
     };
 

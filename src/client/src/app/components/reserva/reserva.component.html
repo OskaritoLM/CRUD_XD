@@ -56,7 +56,7 @@
               </div>
               <div class="form-group">
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                <input type="tel" id="telefono" name="telefono" class="form-control" required >
               </div>
             </div>
           </div>
@@ -72,10 +72,14 @@
                   <option value="Camión">Camión</option>
                 </select> -->
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="archivos">Subir una copia de su licencia de conducir:</label>
-                <input type="file" id="archivos" name="archivos" class="form-control-file">
+                <input type="file" id="archivos" name="archivos" class="form-control-file" accept="application/pdf,image/*">
               </div>
+              <div class="form-group">
+                <label for="identification">Subir una copia de su identificación:</label>
+                <input type="file" id="identification" name="identification" class="form-control-file" accept="application/pdf,image/*" required>
+              </div> -->
             </div>
           </div>
           <div class="col-md-12">
@@ -84,6 +88,75 @@
       </div>
   </div>
 </div>
+<form [formGroup]="reservaForm" enctype="multipart/form-data" method="POST">
+  <fieldset>
+    <legend>Reserva:</legend>
+    <div class="form-group">
+      <label for="cliente">Nombre:</label>
+      <input type="text" id="cliente" name="cliente" class="form-control" formControlName="cliente" required>
+    </div>
+    <div class="form-group">
+      <label for="correo">Correo:</label>
+      <input type="text" id="correo" name="correo" class="form-control" formControlName="correo" required>
+    </div>
+    <div class="form-group">
+      <label for="telefono">Telefono:</label>
+      <input type="text" id="telefono" name="telefono" class="form-control" formControlName="telefono" required>
+    </div>
+    <div class="form-group">
+      <label for="lugarS">Lugar de salida:</label>
+      <input type="text" id="lugarS" class="form-control" [value]="(reservaLugar$ | async)?.lugarS" formControlName="lugarS" readonly>
+    </div>
+    <div class="form-group">
+      <label for="fechasS">Fecha de salida:</label>
+      <input type="date" id="fechasS" class="form-control" [value]="(reservaLugar$ | async)?.fechasS" formControlName="fechasS" readonly>
+    </div>
+    <div class="form-group">
+      <label for="horasS">Hora de salida:</label>
+      <input type="time" id="horasS" class="form-control" [value]="(reservaLugar$ | async)?.horasS" formControlName="horasS" readonly>
+    </div>
+    <div class="form-group">
+      <label for="lugarE">Lugar de entrega:</label>
+      <input type="text" id="lugarE" class="form-control" [value]="(reservaLugar$ | async)?.lugarE" formControlName="lugarE" readonly>
+    </div>
+    <div class="form-group">
+      <label for="fechasE">Fecha de entrega:</label>
+      <input type="date" id="fechasE" class="form-control" [value]="(reservaLugar$ | async)?.fechasE" formControlName="fechasE" readonly>
+    </div>
+    <div class="form-group">
+      <label for="horasE">Hora de entrega:</label>
+      <input type="time" id="horasE" class="form-control" [value]="(reservaLugar$ | async)?.horasE" formControlName="horasE" readonly>
+    </div>
+    <div class="form-group">
+      <label for="estatusR">Estatus:</label>
+      <input type="text" id="toestatusRtal" name="estatusR" class="form-control" formControlName="estatusR">
+    </div>
+    <div class="form-group">
+      <label for="total">Total:</label>
+      <input type="text" id="total" name="total" class="form-control" formControlName="total" required>
+    </div>
+    <div class="form-group">
+      <label for="vehiculo">Vehiculo:</label>
+      <input type="text" id="vehiculo" name="vehiculo" class="form-control" [value]="(selectedAuto$ | async)?.modelo" formControlName="vehiculo" readonly>
+    </div>
+    <div class="form-group">
+      <label for="descuento">Descuento:</label>
+      <input type="text" id="descuento" name="descuento" class="form-control" formControlName="descuento">
+    </div>
+     <div class="form-group">
+      <label for="license">Subir una copia de su licencia de conducir:</label>
+      <input type="file" id="license" name="license" class="form-control-file" (change)="onLicenseFileSelected($event)" formControlName="license" >
+    </div>
+    <div class="form-group">
+      <label for="identification">Subir una copia de su identificación:</label>
+      <input type="file" id="identification" name="identification" class="form-control-file" (change)="onIdentificationFileSelected($event)" formControlName="identification">
+    </div>  
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary" (click)="agregarReserva()">Reservar</button>
+  </div>
+  </fieldset>
+</form>
+
 
 <div class="ticket">
     <p>Información del formulario:</p>
@@ -99,7 +172,7 @@
     <p>Marca:{{(selectedAuto$ | async)?.marca}}</p>
   </div> 
   <h4>Modelo de vehiculo: {{(selectedAuto$ | async)?.modelo}}</h4>
-  <img style="height: 200px; width: 250px;" [src]="(selectedAuto$ | async)?.imagen" alt="Imagen del auto">
+  <img style="height: auto; width: auto;" [src]="(selectedAuto$ | async)?.imagen" alt="Imagen del auto">
   <p><i class="fas fa-user"></i> <strong></strong>{{(selectedAuto$ | async)?.asientos}}</p>
   <p><i class="fas fa-suitcase"></i> <strong></strong> {{(selectedAuto$ | async)?.maletas}} 
   

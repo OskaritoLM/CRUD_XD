@@ -19,12 +19,37 @@ export class ReservasService {
     );
   }
 
-  addReserva(newReserva: ReservaModel) {
-    return this.http.post<ReservaModel>(`${this.domain}/api/Reserva`, newReserva).pipe(
-      map(res => res),
-      catchError(this.handleError)
+  addReserva(newReserva: ReservaModel, licenseFile: File | null = null, identificationFile: File | null = null) {
+    const formData = new FormData();
+    formData.append('cliente', newReserva.cliente);
+    formData.append('correo', newReserva.correo);
+    formData.append('telefono', String(newReserva.telefono));
+    formData.append('lugarS', newReserva.lugarS);
+    formData.append('fechasS',  String(newReserva.fechasS));
+    formData.append('horasS', newReserva.horasS);
+    formData.append('lugarE', newReserva.lugarE);
+    formData.append('fechasE', String(newReserva.fechasE));
+    formData.append('horasE', newReserva.horasE);
+    formData.append('total', String(newReserva.total));
+    formData.append('vehiculo', newReserva.vehiculo);
+    formData.append('descuento', String(newReserva.descuento));
+    
+    if (licenseFile !== null) {
+        formData.append('license', licenseFile, licenseFile.name);
+    }
+    
+    if (identificationFile !== null) {
+        formData.append('identification', identificationFile, identificationFile.name);
+    }
+    
+    return this.http.post<ReservaModel>(`${this.domain}/api/Reserva`, formData).pipe(
+        map(res => res),
+        catchError(this.handleError)
     );
-  }
+}
+
+  
+  
 
   deleteReserva(id: string) {
     return this.http.delete<ReservaModel>(`${this.domain}/api/Reserva/${id}`).pipe(
@@ -38,7 +63,6 @@ export class ReservasService {
       catchError(this.handleError)
     );
   }
-  
 
   updateReserva(newReserva: ReservaModel) {
     return this.http.put(`${this.domain}/api/Reserva/${newReserva._id}`, newReserva).pipe(
@@ -51,6 +75,4 @@ export class ReservasService {
     console.error('An error occurred:', error);
     return throwError('Something went wrong, please try again later.');
   }
-
-  
 }

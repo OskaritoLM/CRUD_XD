@@ -33,14 +33,15 @@ export class ReservaModel {
     lugarS: string = "";
     fechasS: Date = new Date();
     horasS: string = "";
+    lugarE: string = "";
     fechasE: Date = new Date();
     horasE: string = "";
-    lugarE: string = "";
     estatusR: string = "";
-    total: string = "";
+    total: number = 0
     vehiculo: string = "";
-    cupon:string = "";
-    //licencia: string = "";
+    descuento: number = 0;
+    license : string = "";
+    identification: string ="";
 }
 
 export class UsuarioModel {

@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path'); // Agrega esta línea para importar el módulo path
 
+
 //const indexRoutes = require('./routes/index'); 
 const Vehiculos = require('./routes/VehiculosRoutes'); 
 const Paises = require('./routes/PaisRoutes'); 
@@ -34,9 +35,11 @@ app.use('/api', Lugar);
 app.use('/api', Usuario);
 app.use('/api', Reserva);
 app.use('/api', Ciudad);
+
+
 //Static Files
 app.use(express.static(path.join(__dirname, 'dist')));
-
+app.use('/uploads', express.static(path.resolve('uploads')));
 
 
 
