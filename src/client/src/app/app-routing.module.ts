@@ -16,7 +16,7 @@ import { EmpresaComponent } from './components/empresa/empresa.component';
 import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
 import { LoginComponent } from './components/login/login.component';
 import { MensajeComponent } from './components/mensaje/mensaje.component';
-
+import { AuthGuard } from './guard/auth-guard.guard';
 
 
 
@@ -28,10 +28,14 @@ const routes: Routes = [
   },
   {
     path : 'home-admin',
-    component : HomeAdminComponent
+    component : HomeAdminComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'ver-reserva/:id', 
-  component: VerReservaComponent },
+  component: VerReservaComponent,
+  canActivate: [AuthGuard]
+},
+  
   {
     path : 'user',
     component : HomeUserComponent
@@ -39,16 +43,18 @@ const routes: Routes = [
   {
     path : 'estado',
     component : CiudadComponent,
-
+    canActivate: [AuthGuard]
   },
   {
     path : 'pais',
-    component : PaisComponent
+    component : PaisComponent,
+    canActivate: [AuthGuard]
   },
   {
 
     path : 'ciudad',
-    component : EstadoComponent
+    component : EstadoComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'user/autos',
@@ -75,12 +81,14 @@ const routes: Routes = [
   
   {
     path: 'autos-admin',
-    component: AutosAdminComponent
+    component: AutosAdminComponent,
+    canActivate: [AuthGuard]
   },
   
   {
     path: 'lugar-admin',
-    component: LugarComponent
+    component: LugarComponent,
+    canActivate: [AuthGuard]
   },
   
   {
