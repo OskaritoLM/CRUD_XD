@@ -23,7 +23,7 @@ import { MensajeComponent } from './components/mensaje/mensaje.component';
 const routes: Routes = [
 {
     path : '',
-    redirectTo : '/home',
+    redirectTo : 'home',
     pathMatch : 'full'
   },
   {

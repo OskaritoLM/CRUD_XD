@@ -44,14 +44,17 @@ export class HomeUserComponent implements OnInit  {
   }
 
   ngOnInit(): void {
+    
     this.auth.isAuthenticated$.subscribe(isAuthenticated =>{
       if(isAuthenticated){
         this.router.navigate(['/home-admin'])
         this.isAuth = true;
+        console.log(isAuthenticated)
       } else 
         {
           this.router.navigate(['/home'])
           this.isAuth = false;
+          console.log(isAuthenticated)
         }
     })
     this.cargarLugares();
@@ -62,8 +65,8 @@ export class HomeUserComponent implements OnInit  {
     
   }
   
-  login() {
-    this.auth.loginWithRedirect()
+  login () {
+    this.auth.loginWithRedirect();
   }
   onSubmit() {
     if (this.reservaForm?.valid) {

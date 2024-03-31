@@ -19,9 +19,7 @@ export class HomeAdminComponent implements OnInit {
     this.cargarReservas();
   }
   
-  login(){
-    this.auth.logout()
-  }
+  
   cargarReservas() {
     this.reservasService.getReservas().subscribe(
       (data: ReservaModel[]) => {
