@@ -66,8 +66,11 @@ import { AuthModule } from '@auth0/auth0-angular';
     ToastrModule.forRoot(),
     AuthModule.forRoot({
       domain: 'mlbar.us.auth0.com',
-      clientId: 'B3GOwce3bfdgPrQE1WByhPTblbpol1iq'
-    })
+      clientId: 'B3GOwce3bfdgPrQE1WByhPTblbpol1iq',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [DatosPService, ReservasService, AutosService, EnviaDatosService],
   bootstrap: [AppComponent]

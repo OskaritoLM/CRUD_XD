@@ -38,7 +38,8 @@ const routes: Routes = [
   },
   {
     path : 'estado',
-    component : CiudadComponent
+    component : CiudadComponent,
+
   },
   {
     path : 'pais',

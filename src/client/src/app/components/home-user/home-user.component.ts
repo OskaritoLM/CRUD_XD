@@ -82,6 +82,8 @@ export class HomeUserComponent implements OnInit  {
       console.log('Reserva seleccionado en el componente de reserva:', reserva);
     });
   
+
+    
     }
 
   aplicarDescuento(cuponIngresado: string): void {
