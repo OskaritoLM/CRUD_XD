@@ -7,6 +7,7 @@ import { EnviaDatosService } from 'src/app/services/enviadatos.service';
 import { ReservaLugarModel } from 'src/app/models/datosPModel';
 import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
+import { Subscriber, subscribeOn } from 'rxjs';
 
 @Component({
   selector: 'app-home-user',
@@ -18,7 +19,7 @@ export class HomeUserComponent implements OnInit  {
   reserva: ReservaLugarModel[]=[];
   lugares: any[] = [];
   codigoCupon: string = 'CODIGO123';
-
+  isAuth :boolean = false;
   constructor(
     private fb: FormBuilder,
     private lugarService: LugarService,
@@ -27,7 +28,7 @@ export class HomeUserComponent implements OnInit  {
     public auth: AuthService,
     private router:Router
   ) {
-
+    
 
     this.reservaForm = this.fb.group({
       lugarS: ['',Validators.required],
@@ -41,7 +42,27 @@ export class HomeUserComponent implements OnInit  {
       // cupon: ['']
     });
   }
-  login(){
+
+  ngOnInit(): void {
+    this.auth.isAuthenticated$.subscribe(isAuthenticated =>{
+      if(isAuthenticated){
+        this.router.navigate(['/home-admin'])
+        this.isAuth = true;
+      } else 
+        {
+          this.router.navigate(['/home'])
+          this.isAuth = false;
+        }
+    })
+    this.cargarLugares();
+    this.enviaDatosService.reserva$.subscribe((reserva: ReservaLugarModel) => {
+      console.log('Reserva seleccionado en el componente de reserva:', reserva);
+    });
+  
+    
+  }
+  
+  login() {
     this.auth.loginWithRedirect()
   }
   onSubmit() {
@@ -76,15 +97,7 @@ export class HomeUserComponent implements OnInit  {
   }
   
 
-  ngOnInit(): void {
-    this.cargarLugares();
-    this.enviaDatosService.reserva$.subscribe((reserva: ReservaLugarModel) => {
-      console.log('Reserva seleccionado en el componente de reserva:', reserva);
-    });
-  
 
-    
-    }
 
   aplicarDescuento(cuponIngresado: string): void {
     let descuentoAplicado: number = 0;

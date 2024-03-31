@@ -21,9 +21,7 @@ import { PromocionesComponent } from './components/promociones/promociones.compo
 import { EstadoComponent } from './components/estado/estado.component';
 import { HistorialComponent } from './components/historial/historial.component';
 import { AutosService } from './services/autos.service';
-
 import { EmpresaComponent } from './components/empresa/empresa.component';
-
 import { AutosAdminComponent } from './components/autos-admin/autos-admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
@@ -32,6 +30,7 @@ import { EnviaDatosService } from './services/enviadatos.service';
 import { MensajeComponent } from './components/mensaje/mensaje.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { AuthModule } from '@auth0/auth0-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,8 +68,8 @@ import { AuthModule } from '@auth0/auth0-angular';
       clientId: 'B3GOwce3bfdgPrQE1WByhPTblbpol1iq',
       authorizationParams: {
         redirect_uri: window.location.origin
-      }
-    }),
+      }
+    }),
   ],
   providers: [DatosPService, ReservasService, AutosService, EnviaDatosService],
   bootstrap: [AppComponent]

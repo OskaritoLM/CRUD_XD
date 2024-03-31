@@ -18,6 +18,7 @@ export class HomeAdminComponent implements OnInit {
   ngOnInit(): void {
     this.cargarReservas();
   }
+  
   login(){
     this.auth.logout()
   }
