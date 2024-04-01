@@ -10,13 +10,13 @@ import { PaisComponent } from './components/pais/pais.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { VerReservaComponent } from './components/ver-reserva/ver-reserva.component';
-
 import { AutosAdminComponent } from './components/autos-admin/autos-admin.component';
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { LugarComponent } from './components/lugar-admun/lugar-admun.component';
 import { LoginComponent } from './components/login/login.component';
 import { MensajeComponent } from './components/mensaje/mensaje.component';
 import { AuthGuard } from './guard/auth-guard.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -99,7 +99,11 @@ const routes: Routes = [
     path: 'user/mensaje',
     component: MensajeComponent
   },
-
+  {
+    path: 'perfil',
+    component: RegisterComponent,
+    canActivate: [AuthGuard]
+  },
 
 ]
 @NgModule({
