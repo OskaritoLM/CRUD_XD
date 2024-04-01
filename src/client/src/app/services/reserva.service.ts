@@ -22,6 +22,7 @@ export class ReservasService {
   addReserva(newReserva: ReservaModel, licenseFile: File | null = null, identificationFile: File | null = null) {
     const formData = new FormData();
     formData.append('cliente', newReserva.cliente);
+    formData.append('edad', String(newReserva.edad));
     formData.append('correo', newReserva.correo);
     formData.append('telefono', String(newReserva.telefono));
     formData.append('lugarS', newReserva.lugarS);

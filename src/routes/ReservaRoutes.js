@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const mongojs = require('mongojs');
 const multer = require('multer');
-const db = mongojs('127.0.0.1:27017/RentaAutos', ['Reserva']);
+const db = mongojs('RentaAutos', ['Reserva']);
 const { ObjectId } = require('mongojs');
 
 // Configuración de Multer
@@ -44,9 +44,9 @@ router.post('/Reserva', upload.fields([{ name: 'license', maxCount: 1 }, { name:
     const licenseFile = req.files['license'][0]; 
     const identificationFile = req.files['identification'][0]; 
 
-    if (!reservaData.cliente || !reservaData.correo || !reservaData.telefono || !reservaData.lugarS || !reservaData.fechasS || !reservaData.horasS || !reservaData.fechasE || !reservaData.horasE || !reservaData.lugarE || !reservaData.total || !reservaData.vehiculo) {
+    if (!reservaData.cliente ||!reservaData.edad  || !reservaData.correo || !reservaData.telefono || !reservaData.lugarS || !reservaData.fechasS || !reservaData.horasS || !reservaData.fechasE || !reservaData.horasE || !reservaData.lugarE || !reservaData.total || !reservaData.vehiculo) {
         return res.status(400).json({
-            error: 'Bad data - cliente, correo, telefono, lugarS, fechasS, horasS, fechasE, horasE, lugarE, estatusR, total and vehiculo are required fields'
+            error: 'Bad data - cliente, edad, correo, telefono, lugarS, fechasS, horasS, fechasE, horasE, lugarE, estatusR, total and vehiculo are required fields'
         });
     } else if (!licenseFile || !identificationFile) { // Verificar si los archivos están presentes
         return res.status(400).json({
@@ -82,7 +82,7 @@ router.delete('/Reserva/:id', (req, res, next) => {
 // Actualizar una reserva por ID
 router.put('/Reserva/:id', (req, res, next) => {
     const reservaId = req.params.id;
-    const { cliente, correo, telefono, lugarS, fechasS, horasS, fechasE, horasE, lugarE, estatusR, total, vehiculo, descuento} = req.body;
+    const { cliente, edad, correo, telefono, lugarS, fechasS, horasS, fechasE, horasE, lugarE, estatusR, total, vehiculo, descuento} = req.body;
 
     if (!ObjectId.isValid(reservaId)) {
         return res.status(400).json({ error: 'Invalid Reserva ID' });
@@ -92,6 +92,7 @@ router.put('/Reserva/:id', (req, res, next) => {
     const update = {
         $set: {
             cliente, 
+            edad,
             correo, 
             telefono, 
             lugarS, fechasS, 
