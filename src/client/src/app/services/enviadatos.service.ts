@@ -39,6 +39,7 @@ const initLugarR: ReservaLugarModel = {
   fechasE: new Date(),
   horasE: '',
   lugarE: '',
+  descuento: 0
  };
 
  const initReserva: ReservaModel = {

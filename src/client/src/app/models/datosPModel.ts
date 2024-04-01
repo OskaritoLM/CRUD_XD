@@ -62,6 +62,7 @@ export class ReservaLugarModel {
    fechasE: Date = new Date();
    horasE: string = "";
    lugarE: string = "";
+   descuento: number = 0;
  }
 
 

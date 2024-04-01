@@ -18,8 +18,14 @@ export class HomeUserComponent implements OnInit  {
   reservaForm: FormGroup;
   reserva: ReservaLugarModel[]=[];
   lugares: any[] = [];
-  codigoCupon: string = 'CODIGO123';
+  cuponesDescuento: { [key: string]: number } = {
+    TORRES12: 0.1, // 10% 
+    EQUIPO1: 0.15, // 15% 
+  };
+  descuentoAplicado: number = 0; 
   isAuth :boolean = false;
+  currentDate!: string;
+
   constructor(
     private fb: FormBuilder,
     private lugarService: LugarService,
@@ -32,26 +38,14 @@ export class HomeUserComponent implements OnInit  {
 
     this.reservaForm = this.fb.group({
       lugarS: ['',Validators.required],
-      fechasS: [null, [Validators.required, this.fechaActualValida()]],
+      fechasS: ['',Validators.required],
       horasS: ['',Validators.required],
       lugarE: ['',Validators.required],
-      fechasE: [null, [Validators.required, this.fechaActualValida()]],
+      fechasE: ['',Validators.required],
       horasE: ['',Validators.required],
-      //edad: ['',[Validators.required, Validators.min(21)]],
-      // usarCupon: [false],
-      // cupon: ['']
+      usarCupon: [false],
+      descuento: ['', Validators.pattern('^(0\.1|0\.15)$')]
     });
-  }
-  fechaActualValida() {
-    return (control: AbstractControl) => {
-      const selectedDate = new Date(control.value);
-      const currentDate = new Date();
-  
-      if (selectedDate < currentDate) {
-        return { fechaInvalida: true };
-      }
-      return null;
-    };
   }
 
   ngOnInit(): void {
@@ -68,31 +62,50 @@ export class HomeUserComponent implements OnInit  {
           console.log(isAuthenticated)
         }
     })
+
     this.cargarLugares();
     this.enviaDatosService.reserva$.subscribe((reserva: ReservaLugarModel) => {
       console.log('Reserva seleccionado en el componente de reserva:', reserva);
     });
-  
+
+    //fecha
+    const dateObj = new Date();
+    this.currentDate = this.formatDate(dateObj);
     
+}
+
+  private formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
   }
   
   login () {
     this.auth.loginWithRedirect();
   }
   onSubmit() {
-    if (this.reservaForm?.valid) {
-      const edad = this.reservaForm.get('edad')?.value;
-      if (edad < 21) {
-        this.toastrService.warning('Debes tener al menos 21 años para reservar un auto.', 'Advertencia');
+ // Asignar el descuento al campo del cupón
+ const descuentoControl = this.reservaForm.get('descuento');
+  if (descuentoControl) {
+    const codigoCupon = descuentoControl.value;
+
+    // Verificar si se ingresó un código de cupón y si es válido
+    if (codigoCupon) {
+      if (!this.cuponesDescuento.hasOwnProperty(codigoCupon)) {
+        this.toastrService.error('El código de cupón ingresado no es válido.', 'Error');
         return;
+      } else {
+        const descuento = this.cuponesDescuento[codigoCupon];
+        this.reservaForm.patchValue({ descuento: descuento });
       }
-      if (this.reservaForm.get('usarCupon')?.value) {
-        const cuponIngresado = this.reservaForm.get('cupon')?.value;
-        this.aplicarDescuento(cuponIngresado);
-      }
-    } else {
-      this.toastrService.error('Por favor, complete todos los campos correctamente.', 'Error');
     }
+  } else {
+    this.toastrService.error('Por favor, ingrese un código de cupón válido.', 'Error');
+    return;
+  }
+
+ 
 
     const reserva: ReservaLugarModel = {
       lugarS: this.reservaForm.get('lugarS')?.value,
@@ -101,39 +114,47 @@ export class HomeUserComponent implements OnInit  {
       lugarE: this.reservaForm.get('lugarE')?.value,
       fechasE: this.reservaForm.get('fechasE')?.value,
       horasE: this.reservaForm.get('horasE')?.value,
+      descuento: this.reservaForm.get('descuento')?.value,
     };
     this.onClick(reserva);
+    
+
+    // Verificaciones
+    //Campos vacios
+   for (const controlName in this.reservaForm.controls) {
+    // Excluir el campo de descuento de la validación
+    if (controlName === 'descuento') {
+      continue;
+    }
+
+    const control = this.reservaForm.get(controlName);
+    if (control && control.value === '') {
+      this.toastrService.error('Por favor, complete todos los campos de reserva.', 'Error');
+      return; 
+    }
+  }
+
+    // Fechas
+    const fechaSalida = new Date(this.reservaForm.value.fechasS + 'T' + this.reservaForm.value.horasS);
+    const fechaEntrega = new Date(this.reservaForm.value.fechasE + 'T' + this.reservaForm.value.horasE);
+
+    if (fechaSalida >= fechaEntrega) {
+      this.toastrService.error('La fecha de salida debe ser anterior a la fecha de entrega.', 'Error');
+      return;   
+    }
+
+    // Horas
+    if (fechaSalida.toDateString() === fechaEntrega.toDateString() && this.reservaForm.value.horasS >= this.reservaForm.value.horasE) {
+      this.toastrService.error('La hora de salida debe ser anterior a la hora de entrega.', 'Error');
+      return;
+    }
+    this.router.navigate(['/user/autos']);
+
   }
 
   onClick(reserva: ReservaLugarModel): void {
     this.enviaDatosService.setReserva(reserva);
     console.log('Reserva enviada:', reserva);
-  }
-  
-
-
-
-  aplicarDescuento(cuponIngresado: string): void {
-    let descuentoAplicado: number = 0;
-  
-    switch (cuponIngresado) {
-      case 'FELI123':
-        descuentoAplicado = 20;
-        break;
-      case 'TORR147':
-        descuentoAplicado = 10;
-        break;
-      case 'EQUI789':
-        descuentoAplicado = 5;
-        break;
-      default:
-        this.toastrService.error('El código de cupón ingresado no es válido.', 'Error');
-        return;
-    }
-
-    // Aquí puedes aplicar el descuento al formulario o realizar alguna acción adicional
-    // Por ejemplo, podrías mostrar un mensaje de éxito con el descuento aplicado
-    this.toastrService.success(`Se aplicó un descuento del ${descuentoAplicado}%`, 'Descuento Aplicado');
   }
 
   cargarLugares(): void {

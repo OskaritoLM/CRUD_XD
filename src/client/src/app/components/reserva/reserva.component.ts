@@ -23,6 +23,7 @@ export class ReservaComponent implements OnInit{
   constructor(private fb: FormBuilder,private enviaDatosService: EnviaDatosService, private reservasService: ReservasService,private toastrService: ToastrService,) {
     this.reservaForm = this.fb.group({
       cliente: [''], 
+      //edad: ['',[Validators.required, Validators.min(21)]],
       correo: [''],
       telefono: [''],
       lugarS: [''],
