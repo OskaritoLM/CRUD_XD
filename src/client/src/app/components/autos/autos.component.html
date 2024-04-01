@@ -64,10 +64,9 @@
                 </div>
               </div>
             </div>
-
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
               <div class="col" *ngFor="let auto of autosFiltrados">
-                <div class="card shadow-sm">
+                <div class="card shadow-sm" *ngIf="auto.cantVehiculos > 0">
                   <img [src]="auto.imagen" class="card-img-top" alt="Imagen de auto">
                   <div class="card-body">
                     <h3 class="card-title">{{ auto.marca }} {{ auto.modelo }}</h3>
@@ -81,6 +80,9 @@
                         </div>
                         <div class="col-sm-6">
                           <p><i class="fas fa-car"></i> <strong>Placas:</strong> {{ auto.placas }}</p>
+                          <p><i class="fas fa-dollar-sign"></i> <strong>Precio:</strong> {{ auto.precioDia }}</p>
+                          <p><i class="fas fa-car"></i> <strong>Cantidad:</strong> {{ auto.cantVehiculos }}</p>
+
                         </div>
                       </div>
                     </div>

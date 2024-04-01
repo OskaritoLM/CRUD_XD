@@ -22,8 +22,16 @@ export class EnviaDatosService {
   return this.reservaLugar$.asObservable();
  }
 
+ get reservaCompleta$(): Observable<ReservaModel>{
+  return this.reservaComp$.asObservable();
+ }
+
  setReserva(reserva:ReservaLugarModel): void{
   this.reservaLugar$.next(reserva);
+ }
+
+ setReservaCompleta(reservaCompleta:ReservaModel): void{
+  this.reservaComp$.next(reservaCompleta);
  }
 
  setAuto(auto: AutoModel): void {
@@ -45,6 +53,7 @@ const initLugarR: ReservaLugarModel = {
  const initReserva: ReservaModel = {
   _id: '',
   cliente: '',
+  edad: 0,
   correo: '',
   telefono: 0,
   lugarS: '',

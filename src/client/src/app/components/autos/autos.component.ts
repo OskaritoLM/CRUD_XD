@@ -26,7 +26,6 @@ export class AutosComponent implements OnInit {
     this.obtenerDatosAutos();
     this.cargarLugares();
     this.enviaDatosService.selectedAuto$.subscribe((auto: AutoModel) => {
-      console.log('Auto seleccionado en el componente de reserva:', auto);
     });
   }
 
@@ -56,10 +55,36 @@ export class AutosComponent implements OnInit {
       }
     );
   }
-  seleccionarAuto(auto: AutoModel) :void{
-    this.enviaDatosService.setAuto(auto);
-    console.log('Auto seleccionado:', auto);
+  
+  seleccionarAuto(auto: AutoModel): void {
+    if (auto.cantVehiculos > 0) {
+      auto.cantVehiculos--;
+  
+      // Llamar al servicio para actualizar la cantidad
+      this.autosService.updateCantidadAuto(auto._id, auto.cantVehiculos).subscribe(
+        () => {
+          console.log('Cantidad de auto actualizada:', auto);
+          // Notificar el cambio a través del servicio
+          this.enviaDatosService.setAuto(auto);
+  
+          // Actualizar la lista de autos filtrados
+          if (auto.cantVehiculos === 0) {
+            // Si la cantidad llega a cero, eliminar el auto de la lista
+            this.autosFiltrados = this.autosFiltrados.filter(a => a !== auto);
+          }
+        },
+        error => {
+          console.error('Error al actualizar cantidad de auto:', error);
+          // Manejar el error de actualización, si es necesario
+        }
+      );
+    } else {
+      console.log('No hay existencias de este auto.');
+      // Puedes agregar un mensaje o una notificación para informar al usuario que no hay existencias.
+    }
   }
+  
+  
 }
 
 

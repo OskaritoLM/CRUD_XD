@@ -19,6 +19,13 @@ export class AutosService {
     );
   }
 
+  updateCantidadAuto(autoId: string, cantidad: number) {
+    return this.http.put(`${this.domain}/api/Vehiculo/${autoId}`, { cantidad }).pipe(
+      map(res => res),
+      catchError(this.handleError)
+    );
+  }
+
   addAuto(newAuto: AutoModel) {
     return this.http.post<AutoModel>(`${this.domain}/api/Vehiculo`, newAuto).pipe(
       map(res => res),

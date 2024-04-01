@@ -1,5 +1,5 @@
-body {
-  padding-top: 79px; /* Ajusta este valor según el alto de tu navbar */
+.container{
+  padding-top: 95px; /* Ajusta este valor según el alto de tu navbar */
 }
 
 .navbar {

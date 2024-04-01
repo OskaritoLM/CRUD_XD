@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ReservaModel } from 'src/app/models/datosPModel';
 import { EnviaDatosService } from 'src/app/services/enviadatos.service';
 import { ReservasService } from 'src/app/services/reserva.service';
@@ -23,7 +23,7 @@ export class ReservaComponent implements OnInit{
   constructor(private fb: FormBuilder,private enviaDatosService: EnviaDatosService, private reservasService: ReservasService,private toastrService: ToastrService,) {
     this.reservaForm = this.fb.group({
       cliente: [''], 
-      //edad: ['',[Validators.required, Validators.min(21)]],
+      edad: ['',[Validators.required, Validators.min(21)]],
       correo: [''],
       telefono: [''],
       lugarS: [''],

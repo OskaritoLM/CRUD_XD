@@ -28,6 +28,7 @@ export class CuidadModel {
 export class ReservaModel {
     _id?: string;
     cliente: string = "";
+    edad: number = 0;
     correo: string = "";
     telefono: number = 0;
     lugarS: string = "";
