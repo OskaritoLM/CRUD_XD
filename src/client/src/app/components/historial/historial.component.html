@@ -14,12 +14,6 @@
             <a class="nav-link" href="/user/historial">Tu Reserva</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/user/promociones">Promociones</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/user/autos">Autos</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/user/empresa">Empresa</a>
           </li>
         </ul>
@@ -131,6 +125,12 @@
         <label for="horasE">Hora de Entrega:</label>
         <input type="time" class="form-control" id="horasE" formControlName="horasE">
       </div>
+      <div class="col-md-6">
+        <p class="fs-5"><strong>Licencia:</strong></p>
+        <iframe [src]="getSafeUrl('http://localhost:3000/uploads/' + reservaEncontrada.license)" width="100%" height="500px"></iframe>
+        <p class="fs-5"><strong>Identificación:</strong></p>
+        <iframe [src]="getSafeUrl('http://localhost:3000/uploads/' + reservaEncontrada.identification)" width="100%" height="500px"></iframe>
+      </div>
     </fieldset>
 
     <fieldset>
@@ -139,14 +139,7 @@
         <label for="vehiculo">Vehículo:</label>
         <input type="text" class="form-control" id="vehiculo" formControlName="vehiculo">
       </div>
-      <div class="form-group">
-        <label for="licencia">Licencia:</label>
-        <input type="text" class="form-control" id="licencia" formControlName="licencia">
-      </div>
-      <div class="form-group">
-        <label for="identificacion">Identificación:</label>
-        <input type="text" class="form-control" id="identificacion" formControlName="identificacion">
-      </div>
+
     </fieldset>
 
     <button type="submit" class="btn btn-primary">Guardar</button>

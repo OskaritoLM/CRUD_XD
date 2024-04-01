@@ -3,6 +3,7 @@ import { ReservasService } from 'src/app/services/reserva.service';
 import { ToastrService } from 'ngx-toastr';
 import { ReservaModel } from 'src/app/models/datosPModel';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-historial',
@@ -14,11 +15,12 @@ export class HistorialComponent {
   reservaForm: FormGroup;
   mostrarForm = false;
   
-   constructor(private reservasService: ReservasService,private toastrService:ToastrService,private fb: FormBuilder) { 
+   constructor(private reservasService: ReservasService,private toastrService:ToastrService,private fb: FormBuilder,private sanitizer: DomSanitizer) { 
     this.reservaEncontrada = new ReservaModel();
     this.reservaForm = this.fb.group({
       _id: [null],
       cliente: ['', Validators.required],
+      edad: ['', Validators.required],
       correo: ['', Validators.required],
       telefono: ['', Validators.required],
       lugarS: ['', Validators.required],
@@ -29,7 +31,9 @@ export class HistorialComponent {
       lugarE: ['', Validators.required],
       estatusR: ['', Validators.required],
       total: ['', Validators.required],
-      vehiculo: ['', Validators.required]
+      vehiculo: ['', Validators.required],
+      license: [''], 
+      identification: ['']
     });
    }
    ngOnInit(): void {
@@ -39,6 +43,7 @@ export class HistorialComponent {
      this.reservasService.getReservaById(idReserva).subscribe(
        (reserva: ReservaModel) => {
          this.reservaEncontrada = reserva;
+         console.log('Reserva encontrada:', this.reservaEncontrada);
        },
      (error) => {
          console.error('Error al obtener reserva:', error);
@@ -46,6 +51,10 @@ export class HistorialComponent {
        }
      );
    }
+   
+  getSafeUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
 
    
   cancelarReserva(id: string | undefined): void {

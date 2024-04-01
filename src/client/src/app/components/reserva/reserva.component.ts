@@ -50,7 +50,8 @@ export class ReservaComponent implements OnInit{
 
     this.selectedAuto$.subscribe(autoSeleccionado => {
       this.reservaForm.patchValue({
-        vehiculo: autoSeleccionado.modelo
+        vehiculo: autoSeleccionado.modelo,
+        total: autoSeleccionado.precioDia 
       });
     });
   }
@@ -121,46 +122,46 @@ export class ReservaComponent implements OnInit{
       console.log('Reserva enviada:', reserva);
     }
     
-    calcularTotal() {
-      const reservaForm = this.reservaForm;
+  //   calcularTotal() {
+  //     const reservaForm = this.reservaForm;
   
-      // Verifica si reservaForm es nulo o indefinido
-      if (reservaForm) {
-          const fechaInicioValue = reservaForm.get('fechasS')?.value;
-          const fechaFinValue = reservaForm.get('fechasE')?.value;
+  //     // Verifica si reservaForm es nulo o indefinido
+  //     if (reservaForm) {
+  //         const fechaInicioValue = reservaForm.get('fechasS')?.value;
+  //         const fechaFinValue = reservaForm.get('fechasE')?.value;
   
-          // Verifica si las fechas son nulas o no
-          if (fechaInicioValue && fechaFinValue) {
-              const fechaInicio = new Date(fechaInicioValue);
-              const fechaFin = new Date(fechaFinValue);
-              const diasDiferencia = Math.ceil((fechaFin.getTime() - fechaInicio.getTime()) / (1000 * 3600 * 24));
-              const precioPorDia = this.getPrecioPorDia(); // Método para obtener el precio por día del vehículo seleccionado
-              const descuento = reservaForm.get('descuento')?.value || 0; // Si no hay descuento, se asume 0
+  //         // Verifica si las fechas son nulas o no
+  //         if (fechaInicioValue && fechaFinValue) {
+  //             const fechaInicio = new Date(fechaInicioValue);
+  //             const fechaFin = new Date(fechaFinValue);
+  //             const diasDiferencia = Math.ceil((fechaFin.getTime() - fechaInicio.getTime()) / (1000 * 3600 * 24));
+  //             const precioPorDia = this.getPrecioPorDia(); // Método para obtener el precio por día del vehículo seleccionado
+  //             const descuento = reservaForm.get('descuento')?.value || 0; // Si no hay descuento, se asume 0
   
-              const total = precioPorDia * diasDiferencia * (1 - descuento / 100);
-              reservaForm.get('total')?.setValue(total);
-              console.log('Precio por día:', precioPorDia);
-              console.log(total)
-          } else {
-              console.error('Una de las fechas es nula');
-              this.toastrService.error('Una de las fechas es nula','Error');
-          }
-      } else {
-          console.error('reservaForm es nulo');
-          this.toastrService.error('Error en el formulario','Error');
-      }
-  }
+  //             const total = precioPorDia * diasDiferencia * (1 - descuento / 100);
+  //             reservaForm.get('total')?.setValue(total);
+  //             console.log('Precio por día:', precioPorDia);
+  //             console.log(total)
+  //         } else {
+  //             console.error('Una de las fechas es nula');
+  //             this.toastrService.error('Una de las fechas es nula','Error');
+  //         }
+  //     } else {
+  //         console.error('reservaForm es nulo');
+  //         this.toastrService.error('Error en el formulario','Error');
+  //     }
+  // }
   
   
-    // Método para obtener el precio por día del vehículo seleccionado
-    getPrecioPorDia(): number {
-      let precioDia = 0;
-      if (this.autoSeleccionado && this.autoSeleccionado.precioDia) {
-        precioDia = this.autoSeleccionado.precioDia;
-    }
+  //   // Método para obtener el precio por día del vehículo seleccionado
+  //   getPrecioPorDia(): number {
+  //     let precioDia = 0;
+  //     if (this.autoSeleccionado && this.autoSeleccionado.precioDia) {
+  //       precioDia = this.autoSeleccionado.precioDia;
+  //   }
 
-    return precioDia;
-    }
+  //   return precioDia;
+  //   }
   
   
 }

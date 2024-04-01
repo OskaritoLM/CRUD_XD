@@ -14,6 +14,7 @@ export class MensajeComponent {
 
   constructor(private fb: FormBuilder,private enviaDatosService: EnviaDatosService) { 
     this.reservaForm = this.fb.group({
+      _id:[''],
       cliente: [''], 
       edad: [''],
       correo: [''],

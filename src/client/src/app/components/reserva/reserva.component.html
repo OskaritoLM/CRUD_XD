@@ -14,12 +14,6 @@
           <a class="nav-link" href="/user/historial">Tu Reserva</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="/user/promociones">Promociones</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="/user/autos">Autos</a>
-      </li>
-      <li class="nav-item">
           <a class="nav-link" href="/user/empresa">Empresa</a>
       </li>
       </ul>
@@ -64,7 +58,7 @@
     <div class="col-md-6">
       <form [formGroup]="reservaForm" enctype="multipart/form-data" method="POST">
         <fieldset>
-          <legend style="font-size: 1.5rem; color: #333;">Información de Reserva:</legend>
+          <legend style="font-size: 1.5rem; color: #333;">Resumen de la Reserva:</legend>
           <div class="form-group">
             <label for="lugarS" style="font-weight: bold;">Lugar de salida:</label>
             <input type="text" id="lugarS" class="form-control" [value]="(reservaLugar$ | async)?.lugarS" formControlName="lugarS" readonly style="border-radius: 5px;">
@@ -95,7 +89,7 @@
           </div>
           <div class="form-group">
             <label for="total">Total:</label>
-            <input type="text" id="total" name="total" class="form-control" formControlName="total" required>
+            <input type="text" id="total" name="total" class="form-control" formControlName="total" required [value]="(selectedAuto$ | async)?.precioDia">
           </div>
         </fieldset>
       </form>
@@ -105,6 +99,14 @@
           <div class="form-group">
             <label for="vehiculo">Vehiculo:</label>
             <input type="text" id="vehiculo" name="vehiculo" class="form-control" [value]="(selectedAuto$ | async)?.modelo" formControlName="vehiculo" readonly>
+          </div>
+          <div class="form-group">
+            <label for="total">Total:</label>
+            <input type="text" id="total" name="total" class="form-control" [value]="(selectedAuto$ | async)?.precioDia" formControlName="total" readonly>
+          </div>
+          <div class="form-group">
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" class="form-control" [value]="(selectedAuto$ | async)?.marca" formControlName="marca" readonly>
           </div>
         </fieldset>
       </form>
