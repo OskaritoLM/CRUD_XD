@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ReservaModel } from '../../models/datosPModel';
 import { ReservasService } from '../../services/reserva.service';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ver-reserva',
@@ -16,7 +17,8 @@ export class VerReservaComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private reservasService: ReservasService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,9 @@ export class VerReservaComponent implements OnInit {
         }
       );
     }
+  }
+  getSafeUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   volver() {
