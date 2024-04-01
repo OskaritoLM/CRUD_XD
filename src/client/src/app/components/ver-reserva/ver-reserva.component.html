@@ -28,11 +28,9 @@
               </div>
               <div class="col-md-6">
                 <p class="fs-5"><strong>Licencia:</strong></p>
-                <!-- PDF viewer for license -->
-                <ngx-extended-pdf-viewer [src]="reserva.license" height="500px"></ngx-extended-pdf-viewer>
-                <p class="fs-5"><strong>Identificación:</strong></p>
+                <iframe [src]="getSafeUrl('http://localhost:3000/uploads/' + reserva.license)" width="100%" height="500px"></iframe>
                 <!-- PDF viewer for identification -->
-                <ngx-extended-pdf-viewer [src]="reserva.identification" height="500px"></ngx-extended-pdf-viewer>
+                <iframe [src]="getSafeUrl('http://localhost:3000/uploads/' + reserva.identification)" width="100%" height="500px"></iframe>
               </div>
             </div>
           </div>

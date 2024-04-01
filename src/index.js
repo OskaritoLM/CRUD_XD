@@ -35,7 +35,7 @@ app.use('/api', Lugar);
 app.use('/api', Usuario);
 app.use('/api', Reserva);
 app.use('/api', Ciudad);
-
+app.use(express.static('uploads'));
 
 //Static Files
 app.use(express.static(path.join(__dirname, 'dist')));
