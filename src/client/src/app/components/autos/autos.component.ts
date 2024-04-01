@@ -56,7 +56,7 @@ export class AutosComponent implements OnInit {
     );
   }
   
-  seleccionarAuto(auto: AutoModel): void {
+  /*seleccionarAuto(auto: AutoModel): void {
     if (auto.cantVehiculos > 0) {
       auto.cantVehiculos--;
   
@@ -82,6 +82,10 @@ export class AutosComponent implements OnInit {
       console.log('No hay existencias de este auto.');
       // Puedes agregar un mensaje o una notificación para informar al usuario que no hay existencias.
     }
+  }*/
+  seleccionarAuto(auto: AutoModel) :void{
+    this.enviaDatosService.setAuto(auto);
+    console.log('Auto seleccionado:', auto);
   }
   
   

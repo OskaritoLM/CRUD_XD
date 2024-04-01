@@ -4,6 +4,7 @@ import { ReservaModel } from 'src/app/models/datosPModel';
 import { EnviaDatosService } from 'src/app/services/enviadatos.service';
 import { ReservasService } from 'src/app/services/reserva.service';
 import { ToastrService } from 'ngx-toastr';
+import { AutoModel } from 'src/app/models/datosPModel';
 @Component({
   selector: 'app-reserva',
   templateUrl: './reserva.component.html',
@@ -15,6 +16,7 @@ export class ReservaComponent implements OnInit{
   nuevaReserva: ReservaModel = new ReservaModel();
   selectedAuto$ = this.enviaDatosService.selectedAuto$;
   reservaLugar$= this.enviaDatosService.reserva$;
+  autoSeleccionado: AutoModel | null = null;
 
   // Propiedades para los archivos de licencia e identificación
    licenseFile: File | null = null;
@@ -91,8 +93,74 @@ export class ReservaComponent implements OnInit{
         console.error('Datos de reserva inválidos');
         this.toastrService.error('Datos de reserva inválidos','Error');
       }
+
+      const reserva: ReservaModel = {
+        _id:this.reservaForm.get('_id')?.value,
+        cliente: this.reservaForm.get('cliente')?.value,
+        edad: this.reservaForm.get('edad')?.value,
+        correo: this.reservaForm.get('correo')?.value,
+        telefono: this.reservaForm.get('telefono')?.value,
+        lugarS: this.reservaForm.get('lugarS')?.value,
+        fechasS: this.reservaForm.get('fechasS')?.value,
+        horasS: this.reservaForm.get('horasS')?.value,
+        lugarE: this.reservaForm.get('lugarE')?.value,
+        fechasE: this.reservaForm.get('fechasE')?.value,
+        horasE: this.reservaForm.get('horasE')?.value,
+        estatusR: this.reservaForm.get('estatusR')?.value,
+        total: this.reservaForm.get('total')?.value,
+        vehiculo: this.reservaForm.get('vehiculo')?.value,
+        descuento: this.reservaForm.get('descuento')?.value,
+        license: this.reservaForm.get('license')?.value,
+        identification: this.reservaForm.get('identification')?.value,
+      };
+      this.onClick(reserva);
+    }
+
+    onClick(reserva: ReservaModel): void {
+      this.enviaDatosService.setReservaCompleta(reserva);
+      console.log('Reserva enviada:', reserva);
     }
     
+    calcularTotal() {
+      const reservaForm = this.reservaForm;
+  
+      // Verifica si reservaForm es nulo o indefinido
+      if (reservaForm) {
+          const fechaInicioValue = reservaForm.get('fechasS')?.value;
+          const fechaFinValue = reservaForm.get('fechasE')?.value;
+  
+          // Verifica si las fechas son nulas o no
+          if (fechaInicioValue && fechaFinValue) {
+              const fechaInicio = new Date(fechaInicioValue);
+              const fechaFin = new Date(fechaFinValue);
+              const diasDiferencia = Math.ceil((fechaFin.getTime() - fechaInicio.getTime()) / (1000 * 3600 * 24));
+              const precioPorDia = this.getPrecioPorDia(); // Método para obtener el precio por día del vehículo seleccionado
+              const descuento = reservaForm.get('descuento')?.value || 0; // Si no hay descuento, se asume 0
+  
+              const total = precioPorDia * diasDiferencia * (1 - descuento / 100);
+              reservaForm.get('total')?.setValue(total);
+              console.log('Precio por día:', precioPorDia);
+              console.log(total)
+          } else {
+              console.error('Una de las fechas es nula');
+              this.toastrService.error('Una de las fechas es nula','Error');
+          }
+      } else {
+          console.error('reservaForm es nulo');
+          this.toastrService.error('Error en el formulario','Error');
+      }
+  }
+  
+  
+    // Método para obtener el precio por día del vehículo seleccionado
+    getPrecioPorDia(): number {
+      let precioDia = 0;
+      if (this.autoSeleccionado && this.autoSeleccionado.precioDia) {
+        precioDia = this.autoSeleccionado.precioDia;
+    }
+
+    return precioDia;
+    }
   
   
 }

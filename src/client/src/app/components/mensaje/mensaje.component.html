@@ -26,19 +26,18 @@
     </div>
     </div>
 </nav>
-
- <div class="background-color">
+<div class="background-color">
     <div class="container">
         <h1>RentAuto</h1>
         <div class="content">
             <label>Felicidades, has terminado con éxito tu reserva</label>
-            <label>No. Reserva: <span>123456</span></label>
-            <label>Nombre Auto: <span>Toyota Corolla</span></label>
-            <label>Nombre cliente: <span>Juan Pérez</span></label>
-            <label>Podrás recoger tu auto en <span>Oficina Principal</span> el día <span>2024-03-25</span>,</label>
-            <label>Recuerda debes entregar el auto en <span>Aeropuerto Internacional</span> el día <span>2024-04-01</span></label>
-            <label>Precio Total: <span>$500</span></label>
+            <label>No. Reserva: <span>{{ reservaForm.get('_id')?.value }}</span></label>
+            <label>Nombre Auto: <span>{{ reservaForm.get('vehiculo')?.value }}</span></label>
+            <label>Nombre cliente: <span>{{ reservaForm.get('cliente')?.value }}</span></label>
+            <label>Podrás recoger tu auto en <span>{{ reservaForm.get('lugarS')?.value }}</span> el día <span>{{ reservaForm.get('fechasS')?.value }}</span>,</label>
+            <label>Recuerda debes entregar el auto en <span>{{ reservaForm.get('lugarE')?.value }}</span> el día <span>{{ reservaForm.get('fechasE')?.value }}</span></label>
+            <label>Precio Total: <span>{{ reservaForm.get('total')?.value }}</span></label>
         </div>
         <button class="btn-regresar"><i class="fas fa-arrow-left"></i> Regresar</button>
     </div>
-</div> 
+</div>
