@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const mongojs = require('mongojs');
 const multer = require('multer');
-const db = mongojs('RentaAutos', ['Reserva']);
+const db = mongojs('127.0.0.1:27017/RentaAutos', ['Reserva']);
 const { ObjectId } = require('mongojs');
 
 // Configuración de Multer
@@ -53,7 +53,7 @@ router.post('/Reserva', upload.fields([{ name: 'license', maxCount: 1 }, { name:
             error: 'License and identification files are required'
         });
     } else {
-        db.Reserva.save({ ...reservaData, license: licenseFile.path, identification: identificationFile.path }, (err, savedReserva) => {
+        db.Reserva.save({ ...reservaData, license: licenseFile.originalname, identification: identificationFile.originalname }, (err, savedReserva) => {
             if (err) return next(err);
             res.json(savedReserva);
         });
