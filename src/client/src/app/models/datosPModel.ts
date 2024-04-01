@@ -34,8 +34,8 @@ export class ReservaModel {
     fechasS: Date = new Date();
     horasS: string = "";
     lugarE: string = "";
-    FechasE: Date = new Date();
-    HorasE: string = "";
+    fechasE: Date = new Date();
+    horasE: string = "";
     estatusR: string = "";
     total: number = 0
     vehiculo: string = "";

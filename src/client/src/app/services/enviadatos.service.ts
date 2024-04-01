@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AutoModel, ReservaLugarModel } from '../models/datosPModel';
+import { AutoModel, ReservaLugarModel, ReservaModel } from '../models/datosPModel';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 
@@ -10,7 +10,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class EnviaDatosService {
  private auto$ = new BehaviorSubject<AutoModel>(iniAuto);
  private reservaLugar$ = new BehaviorSubject<ReservaLugarModel>(initLugarR);
-
+ private reservaComp$ = new BehaviorSubject<ReservaModel>(initReserva);
  constructor(){
  
  }
@@ -39,6 +39,25 @@ const initLugarR: ReservaLugarModel = {
   fechasE: new Date(),
   horasE: '',
   lugarE: '',
+ };
+
+ const initReserva: ReservaModel = {
+  _id: '',
+  cliente: '',
+  correo: '',
+  telefono: 0,
+  lugarS: '',
+  fechasS: new Date(),
+  horasS: '',
+  lugarE: '',
+  fechasE: new Date(),
+  horasE: '',
+  estatusR: '',
+  total: 0,
+  vehiculo: '',
+  descuento: 0,
+  license: '',
+  identification: '',
  };
 
  const iniAuto: AutoModel = {

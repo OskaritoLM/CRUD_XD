@@ -28,8 +28,8 @@ export class ReservasService {
     formData.append('fechasS',  String(newReserva.fechasS));
     formData.append('horasS', newReserva.horasS);
     formData.append('lugarE', newReserva.lugarE);
-    formData.append('fechasE', String(newReserva.FechasE));
-    formData.append('horasE', newReserva.HorasE);
+    formData.append('fechasE', String(newReserva.fechasE));
+    formData.append('horasE', newReserva.horasE);
     formData.append('total', String(newReserva.total));
     formData.append('vehiculo', newReserva.vehiculo);
     formData.append('descuento', String(newReserva.descuento));

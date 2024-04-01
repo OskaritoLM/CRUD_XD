@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LugarService } from 'src/app/services/lugar.service';
 import { ReservasService } from 'src/app/services/reserva.service';
@@ -32,15 +32,26 @@ export class HomeUserComponent implements OnInit  {
 
     this.reservaForm = this.fb.group({
       lugarS: ['',Validators.required],
-      fechasS: ['',Validators.required],
+      fechasS: [null, [Validators.required, this.fechaActualValida()]],
       horasS: ['',Validators.required],
       lugarE: ['',Validators.required],
-      fechasE: ['',Validators.required],
+      fechasE: [null, [Validators.required, this.fechaActualValida()]],
       horasE: ['',Validators.required],
       //edad: ['',[Validators.required, Validators.min(21)]],
       // usarCupon: [false],
       // cupon: ['']
     });
+  }
+  fechaActualValida() {
+    return (control: AbstractControl) => {
+      const selectedDate = new Date(control.value);
+      const currentDate = new Date();
+  
+      if (selectedDate < currentDate) {
+        return { fechaInvalida: true };
+      }
+      return null;
+    };
   }
 
   ngOnInit(): void {
