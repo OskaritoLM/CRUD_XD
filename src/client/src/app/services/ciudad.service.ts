@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { CuidadModel } from '../models/datosPModel';
 
@@ -9,7 +9,7 @@ import { CuidadModel } from '../models/datosPModel';
   providedIn: 'root'
 })
 export class EstadoService {
-  private domain: string = "http://localhost:3000";
+  private domain: string = "http://localhost:3001";
 
   constructor(private http: HttpClient) { }
 

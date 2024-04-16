@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { CuidadModel, EstadoModel } from '../models/datosPModel';
+import { EstadoModel } from '../models/datosPModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CiudadService {
-  private domain: string = "http://localhost:3000"; // Reemplaza con la URL correcta de tu API
+  private domain: string = "http://localhost:3001"; // Reemplaza con la URL correcta de tu API
 
   constructor(private http: HttpClient) { }
 

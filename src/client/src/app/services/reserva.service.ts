@@ -8,7 +8,7 @@ import { ReservaModel } from '../models/datosPModel';
   providedIn: 'root'
 })
 export class ReservasService {
-  private domain: string = "http://localhost:3000";
+  private domain: string = "http://localhost:3001";
 
   constructor(private http: HttpClient) { }
 
@@ -34,23 +34,23 @@ export class ReservasService {
     formData.append('total', String(newReserva.total));
     formData.append('vehiculo', newReserva.vehiculo);
     formData.append('descuento', String(newReserva.descuento));
-    
+
     if (licenseFile !== null) {
         formData.append('license', licenseFile, licenseFile.name);
     }
-    
+
     if (identificationFile !== null) {
         formData.append('identification', identificationFile, identificationFile.name);
     }
-    
+
     return this.http.post<ReservaModel>(`${this.domain}/api/Reserva`, formData).pipe(
         map(res => res),
         catchError(this.handleError)
     );
 }
 
-  
-  
+
+
 
   deleteReserva(id: string) {
     return this.http.delete<ReservaModel>(`${this.domain}/api/Reserva/${id}`).pipe(

@@ -1,8 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-import{DatosPModel} from'../models/datosPModel';
+import { DatosPModel } from '../models/datosPModel';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import{DatosPModel} from'../models/datosPModel';
 export class DatosPService {
 
   constructor(private http: HttpClient) { }
-  domain: string="http://localhost:3000";
+  domain: string="http://localhost:3001";
   getDatosP() {
     return this.http.get<DatosPModel[]>(`${this.domain}/api/Pais`).pipe(
       map(res => res)

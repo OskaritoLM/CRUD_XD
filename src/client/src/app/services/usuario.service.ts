@@ -11,7 +11,7 @@ import { UsuarioModel } from '../models/datosPModel';
 })
 export class UsuarioService {
 
-  private domain = 'http://localhost:3000'; // Cambia "your_port" al puerto donde se ejecuta tu servidor
+  private domain = 'http://localhost:3001'; // Cambia "your_port" al puerto donde se ejecuta tu servidor
 
   constructor(private http: HttpClient) { }
 
@@ -41,7 +41,7 @@ export class UsuarioService {
       catchError(this.handleError)
     );
   }
-  
+
 
   updateusuario(newusuario: UsuarioModel) {
     return this.http.put(`${this.domain}/api/usuario/${newusuario._id}`, newusuario).pipe(
@@ -54,7 +54,7 @@ export class UsuarioService {
       catchError(this.handleError)
     );
   }
-  
+
   private handleError(error: any) {
     console.error('An error occurred:', error);
     return throwError('Something went wrong, please try again later.');

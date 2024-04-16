@@ -11,7 +11,7 @@ const Categoria = require('./routes/CategoriaRoutes');
 const Lugar = require('./routes/LugarRouter');
 const Usuario = require('./routes/UsuarioRoutes');
 // settings
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
